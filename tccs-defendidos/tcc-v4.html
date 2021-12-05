@@ -30,7 +30,9 @@
         .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
         .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
         .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
-        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6) {
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8) {
             display: block;
         }
 
@@ -111,30 +113,51 @@
 
     <div class="tabset">
         <!-- Tab 1 -->
-        <input type="radio" name="tabset" id="tab1" aria-controls="marzen">
-        <label for="tab1">2021</label>
+        <input type="radio" name="tabset" id="tab2021-B" aria-controls="marzen">
+        <label for="tab2021-B">2021</label>
         <!-- Tab 2 -->
-        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-        <label for="tab2">2017</label>
+        <input type="radio" name="tabset" id="tab2017-B" aria-controls="rauchbier">
+        <label for="tab2017-B">2017</label>
         <!-- Tab 3 -->
-        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-        <label for="tab3">2014</label>
+        <input type="radio" name="tabset" id="tab2014-B" aria-controls="dunkles">
+        <label for="tab2014-B">2014</label>
 
         <div class="tab-panels">
             <section id="marzen" class="tab-panel">
-                <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a clean, rich, toasty
-                    and bready malt flavor, restrained bitterness, and a dry finish that encourages another drink. The
-                    overall malt impression is soft, elegant, and complex, with a rich aftertaste that is never cloying
-                    or heavy.</p>
-                <p><strong>History:</strong> As the name suggests, brewed as a stronger “March beer” in March and
-                    lagered in cold caves over the summer. Modern versions trace back to the lager developed by Spaten
-                    in 1841, contemporaneous to the development of Vienna lager. However, the Märzen name is much older
-                    than 1841; the early ones were dark brown, and in Austria the name implied a strength band (14 °P)
-                    rather than a style. The German amber lager version (in the Viennese style of the time) was first
-                    served at Oktoberfest in 1872, a tradition that lasted until 1990 when the golden Festbier was
-                    adopted as the standard festival beer.</p>
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="http://www.marcopolo.unir.br/images/downloads/tcc/eliton-trindade-gomes.pdf">
+                                Propagação de pulsos de luz ultracurtos em um ensemble de átomos de rubídio-87
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: Eliton Trindade Gomes</p>
+                      <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                    </div>
+                
+                </div>
             </section>
             <section id="rauchbier" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="http://www.marcopolo.unir.br/images/downloads/tcc/teo-victor-resende-da-silva.pdf">
+                                Solução das equações de Bloch ópticas para sistemas atômicos de dois e três níveis utilizando GPUs
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: Teo Victor Resende da Silva</p>
+                      <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                    </div>
+                
+                </div>
+            </section>
+            <section id="dunkles" class="tab-panel">
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container w3-blue">
                         <h5>
@@ -156,30 +179,20 @@
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container w3-blue">
                         <h5>
-                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/MARIANE_RODRIGUES_CORTES_2014_1855634873.pdf">
-                                CARACTERIZAÇÃO E ANÁLISE DA VARIAÇÃO SAZONAL DOS
-                        COMPONENTES DO MICROCLIMA EM UMA ÁREA DE PASTAGEM E
-                        FLORESTA NO SUDOESTE DA AMAZÔNIA
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/YARA_GOMES_DE_SOUSA_DINIZ_2014_844445236.pdf">
+                                CONFINAMENTO DO ÁTOMO DE LÍTIO EM UM GÁS DE FERMI DIRAC:
+            SOLUÇÕES PARA O POTENCIAL TIPO YUKAWA
                             </a>
                         </h5>
                     </header>
                 
                     <div class="w3-container">
-                      <p>Discente: MARIANE RODRIGUES CORTES</p>
-                      <p>Orientador: Ricardo de
-                        Sousa Costa</p>
+                      <p>Discente: YARA GOMES DE SOUSA DINIZ</p>
+                      <p>Orientador: Prof. Dr. Walter Trennephol
+                        Júnior</p>
                     </div>
                 
                 </div>
-            </section>
-            <section id="dunkles" class="tab-panel">
-                <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the
-                    malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-                <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing
-                    center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in
-                    Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck”
-                    in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means
-                    “Ram” in German, and is often used in logos and advertisements.</p>
             </section>
         </div>
 
@@ -191,18 +204,54 @@
     <h2>Licenciatura em Física</h2>
 
     <div class="tabset">
-        <!-- Tab 1 -->
-        <input type="radio" name="tabset" id="tab4" aria-controls="marzen">
-        <label for="tab4">2021</label>
-        <!-- Tab 2 -->
-        <input type="radio" name="tabset" id="tab5" aria-controls="rauchbier">
-        <label for="tab5">2020</label>
-        <!-- Tab 3 -->
-        <input type="radio" name="tabset" id="tab6" aria-controls="dunkles">
-        <label for="tab6">2019</label>
+
+        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+        <label for="tab2021">2021</label>
+
+        <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
+        <label for="tab2020">2020</label>
+
+        <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
+        <label for="tab2019">2019</label>
+
+        <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
+        <label for="tab2018">2018</label>
+
+        <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
+        <label for="tab2017">2017</label>
+
+        <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
+        <label for="tab2016">2016</label>
+
+        <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
+        <label for="tab2015">2015</label>
+
+        <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
+        <label for="tab2014">2014</label>
+
+        <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
+        <label for="tab2013">2013</label>
+
+        <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
+        <label for="tab2012">2012</label>
+
+        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
+        <label for="tab2011">2011</label>
+
+        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
+        <label for="tab2010">2010</label>
+
+        <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
+        <label for="tab2009">2009</label>
+
+        <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
+        <label for="tab2008">2008</label>
+
+        <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
+        <label for="tab2005">2005</label>
 
         <div class="tab-panels">
-            <section id="marzen" class="tab-panel">
+            <section id="2021" class="tab-panel">
                 <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a clean, rich, toasty
                     and bready malt flavor, restrained bitterness, and a dry finish that encourages another drink. The
                     overall malt impression is soft, elegant, and complex, with a rich aftertaste that is never cloying
@@ -215,17 +264,748 @@
                     served at Oktoberfest in 1872, a tradition that lasted until 1990 when the golden Festbier was
                     adopted as the standard festival beer.</p>
             </section>
-            <section id="rauchbier" class="tab-panel">
+
+            <section id="2020" class="tab-panel">
                 Teste
             </section>
-            <section id="dunkles" class="tab-panel">
-                <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the
-                    malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-                <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing
-                    center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in
-                    Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck”
-                    in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means
-                    “Ram” in German, and is often used in logos and advertisements.</p>
+            
+            <section id="2019" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Alex%20Bonfim%20Siqueira.pdf">
+                                ALGUNS EFEITOS PEDAGÓGICOS DO USO DE OFICINAS NAS AULAS DE
+FÍSICA NO ENSINO MÉDIO
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: ALEX BONFIM SIQUEIRA</p>
+                      <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                    </div>
+                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Marline%20de%20Souza%20Oliveira.pdf">
+                                CIENCIA-ARTE
+ABORDAGEM CONTEMPORANEA DO ESTUDO DE ONDAS UTILIZANDO
+ARTES POPULARES
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MARLINE DE SOUZA OLIVEIRA</p>
+                      <p>Orientadora: Prof. Me. Vanessa
+                        Delfino Kegler</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/MONIQUE%20EVES%20SOUZA%20DOS%20SANTOS.pdf">
+                                AS DIFICULDADES NO ENSINO DE FÍSICA PARA O ENSINO MÉDIO: ESTUDO
+DE CASO DE UMA ESCOLA DA REDE PÚBLICA ESTADUAL
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MONIQUE EVES SOUZA DOS SANTOS</p>
+                      <p>Orientador: Prof. Dr.
+                        Walter Trennepohl Júnior.
+                        </p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/TCCs/Eliene%20Goncalves.pdf">
+                                A IMPLEMENTAÇÃO DA BASE NACIONAL COMUM CURRICULAR (BNCC) NAS
+ESCOLAS DE EDUCAÇÃO BÁSICA EM JI PARANÁ, RONDÔNIA COM ÊNFASE NO
+ENSINO DA FÍSICA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: ELIENE GONÇALVES LEMOS</p>
+                      <p>Orientadora: Prof. Me. Patricia
+                        Matos Viana de Almeida.
+                        </p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/ZACARIAS%20EUCLIDES%20DA%20SILVA.pdf">
+                                ANÁLISE DAS APLICAÇÕES DAS ATIVIDADES EXPERIMENTAIS NO
+ENSINO DE FÍSICA NAS ESCOLAS ESTADUAIS DE ENSINO FUNDAMENTAL E
+MÉDIO DO MUNICÍPIO DE PRESIDENTE MÉDICI
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: ZACARIAS EUCLIDES DA SILVA</p>
+                      <p>Orientadora: Profa. Ma. Patrícia Matos
+                        Viana de Almeida</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Enivaldo%20Tavares%20de%20Freitas.pdf">
+                                A Física Moderna no Cotidiano
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: ENIVALDO TAVARES DE FREITAS</p>
+                      <p>Orientador: Prof. Dr Walter Trennepohl
+                        Júnior</p>
+                    </div>                
+                </div>
+            </section>
+
+            <section id="2018" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Gleici%202018.pdf">
+                                INICIAÇÃO CIENTÍFICA Jr., PRIMEIROS PASSOS NO
+CONTEXTO CIENTÍFICO
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: Gleici Alves Correa</p>
+                      <p>Orientadora: Prof. Ma. Patrícia Matos Viana de Almeida</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Jailson%202018.pdf">
+                                HISTÓRIA E APLICAÇÕES DO RAIO X NAS INDÚSTRIAS
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: JAILSON LOSS GAMBET</p>
+                      <p>Orientador: Prof. Drº João Batista Diniz</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Kevyn%202018.pdf">
+                                PROPAGAÇÃO DE UM TREM DE PULSOS ULTRACURTOS:
+TEORIA CLÁSSICA
+DA INTERAÇÃO ENTRE RADIAÇÃO E MATÉRIA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: KEVYN ALBERTO PEREIRA</p>
+                      <p>Orientador: Prof. Dr.
+                        Marco Polo Moreno de Souza.
+                        </p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Laura%202018.pdf">
+                                QR CODE COMO FERRAMENTA MEDIADORA NO
+ENSINO DE FÍSICA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: LAURA MAÍSA SOUZA DOS SANTOS</p>
+                      <p>Orientador: Prof. Me. Quesle da Silva
+                        Martins.
+                        </p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Leticia%202018.pdf">
+                                PERFIL DOS TCCS DOS CURSOS DE FÍSICA DA UNIVERSIDADE
+FEDERAL DE RONDÔNIA, CAMPUS DE JI-PARANÁ
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: LETÍCIA FARAGE CARVALHO</p>
+                      <p>Orientadora: Prof. Ma Patrícia Mattos
+                        Viana de Almeida.</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Luana%202018.pdf">
+                                A UTILIZAÇÃO DE EXPERIMENTOS DE BAIXO CUSTO NO
+ENSINO EJA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: LUANA GUARTIERI DE OLIVEIRA </p>
+                      <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Lichaime%202018.pdf">
+                                A INCLUSÃO DOS SURDOS NO ENSINO DE FÍSICA NA CIDADE DE JI-PARANÁ 
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: LICHAIME SCHULHAM </p>
+                      <p>Orientador: Professor Dr. Ricardo Costa</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Marcelo%202018.pdf">
+                                O ENSINO DE FÍSICA COM O USO DE TECNOLOGIA DA
+INFORMAÇÃO E COMUNICAÇÃO: UMA EXPERIÊNCIA NA
+ESCOLA MARCOS BISPO DA SILVA 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MARCELO SOARES </p>
+                      <p>Orientador: Professor Doutor Walter
+                        Trennepohl Júnior.</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Marcelo%20Acacio%202018.pdf">
+                                OS BENEFÍCIOS DA UTILIZAÇÃO DO ENSINO À DISTÂNCIA, APLICADO À
+DISCIPLINA DE FÍSICA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MARCELO ACÁCIO SIQUEIRA</p>
+                      <p>Orientador: Professor Dr.
+                        Walter Trennepohl Júnior – UNIR</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Raiara%202018.pdf">
+                                Influência dos Sintomas Ansiosos no Desempenho Acadêmico de Calouros e
+Formandos do Curso de Física. Campus Ji-Paraná
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: RAIARA FEGUEREDO LOPES</p>
+                      <p>Orientadora: Prof. Ms. Patrícia
+                        Matos Viana de Almeida</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Rhuadren%202018.pdf">
+                                AS INOVAÇÕES TECNOLÓGICAS DO ENSINO DA FÍSICA 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: RHUADREN DOS SANTOS SENA</p>
+                      <p>Orientador: Prof. Doutor Ricardo de Sousa costa</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Rodrigo%202018.pdf">
+                                UMA PROPOSTA DO USO DE SOFTWARE COMO INSTRUMENTO
+PEDAGÓGICO PARA ENSINO DE FISÍCA
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: RODRIGO FERNANDES DE SOUSA</p>
+                      <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/TCCs/TCC_Ronaldo.pdf">
+                                ESTUDO DE CIRCUITOS ELÉTRICOS USANDO O OSCILLOSCOPE
+SOUNDCARD
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: RONALDO ADRIANDO DO NASCIMENTO RODRIGUES</p>
+                      <p>Orientador: Prof.
+                        Dr. Robinson Viana Figueroa
+                        Cadillo</p>
+                    </div>                
+                </div>
+            </section>
+
+            <section id="2017" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/BRUNA_SENA_LOPES_2017_399993531.pdf">
+                                ATIVIDADES EXPERIMENTAIS DE FÍSICA USANDO UM SMARTPHONE
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: BRUNA SENA LOPES</p>
+                      <p>Orientador: Prof.
+                        Dr. Robinson Viana Figueroa
+                        Cadillo</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/DAVI_DIEGO_DE_ALMEIDA_2017_1578192046.pdf">
+                                PERFIL DOS PROFISSIONAIS DE FÍSICA NA CIDADE DE JI-PARANÁ, RO
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: DAVI DIEGO DE ALMEIDA</p>
+                      <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/RODRIGO_DE_OLIVEIRA_ROSA_2017_1196806591.pdf">
+                                AS EQUAÇÕES DE MAXWELL VISTA ATRAVÉS DE EXPERIMENTOS
+PARA ALUNOS DE NÍVEL MÉDIO
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: RODRIGO DE OLIVEIRA ROSA</p>
+                      <p>Orientador: Prof. Dr. Walter
+                        Trennepohl Júnior</p>
+                    </div>                
+                </div>
+            </section>
+
+            <section id="2016" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxx">
+                               xxxxxxxxx
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: FRANCIELI DOS REIS SILVA</p>
+                      <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                    </div>                
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_VANUZA_OLIVEIRA_LOUBACK_GONSAGA_2016_944340630.pdf">
+                                SALA DE AULA INVERTIDA
+                                UM MÉTODO INOVADOR E EFICAZ NO ENSINO DE FÍSICA NA ESCOLA
+                                MODERNA
+
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: VANUZA OLIVEIRA LOUBACK GONSAGA</p>
+                      <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Júnior</p>
+                    </div>                
+                </div>
+            </section>
+
+            <section id="2015" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/MISLAINE_MESSIAS_DE_MELLO_2015_1930327395.pdf">
+                                PROFISSIONAL DOCENTE: EXPECTATIVAS VERSUS REALIDADE
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MISLAINE MESSIAS DE MELLO
+                    </p>
+                      <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/REGINALDO_RICARDO_DA_SILVA_2015_24737367.pdf">
+                                A IMPORTÂNCIA DA AVALIAÇÃO EM FÍSICA NO ENSINO FUNDAMENTAL NA
+ÁREA URBANA DO MUNICÍPIO DE ALVORADA DO OESTE
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: REGINALDO RICARDO DA SILVA</p>
+                      <p>Orientador: Prof. Dr. Marco Polo
+                        Moreno de Souza</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/JAQUELINE_JER_NIMO_SOUZA_CABRAL_2015_764007822.pdf">
+                                INTRODUÇÃO A HISTÓRIA DAS CIÊNCIAS E DA FÍSICA COMO
+INSTRUMENTO DE MOTIVAÇÃO PARA O APRENDIZADO DE FÍSICA
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: JAQUELINE JERÔNIMO SOUZA CABRAL</p>
+                      <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/J_SSICA_MACHADO_LUIZ_VASCONCELOS_2015_515684168.pdf">
+                                O ENSINO DE CIÊNCIAS DA NATUREZA NAS ESCOLAS
+DO MUNICÍPIO DE JI-PARANÁ 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: JÉSSICA MACHADO LUIZ VASCONCELOS</p>
+                      <p>Orientador: Prof. Dr. Robinson Viana
+                        Figueroa Cadillo</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Camila%202016.pdf">
+                                APLICAÇÃO DE MAPAS CONCEITUAIS EM MINICURSO DE FÍSICA
+NUCLEAR NA BUSCA DE APRENDIZAGEM SIGNIFICATIVA NO ENSINO
+MÉDIO 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: CAMILA DE SOUSA OLIVEIRA 
+                        </p>
+                      <p>Orientador: Prof. Dr. Walter
+                        Trennepohl Júnior</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_FRANKLIS_JOS__PEDRO_2015_970035957.pdf">
+                                APLICAÇÃO DA DOCÊNCIA COMPARTILHADA DO PIBID NO 9º ANO
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: FRANKLIS JOSÉ PEDRO</p>
+                      <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Junior</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MIRIA_SANTOS_DE_OLIVEIRA_2015_1069351120.pdf">
+                                IMPORTÂNCIA DA FÍSICA NO 9º ANO 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: MIRIA SANTOS DE OLIVEIRA </p>
+                      <p>Orientador: Prof. Walter Trennepohl
+                        Júnior.</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_VALDEIDE_DA_SILVA_DE_OLIVEIRA_2015_469254960.pdf">
+                                ENSINO DE FÍSICA NA EDUCAÇÃO DE JOVENS E ADULTOS NO MUNICÍPIO
+DE PRESIDENTE MÉDICI 
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: VALDEIDE DA SILVA DE OLIVEIRA </p>
+                      <p>Orientador: Professor Dr. Walter
+                        Trennepohl Júnior</p>
+                    </div>            
+                </div>
+            </section>
+
+            <section id="2014" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container w3-blue">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxx">
+                                xxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+                
+                    <div class="w3-container">
+                      <p>Discente: xxxxxxxxxxx</p>
+                      <p>Orientador: xxxxxxxxxxx</p>
+                    </div>            
+                </div>
             </section>
         </div>
 
