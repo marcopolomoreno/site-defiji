@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .w3-container p {
+            line-height: 0.6;
+            margin-top: 10px;
+        }
+
+        .w3-card-4 header {
+            background-color: rgb(192, 189, 189);
+        }
+
+        .w3-card-4 a {
+            text-decoration: none;
+        }
+
+        /*
+        CSS for the main interaction
+        */
+        .tabset>input[type="radio"] {
+            position: absolute;
+            left: -200vw;
+        }
+
+        .tabset .tab-panel {
+            display: none;
+        }
+
+        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
+            display: block;
+        }
+
+        /*
+        Styling
+        */
+        .tabset>label {
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px 25px;
+            border: 1px solid transparent;
+            border-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tabset>label::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            width: 22px;
+            height: 4px;
+            background: #8d8d8d;
+        }
+
+        .tabset>label:hover,
+        .tabset>input:focus+label {
+            color: #06c;
+        }
+
+        .tabset>label:hover::after,
+        .tabset>input:focus+label::after,
+        .tabset>input:checked+label::after {
+            background: #06c;
+        }
+
+        .tabset>input:checked+label {
+            border-color: #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .tab-panel {
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        /*******/
+        span {
+   color: #e91e63;
+   font-family: monospace;
+   white-space: nowrap;
+}
+
+span:after {
+   font-family: Arial, sans-serif;
+   text-align: left;
+   white-space: normal;
+}
+
+span:focus {
+   outline: none;
+}
+
+.wrap {
+   background: #ECF0F1;
+   color: #607D8B;
+   height: 100%;
+   overflow: auto;
+   padding: 1em 2.5em;
+   text-align: center;
+   width: 100%;
+}
+
+pre {
+   background: #fff;
+   display: inline-block;
+   font-size: .55em;
+   margin-top: 2em;
+   padding: 1em;
+}
+
+@media (min-width: 360px) {
+   pre {
+      font-size: .7em;
+   }
+}
+
+@media (min-width: 500px) {
+   pre {
+      font-size: 1em;
+   }
+}
+
+
+/*== start of code for tooltips ==*/
+.tool {
+    cursor: help;
+    position: relative;
+}
+
+
+/*== common styles for both parts of tool tip ==*/
+.tool::before,
+.tool::after {
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+}
+
+.tool:hover::before,
+.tool:focus::before,
+.tool:hover::after,
+.tool:focus::after {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    z-index: 100; 
+}
+
+
+/*== pointer tip ==*/
+.tool::before {
+    border-style: solid;
+    border-width: 1em 0.75em 0 0.75em;
+    border-color: #3E474F transparent transparent transparent;
+    bottom: 100%;
+    content: "";
+    margin-left: -0.5em;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26), opacity .65s .5s;
+    transform:  scale(.6) translateY(-90%);
+} 
+
+.tool:hover::before,
+.tool:focus::before {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+}
+
+
+/*== speech bubble ==*/
+.tool::after {
+    background: #3E474F;
+    border-radius: .25em;
+    bottom: 180%;
+    color: #EDEFF0;
+    content: attr(data-issn);
+    margin-left: -8.75em;
+    padding: 1em;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+    transform:  scale(.6) translateY(50%);  
+    width: 17.5em;
+}
+
+.tool:hover::after,
+.tool:focus::after  {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26);
+}
+
+@media (max-width: 760px) {
+  .tool::after { 
+        font-size: .75em;
+        margin-left: -5em;
+        width: 10em; 
+  }
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Artigos publicados em periódicos</h2>
+
+    <div class="tabset">
+
+        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+        <label for="tab2021">2021</label>
+
+        <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
+        <label for="tab2020">2020</label>
+
+        <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
+        <label for="tab2019">2019</label>
+
+        <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
+        <label for="tab2018">2018</label>
+
+        <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
+        <label for="tab2017">2017</label>
+
+        <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
+        <label for="tab2016">2016</label>
+
+        <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
+        <label for="tab2015">2015</label>
+
+        <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
+        <label for="tab2014">2014</label>
+
+        <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
+        <label for="tab2013">2013</label>
+
+        <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
+        <label for="tab2012">2012</label>
+
+        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
+        <label for="tab2011">2011</label>
+
+        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
+        <label for="tab2010">2010</label>
+
+        <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
+        <label for="tab2009">2009</label>
+
+        <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
+        <label for="tab2008">2008</label>
+
+        <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
+        <label for="tab2005">2005</label>
+
+        <p>Periódico: REVISTA BRASILEIRA DE ENSINO DE FÍSICA <span id="18069126_1"  
+        class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+        <img src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif"></span></p>
+
+        <span id="18069126_1"  
+            class="tool" data-issn="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+            <img src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif">teste</span>
+
+        <span class="tool" original-title="teste2">teste2</span>
+
+        <div class="tab-panels">
+            <section id="2021" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.1590/1806-9126-rbef-2020-0355">
+                                Simulação do Efeito Estufa, da intensificação do Efeito Estufa pela presença de CO2 e do impacto da mudança da cobertura da Terra na temperatura média do meio utilizando o Arduino
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: REVISTA BRASILEIRA DE ENSINO DE FÍSICA 
+                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Autores: Paulo Renda Anderson, Carlos Mergulhão Júnior, Moacy José Stoffes Júnior, Cléver Reis Stein</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.1016/j.physc.2021.1353818">
+                                Vortices in a superconducting two-band disk: Role of the Josephson and bi-quadratic coupling
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: PHYSICA C-SUPERCONDUCTIVITY AND ITS APPLICATIONS
+                            <img id="09214534_3" src="/buscatextual/images/curriculo/jcr.gif" class="ajaxJCR jcrTip" data-issn="09214534" original-title="PHYSICA C-SUPERCONDUCTIVITY AND ITS APPLICATIONS (0921-4534)<br />Fator de impacto (JCR 2020): 1.241">
+                        </p>
+                        <p>Autores: C. A. Aguirrea, Q. D. Martins, J. Barba-Ortega</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.1007/s10909-020-02557-5">
+                                Superconducting 3D multi-layer sample simulated via nonuniform Ginzburg-Landau parameter
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: Journal of Low Temperature Physics
+                            <img id="15737357_1" src="/buscatextual/images/curriculo/jcr.gif" class="ajaxJCR jcrTip" data-issn="15737357" original-title="JOURNAL OF LOW TEMPERATURE PHYSICS (0022-2291)<br />Fator de impacto (JCR 2020): 1.57">
+                        </p>
+                        <p>Autores: C. A. Aguirre, Q. S. Martins e J. Barba-Ortega</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.31686/ijier.vol8.iss8.2535">
+                                Construction of an experimental apparatus to simulate the greenhouse effect and global warming for educational use
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: INTERNATIONAL JOURNAL FOR INNOVATION EDUCATION AND RESEARCH</p>
+                        <p>Autores: P. R. Anderson
+                            C. Mergulhão Júnior,
+                            M. J. Stoffes Junior,
+                            C. R. Stein</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.31686/ijier.vol9.iss1.2918">
+                                Pereskia aculeata vibrational model by Raman characterization and DFT method
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: INTERNATIONAL JOURNAL FOR INNOVATION EDUCATION AND RESEARCH</p>
+                        <p>Autores: Quesle Martins, 
+                            Natali Felix Arinos, 
+                            Cristian Aguirre, 
+                            Jorge Brito de Faria</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://dx.doi.org/10.34117/bjdv7n3-266">
+                                A influência do PIBID no desenvolvimento acadêmico e profissional dos bolsistas do curso de licenciatura em física de JI-Paraná
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: Brazilian Journal of Development</p>
+                        <p>Autores: Vanuza Oliveira Louback Gonsaga, 
+                            Camila de Sousa Oliveira, 
+                            Marline de Sousa Oliveira, 
+                            Doerte Chagas Cortês, 
+                            Walter Trennepohl Júnior</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2020" class="tab-panel">
+                
+            </section>
+
+            
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="w3-card-4" style="width:100%;">
+            <header class="w3-container">
+                <h5>
+                    <a target="blank" href="xxxxxxxxxx">
+                        xxxxxxxxxxxxxxxxxxxx
+                    </a>
+                </h5>
+            </header>
+        
+            <div class="w3-container">
+              <p>Discente: xxxxxxxxxxxxxxxxxx</p>
+              <p>Orientador: xxxxxxxxxxxxxxxx</p>
+            </div>            
+        </div>-->
+
+
+</body>
+
+</html>

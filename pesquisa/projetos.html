@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .w3-container p {
+            line-height: 0.6;
+            margin-top: 10px;
+        }
+
+        .w3-card-4 header {
+            background-color: rgb(192, 189, 189);
+        }
+
+        .w3-card-4 a {
+            text-decoration: none;
+        }
+
+        /*
+        CSS for the main interaction
+        */
+        .tabset>input[type="radio"] {
+            position: absolute;
+            left: -200vw;
+        }
+
+        .tabset .tab-panel {
+            display: none;
+        }
+
+        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
+            display: block;
+        }
+
+        /*
+        Styling
+        */
+        .tabset>label {
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px 25px;
+            border: 1px solid transparent;
+            border-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tabset>label::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            width: 22px;
+            height: 4px;
+            background: #8d8d8d;
+        }
+
+        .tabset>label:hover,
+        .tabset>input:focus+label {
+            color: #06c;
+        }
+
+        .tabset>label:hover::after,
+        .tabset>input:focus+label::after,
+        .tabset>input:checked+label::after {
+            background: #06c;
+        }
+
+        .tabset>input:checked+label {
+            border-color: #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .tab-panel {
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        /*
+        Demo purposes only
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 30px;
+        }
+
+        .tabset {
+            max-width: 65em;
+        }*/
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Projetos de pesquisa com financiamento externo</h2>
+
+    <div class="tabset">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabset" id="tab2021-B" aria-controls="marzen">
+        <label for="tab2021-B">Em andamento</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2017-B" aria-controls="rauchbier">
+        <label for="tab2017-B">Finalizados</label>
+
+        <div class="tab-panels">
+            <section id="marzen" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="http://www.marcopolo.unir.br/images/downloads/tcc/eliton-trindade-gomes.pdf">
+                                Mistura paramétrica de quatro ondas em vapor atômico: cálculos computacionais implementados em unidades gráficas de processamento
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                        <p>Órgão de fomento 1: CNPq (Edital Universal 2016)</p>
+                        <p>Órgão de fomento 2: FAPERO (Chamada 003/2017 PQR)</p>                        
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+            <section id="rauchbier" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Emissão Azul Paramétrica em Vapor Atômico envolvendo Lasers Contínuos e Pulsados
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                        <p>Órgão de fomento: FAPERO (Chamada 02/2014 PPP e Chamada FAPERO 008/2016 IC)</p>
+                        <p>Período: 2016 a 2021</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                xxxxxxxxxxxxxxxx
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Quesle xxxxx</p>
+                        <p>Órgão de fomento: FAPERO (xxxxxxxx)</p>
+                        <p>Período: 2017</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Estudo de nanocompósitos cerâmicos com propriedades dielétricas
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Profa. Ma. Patrícia Matos Viana de Almeida</p>
+                        <p>Órgão de fomento: FAPERO (Chamada 03/2015 – UNIVERSAL-RO)</p>
+                        <p>Período: 2017</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Equipamentos e Infra-estrutura de Suporte para a Implantação e Consolidação da Pesquisa Básica e Pós-Graduação em Modelagem de Sistemas Físicos                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Carlos Mergulhão Junior</p>
+                        <p>Órgãos de fomento: SEPLAN/CNPq</p>
+                        <p>Ano de finalização: 2010</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+
+    <h2>Projetos de pesquisa institucionalizados na UNIR</h2>
+
+    <div class="tabset">
+
+        <input type="radio" name="tabset" id="tabAndamento" aria-controls="andamento">
+        <label for="tabAndamento">Em andamento</label>
+
+        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+        <label for="tab2021">2021</label>
+
+        <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
+        <label for="tab2020">2020</label>
+
+        <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
+        <label for="tab2019">2019</label>
+
+        <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
+        <label for="tab2018">2018</label>
+
+        <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
+        <label for="tab2017">2017</label>
+
+        <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
+        <label for="tab2016">2016</label>
+
+        <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
+        <label for="tab2015">2015</label>
+
+        <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
+        <label for="tab2014">2014</label>
+
+        <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
+        <label for="tab2013">2013</label>
+
+        <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
+        <label for="tab2012">2012</label>
+
+        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
+        <label for="tab2011">2011</label>
+
+        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
+        <label for="tab2010">2010</label>
+
+        <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
+        <label for="tab2009">2009</label>
+
+        <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
+        <label for="tab2008">2008</label>
+
+        <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
+        <label for="tab2005">2005</label>
+
+
+        <div class="tab-panels">
+            <section id="andamento" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Desenvolvimento de aplicativos de simulação computacional para pesquisa e ensino de Física
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                        <p>Natureza: Desenvolvimento Tecnológico</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2021" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Efeitos coerentes com pulsos ultracurtos em vapor atômico
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                        <p>Edital: PIBIC/2016</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2020" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            BUSCA DE SURGIMENTO
+                            OU DE MUDANÇAS DE COMPORTAMENTOS CAÓTICOS EM ALGUNS
+                            SISTEMAS DINÂMICOS
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Carlos Mergulhão Junior</p>
+                        <p>Edital: PIBIC/2019</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            MODELAGEM
+                            COMPUTACIONAL DE ALTO DESEMPENHO UTILIZADO ALGORITMOS
+                            EM PROBLEMAS FÍSICOS
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Ricardo de Sousa Costa</p>
+                        <p>Edital: PIBIC/2019</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                                Adaptação da plataforma Arduino para mediações em Experimentos de Laboratório
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Portaria: 031/2017/PROPESQ de 28 de agosto de 2017</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            Atividades experimentais de Física usando um smartphone
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Portaria: 047/2017/PROPESQ de 03 de outubro de 2017</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            O ensino de astronomia na formação dos professores egressos dos cursos de Licenciatura Física da Universidade Federal de Rondônia
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Profa. Patrícia Matos Viana de Almeida
+                        </p>
+                        <p>Portaria: 022/20018/PROPESQ de 05 de abril de 2018</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            Análise dos componentes do Óleo de Avestruz e o seu uso aliado à nanotecnologia para possível aplicação na área Biomédica
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Profa. Dra. Queila da Silva Ferreira</p>
+                        <p>Portaria: 030/2018/PROPESQ de 30 de abril de 2018</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2019" class="tab-panel">
+
+            </section>
+
+            <section id="2018" class="tab-panel">
+
+            </section>
+
+            <section id="2017" class="tab-panel">
+
+            </section>
+
+            <section id="2016" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Simulações Computacionais com Base em Modelos Matemáticos utilizados no Estudo e Desenvolvimento de Códigos Computacionais aplicados a fenômenos físicos
+                            </a>a
+                        </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Ricardo de Sousa Costa</p>
+                        <p>Parecer: 1808/CPE/CONSEA/SECONS (10/08/2015)</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2015" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Estudo Comparativo dos livros de Ensino Médio
+                            </a>
+                        </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Walter Trennepohl Júnior</p>
+                        <p>Natureza: Projeto de Pesquisa</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
