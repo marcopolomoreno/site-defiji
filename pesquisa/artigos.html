@@ -6,12 +6,17 @@
 
     <style>
         .w3-container p {
-            line-height: 0.6;
-            margin-top: 10px;
+            line-height: 1.7;
+            margin-top: -1.3em;
+        }
+
+        .w3-container img{
+            height: 9.5px;
         }
 
         .w3-card-4 header {
             background-color: rgb(192, 189, 189);
+            margin-bottom: 1.5em;
         }
 
         .w3-card-4 a {
@@ -95,124 +100,121 @@
 
         /*******/
         span {
-   color: #e91e63;
-   font-family: monospace;
-   white-space: nowrap;
-}
+            font-family: monospace;
+            white-space: nowrap;
+        }
 
-span:after {
-   font-family: Arial, sans-serif;
-   text-align: left;
-   white-space: normal;
-}
+        span:after {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            white-space: normal;
+        }
 
-span:focus {
-   outline: none;
-}
+        span:focus {
+            outline: none;
+        }
 
-.wrap {
-   background: #ECF0F1;
-   color: #607D8B;
-   height: 100%;
-   overflow: auto;
-   padding: 1em 2.5em;
-   text-align: center;
-   width: 100%;
-}
+        .wrap {
+            background: #ECF0F1;
+            color: #607D8B;
+            height: 100%;
+            overflow: auto;
+            padding: 1em 2.5em;
+            text-align: center;
+            width: 100%;
+        }
 
-pre {
-   background: #fff;
-   display: inline-block;
-   font-size: .55em;
-   margin-top: 2em;
-   padding: 1em;
-}
+        pre {
+            background: #fff;
+            display: inline-block;
+            font-size: .55em;
+            margin-top: 2em;
+            padding: 1em;
+        }
 
-@media (min-width: 360px) {
-   pre {
-      font-size: .7em;
-   }
-}
+        @media (min-width: 360px) {
+            pre {
+                font-size: .7em;
+            }
+        }
 
-@media (min-width: 500px) {
-   pre {
-      font-size: 1em;
-   }
-}
-
-
-/*== start of code for tooltips ==*/
-.tool {
-    cursor: help;
-    position: relative;
-}
+        @media (min-width: 500px) {
+            pre {
+                font-size: 1em;
+            }
+        }
 
 
-/*== common styles for both parts of tool tip ==*/
-.tool::before,
-.tool::after {
-    left: 50%;
-    opacity: 0;
-    position: absolute;
-    z-index: -100;
-}
-
-.tool:hover::before,
-.tool:focus::before,
-.tool:hover::after,
-.tool:focus::after {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    z-index: 100; 
-}
+        /*== start of code for tooltips ==*/
+        .tool {
+            cursor: help;
+            position: relative;
+        }
 
 
-/*== pointer tip ==*/
-.tool::before {
-    border-style: solid;
-    border-width: 1em 0.75em 0 0.75em;
-    border-color: #3E474F transparent transparent transparent;
-    bottom: 100%;
-    content: "";
-    margin-left: -0.5em;
-    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26), opacity .65s .5s;
-    transform:  scale(.6) translateY(-90%);
-} 
+        /*== common styles for both parts of tool tip ==*/
+        .tool::before,
+        .tool::after {
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            z-index: -100;
+        }
 
-.tool:hover::before,
-.tool:focus::before {
-    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
-}
-
-
-/*== speech bubble ==*/
-.tool::after {
-    background: #3E474F;
-    border-radius: .25em;
-    bottom: 180%;
-    color: #EDEFF0;
-    content: attr(data-issn);
-    margin-left: -8.75em;
-    padding: 1em;
-    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
-    transform:  scale(.6) translateY(50%);  
-    width: 17.5em;
-}
-
-.tool:hover::after,
-.tool:focus::after  {
-    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26);
-}
-
-@media (max-width: 760px) {
-  .tool::after { 
-        font-size: .75em;
-        margin-left: -5em;
-        width: 10em; 
-  }
-}
+        .tool:hover::before,
+        .tool:focus::before,
+        .tool:hover::after,
+        .tool:focus::after {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            z-index: 100;
+        }
 
 
+        /*== pointer tip ==*/
+        .tool::before {
+            border-style: solid;
+            border-width: 1em 0.75em 0 0.75em;
+            border-color: #3E474F transparent transparent transparent;
+            bottom: 100%;
+            content: "";
+            margin-left: -0.5em;
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
+            transform: scale(.6) translateY(-90%);
+        }
+
+        .tool:hover::before,
+        .tool:focus::before {
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+        }
+
+
+        /*== speech bubble ==*/
+        .tool::after {
+            background: #3E474F;
+            border-radius: .25em;
+            bottom: 180%;
+            color: #EDEFF0;
+            content: attr(data-issn);
+            margin-left: -8.75em;
+            padding: 1em;
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+            transform: scale(.6) translateY(50%);
+            width: 18em;
+        }
+
+        .tool:hover::after,
+        .tool:focus::after {
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
+        }
+
+        @media (max-width: 760px) {
+            .tool::after {
+                font-size: .75em;
+                margin-left: -5em;
+                width: 10em;
+            }
+        }
     </style>
 
 </head>
@@ -266,34 +268,34 @@ pre {
         <label for="tab2008">2008</label>
 
         <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
-        <label for="tab2005">2005</label>
+        <label for="tab2005">2007</label>
 
-        <p>Periódico: REVISTA BRASILEIRA DE ENSINO DE FÍSICA <span id="18069126_1"  
-        class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-        <img src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif"></span></p>
-
-        <span id="18069126_1"  
-            class="tool" data-issn="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-            <img src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif">teste</span>
-
-        <span class="tool" original-title="teste2">teste2</span>
+        <!--<span id="18069126_1"  
+            class="tool" data-issn="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099" 
+            original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+            <img src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"> </span>-->
 
         <div class="tab-panels">
             <section id="2021" class="tab-panel">
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1590/1806-9126-rbef-2020-0355">
-                                Simulação do Efeito Estufa, da intensificação do Efeito Estufa pela presença de CO2 e do impacto da mudança da cobertura da Terra na temperatura média do meio utilizando o Arduino
+                            <a target="blank" href="http://dx.doi.org/10.1590/1806-9126-rbef-2020-0355">
+                                Simulação do Efeito Estufa, da intensificação do Efeito Estufa pela presença de CO2 e do
+                                impacto da mudança da cobertura da Terra na temperatura média do meio utilizando o
+                                Arduino
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: REVISTA BRASILEIRA DE ENSINO DE FÍSICA 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                        <p>Autores: Paulo Renda Anderson, Carlos Mergulhão Júnior, Moacy José Stoffes Júnior, Cléver Reis Stein</p>
+                        <p>Periódico: Revista Brasileira de Ensino de Física
+                            <span id="18069126_1" class="tool" data-issn="Fator de impacto (JCR 2012): 0.099"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                                <img src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"> </span>
+                        </p>
+                        <p>Autores: Paulo Renda Anderson, Carlos Mergulhão Júnior, Moacy José Stoffes Júnior, Cléver
+                            Reis Stein</p>
                     </div>
 
                 </div>
@@ -301,16 +303,18 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1016/j.physc.2021.1353818">
-                                Vortices in a superconducting two-band disk: Role of the Josephson and bi-quadratic coupling
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.physc.2021.1353818">
+                                Vortices in a superconducting two-band disk: Role of the Josephson and bi-quadratic
+                                coupling
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: PHYSICA C-SUPERCONDUCTIVITY AND ITS APPLICATIONS
-                            <img id="09214534_3" src="/buscatextual/images/curriculo/jcr.gif" class="ajaxJCR jcrTip" data-issn="09214534" original-title="PHYSICA C-SUPERCONDUCTIVITY AND ITS APPLICATIONS (0921-4534)<br />Fator de impacto (JCR 2020): 1.241">
+                        <p>Periódico: <em>Physica C - Superconductivity and its Applications</em>
+                            <span id="18069126_1" class="tool" data-issn="Fator de impacto (JCR 2020): 1.241"
+                                original-title="">
+                                <img src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"> </span>
                         </p>
                         <p>Autores: C. A. Aguirrea, Q. D. Martins, J. Barba-Ortega</p>
                     </div>
@@ -320,16 +324,17 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1007/s10909-020-02557-5">
+                            <a target="blank" href="http://dx.doi.org/10.1007/s10909-020-02557-5">
                                 Superconducting 3D multi-layer sample simulated via nonuniform Ginzburg-Landau parameter
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: Journal of Low Temperature Physics
-                            <img id="15737357_1" src="/buscatextual/images/curriculo/jcr.gif" class="ajaxJCR jcrTip" data-issn="15737357" original-title="JOURNAL OF LOW TEMPERATURE PHYSICS (0022-2291)<br />Fator de impacto (JCR 2020): 1.57">
+                        <p>Periódico: <em>Journal of Low Temperature Physics</em>
+                            <span id="18069126_1" class="tool" data-issn="Fator de impacto (JCR 2020): 1.57"
+                                original-title="">
+                                <img src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"> </span>
                         </p>
                         <p>Autores: C. A. Aguirre, Q. S. Martins e J. Barba-Ortega</p>
                     </div>
@@ -339,16 +344,16 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.31686/ijier.vol8.iss8.2535">
-                                Construction of an experimental apparatus to simulate the greenhouse effect and global warming for educational use
+                            <a target="blank" href="http://dx.doi.org/10.31686/ijier.vol8.iss8.2535">
+                                Construction of an experimental apparatus to simulate the greenhouse effect and global
+                                warming for educational use
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: INTERNATIONAL JOURNAL FOR INNOVATION EDUCATION AND RESEARCH</p>
-                        <p>Autores: P. R. Anderson
+                        <p>Periódico: <em>INTERNATIONAL JOURNAL FOR INNOVATION EDUCATION AND RESEARCH</em></p>
+                        <p>Autores: P. R. Anderson,
                             C. Mergulhão Júnior,
                             M. J. Stoffes Junior,
                             C. R. Stein</p>
@@ -359,18 +364,17 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.31686/ijier.vol9.iss1.2918">
+                            <a target="blank" href="http://dx.doi.org/10.31686/ijier.vol9.iss1.2918">
                                 Pereskia aculeata vibrational model by Raman characterization and DFT method
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: INTERNATIONAL JOURNAL FOR INNOVATION EDUCATION AND RESEARCH</p>
-                        <p>Autores: Quesle Martins, 
-                            Natali Felix Arinos, 
-                            Cristian Aguirre, 
+                        <p>Periódico: <em>International Journal for Innovation Education and Research</em></p>
+                        <p>Autores: Quesle Martins,
+                            Natali Felix Arinos,
+                            Cristian Aguirre,
                             Jorge Brito de Faria</p>
                     </div>
 
@@ -379,19 +383,19 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.34117/bjdv7n3-266">
-                                A influência do PIBID no desenvolvimento acadêmico e profissional dos bolsistas do curso de licenciatura em física de JI-Paraná
+                            <a target="blank" href="http://dx.doi.org/10.34117/bjdv7n3-266">
+                                A influência do PIBID no desenvolvimento acadêmico e profissional dos bolsistas do curso
+                                de licenciatura em física de JI-Paraná
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: Brazilian Journal of Development</p>
-                        <p>Autores: Vanuza Oliveira Louback Gonsaga, 
-                            Camila de Sousa Oliveira, 
-                            Marline de Sousa Oliveira, 
-                            Doerte Chagas Cortês, 
+                        <p>Periódico: <em>Brazilian Journal of Development</em></p>
+                        <p>Autores: Vanuza Oliveira Louback Gonsaga,
+                            Camila de Sousa Oliveira,
+                            Marline de Sousa Oliveira,
+                            Doerte Chagas Cortês,
                             Walter Trennepohl Júnior</p>
                     </div>
 
@@ -399,23 +403,68 @@ pre {
             </section>
 
             <section id="2020" class="tab-panel">
-                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1142/s0217984921501281">
+                                Calorimetric properties of a superconducting anisotropic square: ZFC process
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Modern Physics Letters B</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: C. A. Aguirre, Q. D. Martins and J. Barba-Ortega
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.physc.2021.1353818">
+                                Vortices in a superconducting two-band disk: Role of the Josephson and bi-quadratic
+                                coupling
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Physica C: Superconductivity and its Applications</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: C. A. Aguirre, Q. D. Martins, J. Barba-Ortegac
+                        </p>
+                    </div>
+
+                </div>
+
             </section>
 
             <section id="2019" class="tab-panel">
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1103/physreva.99.043410">
-                                Interference effect and Autler-Townes splitting in coherent blue light generated by four-wave mixing
+                            <a target="blank" href="http://dx.doi.org/10.1103/physreva.99.043410">
+                                Interference effect and Autler-Townes splitting in coherent blue light generated by
+                                four-wave mixing
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Physical Review A</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Periódico: <em>Physical Review A</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
                         <p>Autores: M. P. Moreno, A. A. C. de Almeida, and S. S. Vianna
                         </p>
                     </div>
@@ -425,22 +474,25 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1016/j.vibspec.2019.102945">
-                                Investigation of ostrich oil via Raman and infrared spectroscopy and predictions using the DFT method
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.vibspec.2019.102945">
+                                Investigation of ostrich oil via Raman and infrared spectroscopy and predictions using
+                                the DFT method
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
                         <p>Periódico: <em>Materials Chemistry and Physics
-                        </em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                        <p>Autores: Q. S. Martins, 
-                            P. V. Almeida, 
-                            Q. S. Ferreira, 
-                            A. Oliveiraa, 
-                            C. Aguirre, 
+                            </em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Q. S. Martins,
+                            P. V. Almeida,
+                            Q. S. Ferreira,
+                            A. Oliveiraa,
+                            C. Aguirre,
                             J. L. B. Faria
                         </p>
                     </div>
@@ -450,24 +502,121 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1002/jrs.5628">
-                                Surface-enhanced Raman spectroscopy for successful probing of itraconazole within poly(lactic-co-glycolic acid) nanoparticles
+                            <a target="blank" href="http://dx.doi.org/10.1002/jrs.5628">
+                                Surface-enhanced Raman spectroscopy for successful probing of itraconazole within
+                                poly(lactic-co-glycolic acid) nanoparticles
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
                         <p>Periódico: <em>Journal of Raman Spectroscopy
-                        </em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                        <p>Autores: Queila S. Ferreira, 
-                            Jaqueline R. da Silva, 
-                            Renata C. Silva, 
-                            Karen R. Py-Daniel, 
-                            Ricardo B. Azevedo, 
-                            Paulo C. Morais, 
+                            </em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Queila S. Ferreira,
+                            Jaqueline R. da Silva,
+                            Renata C. Silva,
+                            Karen R. Py-Daniel,
+                            Ricardo B. Azevedo,
+                            Paulo C. Morais,
                             Sebastião W. da Silva
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.vibspec.2019.102986">
+                                Raman spectra and ab-initio calculations in Bertholletia excelsa oil
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Vibrational Spectroscopy</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Q. S. Martins, L. M. S. Santos, J. L. B. Faria
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1142/S0217984919504359">
+                                Meissner state in highly forced superconducting systems
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Modern Physics Letters B</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: C. A. Aguirre, Q. D. Martins and J. Barba-Ortega
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.31349/RevMexFis.65.328">
+                                Approach by Raman and infrared spectroscopy in three vegetable oils from the Brazilian
+                                Amazon
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Revista Mexicana de Física</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Q. S. Martins, C. A. Aguirre,
+                            and J.L.B. Farias
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.heliyon.2019.e01570">
+                                Influence of an applied current on the vortex matter in a superconducting sample with
+                                structural defects
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Heliyon</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: C. A. Aguirre,
+                            Q. D. Martins,
+                            A. S. de Arruda,
+                            J. Barba-Ortega
+
                         </p>
                     </div>
 
@@ -475,23 +624,67 @@ pre {
             </section>
 
             <section id="2018" class="tab-panel">
-                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.18273/revuin.v18n2-2019020">
+                                Desarrollo analítico de las ecuaciones Ginzburg-Landau parapelículas delgadas
+                                superconductoras en presencia de corrientes
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Revista UIS Ingenierías</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Cristian Andrés Aguirre, Quesle da Silva Martins, José José Barba-Ortega
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.22161/ijaers.5.5.47">
+                                Synthesis of BaHfO3 through with reduction of KOH
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>International Journal of ijaers whatsapp
+                                Advanced Engineering Research and Science</em>
+                        </p>
+                        <p>Autores: Kegler Vanessa D.,
+                            Fiscehr Susana Cristina
+                        </p>
+                    </div>
+
+                </div>
             </section>
 
             <section id="2017" class="tab-panel">
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1103/PhysRevA.96.023430">
-                                Sub-Doppler two-photon absorption induced by the combination of a single-mode laser and a frequency comb
+                            <a target="blank" href="http://dx.doi.org/10.1103/PhysRevA.96.023430">
+                                Sub-Doppler two-photon absorption induced by the combination of a single-mode laser and
+                                a frequency comb
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Physical Review A</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Periódico: <em>Physical Review A</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
                         <p>Autores: Marco P. Moreno, Giovana T. Nogueira, Daniel Felinto, and Sandra S. Vianna
 
                         </p>
@@ -502,16 +695,19 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1088/1361-6455/aa636d">
-                                Coherent blue emission generated by Rb two-photon excitation using diode and femtosecond lasers
+                            <a target="blank" href="http://dx.doi.org/10.1088/1361-6455/aa636d">
+                                Coherent blue emission generated by Rb two-photon excitation using diode and femtosecond
+                                lasers
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
                         <p>Autores: Jesus P Lopez, Marco P Moreno, Marcio H G de Miranda and Sandra S Vianna
                         </p>
                     </div>
@@ -521,24 +717,49 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1016/j.matchemphys.2017.10.069">
-                                Dielectric relaxation study of the ceramic matrix BaBi4Ti4O15:Bi2O3                            </a>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.matchemphys.2017.10.069">
+                                Dielectric relaxation study of the ceramic matrix BaBi4Ti4O15:Bi2O3 </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
                         <p>Periódico: <em>Materials Chemistry and Physics
-                        </em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                        <p>Autores: P. M. V . Almeida, 
-                            C. B. Gozzo, 
-                            E. H. N. S. Thaines, 
-                            A. J. M. Sales, 
-                            R. G. Freitas, 
-                            A. J. Terezo, 
-                            A. S. B. Sombra, 
+                            </em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: P. M. V . Almeida,
+                            C. B. Gozzo,
+                            E. H. N. S. Thaines,
+                            A. J. M. Sales,
+                            R. G. Freitas,
+                            A. J. Terezo,
+                            A. S. B. Sombra,
                             M. M. Costa
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="https://scientia-amazonia.org/wp-content/uploads/2017/06/v6-n3-69-74-2017.pdf">
+                                Estudo vibracional em matéria oleica originária da Amazônia legal por
+                                espectroscopia Raman
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Scientia Amazonia
+                            </em>
+                        <p>Autores: Willian Felipe Medeiros Alves,
+                            Marcelino Pereira da Silva,
+                            Jorge Luiz Brito de Faria3,
+                            Quesle da Silva Martins
                         </p>
                     </div>
 
@@ -546,23 +767,25 @@ pre {
             </section>
 
             <section id="2016" class="tab-panel">
-                
+
             </section>
 
             <section id="2015" class="tab-panel">
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1088/0953-4075/48/24/245001">
+                            <a target="blank" href="http://dx.doi.org/10.1088/0953-4075/48/24/245001">
                                 Observing the optical frequency comb in the blue fluorescence of rubidium vapor
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
                         <p>Autores: Filipe A Lira, Marco P Moreno and Sandra S Vianna
 
                         </p>
@@ -573,16 +796,19 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1016/j.jqsrt.2014.10.006">
-                                Measurements of N2-broadening and pressure-shift coefficients in the ν3-band of 12CH4 using a cw-OPO
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.jqsrt.2014.10.006">
+                                Measurements of N2-broadening and pressure-shift coefficients in the ν3-band of 12CH4
+                                using a cw-OPO
                             </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Journal of Quantitative Spectroscopy and Radiative Transfer</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                        <p>Periódico: <em>Journal of Quantitative Spectroscopy and Radiative Transfer</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
                         <p>Autores: Mohammad Jahjah, Linh Nguyen, Marco P. Moreno, Malo Cadoret, Jean-Jacques Zondy
                         </p>
                     </div>
@@ -594,52 +820,347 @@ pre {
                 <div class="w3-card-4" style="width:100%;">
                     <header class="w3-container">
                         <h5>
-                            <a target="blank"
-                                href="http://dx.doi.org/10.1007/s00340-014-5883-1">
-                                Line intensity measurements of methane’s 𝜈3-band using a cw-OPO                            </a>
+                            <a target="blank" href="http://dx.doi.org/10.1007/s00340-014-5883-1">
+                                Line intensity measurements of methane’s 𝜈3-band using a cw-OPO </a>
                         </h5>
                     </header>
 
                     <div class="w3-container">
-                        <p>Periódico: <em>Applied Physics B</em> 
-                            <img id="18069126_1" src="http://buscatextual.cnpq.br/buscatextual/images/curriculo/jcr.gif" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                        <p>Autores: Marco P. Moreno, Malo Cadoret, Mohammad Jahjah, Linh Nguyen, Flavio C. Cruz & Jean-Jacques Zondy </p>
+                        <p>Periódico: <em>Applied Physics B</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Marco P. Moreno, Malo Cadoret, Mohammad Jahjah, Linh Nguyen, Flavio C. Cruz &
+                            Jean-Jacques Zondy </p>
                     </div>
 
                 </div>
             </section>
 
-            
+            <section id="2013" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.saa.2012.02.081">
+                                Synthesis, characterization and magnetic properties of polymer–Fe3O4 nanocomposite
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: A.F.R.Rodriguez,
+                            J.A.H.Coaquira,
+                            M.A.Morales,
+                            F.S.E.D.V.Faria,
+                            R.M.Cunha,
+                            J.G.Santo,
+                            L.B.Silveira,
+                            D.R.S.Candela,
+                            E.M.Baggio-Saitovitch,
+                            D.Rabelo,
+                            R.B.Azevedo,
+                            P.C.Moraisb</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1016/j.saa.2012.02.080">
+                                Comparative study of iron oxide nanoparticles as-prepared and dispersed in Copaiba oil
+                                using Mössbauer spectroscopy with low and high velocity resolution
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: M.I.Oshtrakh,
+                            V.Šepelák,
+                            A.F.R.Rodriguez,
+                            V.A.Semionkina,
+                            M.V.Ushakova,
+                            J.G.Santose,
+                            L.B.Silveirae,
+                            E.M.Marmolejo,
+                            M. De SouzaParise,
+                            P.C.Moraisf</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="2012" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://rbpg.capes.gov.br/index.php/rbpg/article/view/287">
+                                Formação de professores de Física: experiência do Pibid-Física da Universidade Federal
+                                de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: Revista Brasileira de Pós-graduação
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Laffert Gomes Ferreira da Silva,
+                            Roberta Lavor Serbim Uchoa Lopes,
+                            Marcelo Ferreira da Silva,
+                            Walter Trennepohl Júnior </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2011" class="tab-panel">
+
+            </section>
+
+            <section id="2010" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://www.scielo.br/j/qn/a/cpqSG3436RY4mChzQRMc7RN/?lang=en">
+                                Groundwater quality comparison between rural farms and riparian wells in the western
+                                Amazon, Brazil
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: Química Nova
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Nei K Leite,
+                            Alex V Krusche,
+                            Giovana M Cabianchi,
+                            Maria Victoria R Ballester,
+                            Reynaldo L Victoria,
+                            Margarida Marchetto,
+                            Judes G. dos Santos</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2009" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-009-9911-1">
+                                Mössbauer spectroscopy study of iron oxide nanoparticles obtained by spray pyrolysis
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Hyperfine Interactions</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: R. F. C. Marques, A. F. R. Rodriguez, J. A. H. Coaquira, J. G. Santos, V. K. Garg,
+                            M. Jafelicci Jr., S. J. L. Ribeiro, M. Verelst, J. Dexpert-Ghys & P. C. Morais </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-009-9957-0">
+                                Characterization of magnetite nanoparticles supported in sulfonated
+                                styrene-divinylbenzene mesoporous copolymer
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Hyperfine Interactions</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: A. F. R. Rodriguez, J. A. H. Coaquira, J. G. Santos, L. B. Silveira, E. M.
+                            Marmolejo, W. Trennepohl, D. Rabelo, A. C. Oliveira, V. K. Garg & P. C. Morais </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2008" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00504-7">
+                                Photoacoustic spectroscopy of Baru – Dipteryx alata Vog
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>The European Physical Journal Special Topics</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: A. F. R. Rodriguez, J. G. Santos, L. B. Silveira, A. C. Oliveira, P. C. Morais & O.
+                            A. C. Nunes </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="https://www.scopus.com/record/display.uri?eid=2-s2.0-61549101756&origin=inward&txGid=6216290a0d1f03054ab613f2bdfbf8f0">
+                                Initial dynamic susceptibility of biocompatible magnetic fluids
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Reviews on Advanced Materials Science</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: Morais, P. C., Silveira, L. B., Oliveira, A. C., Santos, J. G.</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00499-y">
+                                Photoacoustic investigation of copaiba oil
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>The European Physical Journal Special Topics</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: J. G. Santos, L. B. Silveira, L. Olenka, A. C. Oliveira, A. F. R. Rodriguez, V.
+                            Garg, A. C. Bento, R. G. Oliveira & P. C. Morais </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00461-1">
+                                Photoacoustic investigation of maghemite-based BSA nanocomposite
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>The European Physical Journal Special Topics volume</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: L. B. Silveira, J. G. Santos, A. C. Oliveira, B. M. Lacava, A. C. Tedesco & P. C.
+                            Morais </p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00390-y">
+                                Hidrogeochemical study in South Amazon region using Photoacoustic Spectroscopy
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>The European Physical Journal Special Topics volume </em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: N. K. Leite, J. G. Santos, R. F. Souza, G. M. Cabianchi, F. O. Xavier, B. M. Gomes,
+                            L. B. Silveira, A. C. Oliveira, A. F.R. Rodriguez & P. C. Morais </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="2007" class="tab-panel">
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-008-9590-3">
+                                Mössbauer investigation of maghemite-based glycolic acid nanocomposite
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Periódico: <em>Hyperfine Interactions volume</em>
+                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
+                                class="tool" data-issn="18069126"
+                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
+                        </p>
+                        <p>Autores: J. G. Santos, L. B. Silveira, A. C. Oliveira, V. K. Garg, B. M. Lacava, A. C.
+                            Tedesco & P. C. Morais </p>
+                    </div>
+
+                </div>
+            </section>
+            <!--
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="xxxxxxxxxxx">
+                            xxxxxxxxxx
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Periódico: <em>xxxxxxxxxx</em>
+                        <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
+                    <p>Autores: xxxxxxxxxxx</p>
+                </div>
+
+            </div>
+        -->
+
         </div>
 
     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <!--<div class="w3-card-4" style="width:100%;">
-            <header class="w3-container">
-                <h5>
-                    <a target="blank" href="xxxxxxxxxx">
-                        xxxxxxxxxxxxxxxxxxxx
-                    </a>
-                </h5>
-            </header>
-        
-            <div class="w3-container">
-              <p>Discente: xxxxxxxxxxxxxxxxxx</p>
-              <p>Orientador: xxxxxxxxxxxxxxxx</p>
-            </div>            
-        </div>-->
 
 
 </body>
