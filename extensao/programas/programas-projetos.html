@@ -17,11 +17,7 @@
     <link rel="stylesheet" href="https://fisicajp2.unir.br/uploads/48059049/scripts/estilo.css">
 
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-
-
-
-
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 .container2 {
   display: flex;
@@ -29,22 +25,22 @@
   justify-content: center;
   max-width: 1200px;
   margin-block: 2rem;
-  gap: 2rem;
+  gap: 6rem;
 
   font-family: "Quicksand", sans-serif;
   place-items: center;
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  width: clamp(40rem, calc(20rem + 2vw), 22rem);
+  width: clamp(50rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
-background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 
 }
 
@@ -55,7 +51,7 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   gap: .5rem;
 }
 
-.card__header > a img {
+.card__header>a img {
   max-width: 100%;
   display: block;
   object-fit: cover;
@@ -68,7 +64,7 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   font-size: .75rem;
 }
 
-.tag + .tag {
+.tag+.tag {
   margin-left: .5em;
 }
 
@@ -81,19 +77,20 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 
 .tag-brown {
   background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
+  background: linear-gradient(to bottom, #FFD194, #D1913C);
   color: #fafafa;
+  font-size: 12px;
 }
 
 .tag-red {
   background: #cb2d3e;
-background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  background: linear-gradient(to bottom, #ef473a, #cb2d3e);
   color: #fafafa;
+  font-size: 12px;
 }
 
 .card__body h4 {
   font-size: 2.0rem;
-  text-transform: capitalize;
 }
 
 .card__footer {
@@ -111,7 +108,7 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
   border-radius: 50%;
 }
 
-.user__info > small {
+.user__info>small {
   color: #666;
 }
     </style>
