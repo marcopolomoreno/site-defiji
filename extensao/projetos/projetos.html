@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        h5 {
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-weight: 400;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0
+        }
+
+        .w3-card,
+        .w3-card-2 {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+        }
+
+        .w3-card-4,
+        .w3-hover-shadow:hover {
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        .w3-container {
+            padding: 0.01em 16px
+        }
+
+        .w3-container:after,
+        .w3-container:before {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .w3-container p {
+            line-height: 0.6;
+            margin-top: 10px;
+            font-size: 17px;
+        }
+
+        .w3-card-4 header {
+            background-color: rgb(192, 189, 189);
+        }
+
+        .w3-card-4 a {
+            text-decoration: none;
+        }
+
+        /*
+        CSS for the main interaction
+        */
+        .tabset>input[type="radio"] {
+            position: absolute;
+            left: -200vw;
+        }
+
+        .tabset .tab-panel {
+            display: none;
+        }
+
+        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15),
+        .tabset>input:nth-child(31):checked~.tab-panels>.tab-panel:nth-child(16),
+        .tabset>input:nth-child(33):checked~.tab-panels>.tab-panel:nth-child(17),
+        .tabset>input:nth-child(35):checked~.tab-panels>.tab-panel:nth-child(18),
+        .tabset>input:nth-child(37):checked~.tab-panels>.tab-panel:nth-child(19),
+        .tabset>input:nth-child(39):checked~.tab-panels>.tab-panel:nth-child(20) {
+            display: block;
+        }
+
+        /*
+        Styling
+        */
+        .tabset>label {
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px 25px;
+            border: 1px solid transparent;
+            border-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .tabset>label::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            width: 22px;
+            height: 4px;
+            background: #8d8d8d;
+        }
+
+        .tabset>label:hover,
+        .tabset>input:focus+label {
+            color: #06c;
+        }
+
+        .tabset>label:hover::after,
+        .tabset>input:focus+label::after,
+        .tabset>input:checked+label::after {
+            background: #06c;
+        }
+
+        .tabset>input:checked+label {
+            border-color: #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .tab-panel {
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="tabset">
+
+        <input type="radio" name="tabset" id="tabAndamento" aria-controls="andamento">
+        <label for="tabAndamento">Em andamento</label>
+
+        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+        <label for="tab2021">2021</label>
+
+        <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
+        <label for="tab2020">2020</label>
+
+        <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
+        <label for="tab2019">2019</label>
+
+        <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
+        <label for="tab2018">2018</label>
+
+        <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
+        <label for="tab2017">2017</label>
+
+        <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
+        <label for="tab2016">2016</label>
+
+        <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
+        <label for="tab2015">2015</label>
+
+        <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
+        <label for="tab2014">2014</label>
+
+        <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
+        <label for="tab2013">2013</label>
+
+        <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
+        <label for="tab2012">2012</label>
+
+        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
+        <label for="tab2011">2011</label>
+
+        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
+        <label for="tab2010">2010</label>
+
+
+        <div class="tab-panels">
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="andamento" class="tab-panel">
+
+
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2021" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                FÍSICA ÀS #3
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Quesle da Silva Martins</p>
+                        <p>Código de institucionalização: PJ022-2021</p>
+                        <p>Área temática principal: Educação</p>
+                        <p><a target="blank" href="https://sites.google.com/unir.br/prof-quesle-martins/p%C3%A1gina-inicial?authuser=0">Acesse o site do projeto</a></p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada Brasileira de Física – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Código de institucionalização: PJ023-2021</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <section id="2020" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada Brasileira de Física – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Código de institucionalização: PJ043-2020</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Atividades Experimentais de Física: Construção de kits de experimentos de baixo custo em Física aplicáveis em sala de aula
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. João Batista Diniz</p>
+                        <p>Código de institucionalização: PJ027-2020</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2019" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada Brasileira de Física 2019 – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Processo: 999119639.000077/2019-14</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2018" class="tab-panel">
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada Brasileira de Física – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Certidão da ação: 143/2018</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Atividades Experimentais de Física: Construção de Kits de experimentos de baixo custo em Física aplicável em sala de aula
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. João Batista Diniz</p>
+                        <p>Certidão da ação: 98/2018</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+                
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2017" class="tab-panel">
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada Brasileira de Física 2016 – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Certidão da ação: 15/2017</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2016" class="tab-panel">
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Extensão Universitária no Ensino da Física I (Tópicos Mecânica e Termodinâmica)
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Me. Quesle da Silva Martins</p>
+                        <p>Certidão da ação: 132/2016</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2015" class="tab-panel">
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Atividades Experimentais de Física: Construção de Kits de experimentos de baixo custo em Física aplicável em sala de aula	
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. João Batista Diniz</p>
+                        <p>Certidão da ação: 110/2015</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Monitoria: uma prática necessária no ensino-aprendizagem de escolas de Ensino Médio	
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dra. Queila da Silva Ferreira</p>
+                        <p>Certidão da ação: 113/2015</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Resgate da Prática experimental em escolas do Ensino Médio	
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Me. Patrícia Matos Viana de Almeida</p>
+                        <p>Certidão da ação: 105/2015</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2014" class="tab-panel">
+
+                
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2013" class="tab-panel">
+                
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Olimpíada brasileira de física – Estado de Rondônia
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                        <p>Certidão da ação: 030/2013</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Reforço Escolar nas disciplinas de Física e matemática nas Escolas Públicas de Ji-Paraná
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Esp. Antônio francisco Cardoso</p>
+                        <p>Certidão da ação: 061/2013</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+            <section id="2012" class="tab-panel">
+
+                
+            </section>
+
+            <section id="2011" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank"
+                                href="">
+                                Curso Pré Vestibular Gratuito Específico em Física	
+                            </a>
+                        </h5>
+                    </header>
+
+                    <div class="w3-container">
+                        <p>Coordenador: Prof. Dr. João Batista Diniz</p>
+                        <p>Certidão da ação: 080/2011</p>
+                        <p>Área temática principal: Educação</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="2010" class="tab-panel">
+
+            </section>
+           
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
