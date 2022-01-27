@@ -2,21 +2,53 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <style>
+        h5 {
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-weight: 400;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0
+        }
+
+        .w3-card,
+        .w3-card-2 {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+        }
+
+        .w3-card-4,
+        .w3-hover-shadow:hover {
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        .w3-container {
+            padding: 0.01em 16px
+        }
+
+        .w3-container:after,
+        .w3-container:before {
+            content: "";
+            display: table;
+            clear: both
+        }
+
         .w3-container p {
             line-height: 1.7;
             margin-top: -1.3em;
         }
-
-        .w3-container img{
+		
+		.w3-container img{
             height: 9.5px;
         }
 
         .w3-card-4 header {
             background-color: rgb(192, 189, 189);
-            margin-bottom: 1.5em;
+			margin-bottom: 1.5em;
         }
 
         .w3-card-4 a {
@@ -64,6 +96,7 @@
             border-bottom: 0;
             cursor: pointer;
             font-weight: 600;
+            font-size: 18px;
         }
 
         .tabset>label::after {
