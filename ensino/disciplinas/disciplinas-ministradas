@@ -19,9 +19,19 @@
 
 <body>
 
+<!-- 
+	Importante: trocar copiar e colar por cima os elementos comentados e toda a tag head -- control + F -> copiar aqui
+   -->
+
+
+
 <div id="relatorio-container">
 
 		<div id="relatorio-cabecalho">
+<!-- copiar aqui
+   		<div id="ufrn"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/ufrn.gif" height="40"> <br> <a href="https://sigaa.unir.br/sigaa/verPortalDocente.do">Portal do Docente</a></div>
+			<div id="sinfo"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/sinfo.gif" height="50">  </div>
+			<div id="texto"> -->
 			<div id="ufrn"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/ufrn.gif" height="40"> <br> <a href="https://sigaa.unir.br/sigaa/verPortalDocente.do">Portal do Docente</a></div>
 			<div id="sinfo"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/sinfo.gif" height="50">  </div>
 			<div id="texto">
@@ -884,6 +894,38 @@
 
 
 </div> 
+
+<!-- copiar aqui
+<div class="clear"> </div>
+	<br>
+	<div id="relatorio-rodape">
+		<p>
+			<table width="100%">
+				<tbody><tr>
+					<td class="voltar" align="left">
+						
+						 	<a href="javascript:history.back();"> Voltar </a>
+						
+						
+					</td>
+					<td width="70%" align="center">
+					SIGAA | Diretoria de Tecnologia da Informação - (69) 2182-2176 | Copyright © 2006-2022 - UNIR - SigBoss2.unir.br.SigBoss2
+					</td>
+					<td class="naoImprimir" align="right">
+						<a onclick="javascript:window.print();" href="https://sigaa.unir.br/sigaa/portais/cpdi/relatorios/form_departamento.jsf#">Imprimir</a>
+					</td>
+					<td class="naoImprimir" align="right">
+						<a onclick="javascript:window.print();" href="https://sigaa.unir.br/sigaa/portais/cpdi/relatorios/form_departamento.jsf#">							
+							<img alt="Imprimir" title="Imprimir" src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/print.gif">
+						</a>
+					</td>
+				</tr>
+			</tbody></table>
+		</p>
+
+	</div>
+</div> -->
+
 	<div class="clear"> </div>
 	<br>
 	<div id="relatorio-rodape">
@@ -912,7 +954,7 @@
 		</p>
 
 	</div>
-</div>  
+</div>
 
 
 
