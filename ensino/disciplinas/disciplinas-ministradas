@@ -1,0 +1,928 @@
+
+
+<!-- saved from url=(0073)https://sigaa.unir.br/sigaa/portais/cpdi/relatorios/form_departamento.jsf -->
+<html class="background" xmlns="http://www.w3.org/1999/xhtml">
+	
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Sistema Integrado de Gestão de Atividades Acadêmicas</title>
+	
+	<link class="component" href="./Sistema Integrado de Gestão de Atividades Acadêmicas_files/eAF7sqpgb-jyGdIAFrMEaw__.jsf" rel="stylesheet" type="text/css">
+	<link class="component" href="./Sistema Integrado de Gestão de Atividades Acadêmicas_files/eAF7sqpgb-jyGdIAFrMEaw__(1).jsf" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" media="all" href="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/sigaa_base2.css">
+	<link rel="stylesheet" type="text/css" media="all" href="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/ufrn_relatorio.css">  
+	<link rel="stylesheet" type="text/css" media="print" href="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/ufrn_print.css">  
+	<link rel="stylesheet" type="text/css" media="all" href="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/sigaa.css">
+
+	<link rel="stylesheet" media="all" href="ufrn.css">
+</head>
+
+<body>
+
+<div id="relatorio-container">
+
+		<div id="relatorio-cabecalho">
+			<div id="ufrn"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/ufrn.gif" height="40"> <br> <a href="https://sigaa.unir.br/sigaa/verPortalDocente.do">Portal do Docente</a></div>
+			<div id="sinfo"><img src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/sinfo.gif" height="50">  </div>
+			<div id="texto">
+				Fundação Universidade Federal de Rondônia<br>
+				Sistema Integrado de Gestão de Atividades Acadêmicas<br>
+
+				
+				<br>
+				<span class="dataAtual"> Emitido em 01/02/2022 15:28 </span>
+			</div>
+		<div class="clear"> </div>	
+		</div>
+		<div id="relatorio">
+
+		<br>
+
+
+<h2>Relatório de Turmas por Departamento</h2>
+
+<div id="parametrosRelatorio">
+	<table>
+		<tbody><tr>
+			<th>Departamento:</th>
+			<td>DEPARTAMENTO ACADÊMICO DE FÍSICA - JP</td>
+		</tr>
+		<tr>
+			<th>Ano-Período:</th>
+			<td>
+				
+				
+					2006.2
+					
+				
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+<br>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+			
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+			
+			
+			
+			<!-- Tabela agrupadora de turmas por docente -->
+			<table class="tabelaRelatorioBorda" width="100%">
+				
+				
+				<caption>
+						Docente: ANTONIO FRANCISCO CARDOZO<br>
+						SIAPE: 700399 / 
+						Regime: 
+						 DE 
+						 / 
+						Classe Funcional: DIII
+						
+						
+				</caption>
+				<thead>
+					<tr>
+						<th style="text-align: center">Ano-Período</th>
+						<th>Tipo</th>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Departamento</th>
+						<th style="text-align: right;" width="15px">Turma</th>
+						<th style="text-align: right;" width="40px">Ch. Total</th>
+						<th style="text-align: right;" width="40px">Ch. Dedicada</th>
+						<th style="text-align: right;" width="40px">Qtd. Alunos</th>
+					</tr><tr>
+				</tr></thead>
+				<tbody>
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+			
+			
+			
+			
+			
+			
+			<tr>
+				<td colspan="9" class="caixaCinzaMedio"><b>Turmas de Graduação</b></td>
+			</tr>
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00335
+				
+			</td>
+			<td>
+				
+					Física I
+				
+				
+			</td>
+			<td>
+				DAME-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						80
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						80
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						25
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+		
+		
+		
+		
+		
+		
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00356
+				
+			</td>
+			<td>
+				
+					INTRODUÇÃO A FÍSICA
+				
+				
+			</td>
+			<td>
+				DAF-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						40
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						40
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						43
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+		
+		
+		
+		
+		
+		
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00359
+				
+			</td>
+			<td>
+				
+					INTRODUÇÃO AO PROCESSAMENTO DE DADOS
+				
+				
+			</td>
+			<td>
+				DAF-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						40
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						40
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						41
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+		
+		
+		
+		
+		
+		
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+			
+			
+			
+				
+					<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+						<td colspan="5">
+							Subtotal Graduação
+							: 
+						</td>
+						<td>3</td>
+						<td>
+							160 
+							
+						</td>
+						<td>
+							160 
+							
+						</td>
+						<td>
+							109 
+							
+						</td>
+					</tr>
+				
+				
+					<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+						<td colspan="5">
+							Total Geral
+							: 
+						</td>
+						<td>3</td>
+						<td>
+							160 
+							
+						</td>
+						<td>
+							160 
+							
+						</td>
+						<td>
+							109 
+							
+						</td>
+					</tr>
+				
+				</tbody>
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<br>
+				
+			
+			<!-- Tabela agrupadora de turmas por docente -->
+			<table class="tabelaRelatorioBorda" width="100%">
+				
+				
+				<caption>
+						Docente: CARLOS MERGULHAO JUNIOR<br>
+						SIAPE: 1312153 / 
+						Regime: 
+						 DE 
+						 / 
+						Classe Funcional: CLASSE E - TITULAR
+						
+						
+				</caption>
+				<thead>
+					<tr>
+						<th style="text-align: center">Ano-Período</th>
+						<th>Tipo</th>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Departamento</th>
+						<th style="text-align: right;" width="15px">Turma</th>
+						<th style="text-align: right;" width="40px">Ch. Total</th>
+						<th style="text-align: right;" width="40px">Ch. Dedicada</th>
+						<th style="text-align: right;" width="40px">Qtd. Alunos</th>
+					</tr><tr>
+				</tr></thead>
+				<tbody>
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+			
+			
+			
+			
+			
+			
+			<tr>
+				<td colspan="9" class="caixaCinzaMedio"><b>Turmas de Graduação</b></td>
+			</tr>
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00290
+				
+			</td>
+			<td>
+				
+					Física II
+				
+				
+			</td>
+			<td>
+				DAF-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						120
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						120
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						12
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+		
+		
+		
+		
+		
+		
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00360
+				
+			</td>
+			<td>
+				
+					MECÂNICA I
+				
+				
+			</td>
+			<td>
+				DAF-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						80
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						80
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						48
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+		
+		
+		
+		
+		
+		
+			
+		<!--  fecha a tabela de grupo de turma por docente, coloca o total no final e abre nova tabela para o pr&#243;ximo docente. -->
+		
+			
+			
+			
+				
+					<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+						<td colspan="5">
+							Subtotal Graduação
+							: 
+						</td>
+						<td>2</td>
+						<td>
+							200 
+							
+						</td>
+						<td>
+							200 
+							
+						</td>
+						<td>
+							60 
+							
+						</td>
+					</tr>
+				
+				
+					<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+						<td colspan="5">
+							Total Geral
+							: 
+						</td>
+						<td>2</td>
+						<td>
+							200 
+							
+						</td>
+						<td>
+							200 
+							
+						</td>
+						<td>
+							60 
+							
+						</td>
+					</tr>
+				
+				</tbody>
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<br>
+				
+			
+			<!-- Tabela agrupadora de turmas por docente -->
+			<table class="tabelaRelatorioBorda" width="100%">
+				
+				
+				<caption>
+						Docente: WALTER TRENNEPOHL JUNIOR<br>
+						SIAPE: 1299605 / 
+						Regime: 
+						 DE 
+						 / 
+						Classe Funcional: CLASSE D - ASSOCIADO
+						
+						
+				</caption>
+				<thead>
+					<tr>
+						<th style="text-align: center">Ano-Período</th>
+						<th>Tipo</th>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Departamento</th>
+						<th style="text-align: right;" width="15px">Turma</th>
+						<th style="text-align: right;" width="40px">Ch. Total</th>
+						<th style="text-align: right;" width="40px">Ch. Dedicada</th>
+						<th style="text-align: right;" width="40px">Qtd. Alunos</th>
+					</tr><tr>
+				</tr></thead>
+				<tbody>
+		
+		<!-- Linha dividindo as turmas por n&#237;vel de ensino. -->
+		
+			
+			
+			
+			
+			
+			
+			<tr>
+				<td colspan="9" class="caixaCinzaMedio"><b>Turmas de Graduação</b></td>
+			</tr>
+		
+		<!-- Linha dividindo a turma de EAD em p&#243;los -->
+		
+		<!-- Dados das turmas -->
+		<tr>
+			<td style="text-align: center">
+				
+					
+					
+						2006.2
+					
+				
+			</td>
+			<td>
+				
+					
+					
+						Regular
+					
+				
+			</td>
+			<td>
+				
+					DCE00298
+				
+			</td>
+			<td>
+				
+					Física IV
+				
+				
+			</td>
+			<td>
+				DAF-JP
+			</td>
+			<td style="text-align: right;">
+				
+					01
+				
+				
+				
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						120
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						120
+						
+						
+					
+				
+			</td>
+			<td style="text-align: right;">
+				
+					
+					
+						5
+						
+						
+					
+				
+			</td>
+		</tr>
+		
+	
+	
+		
+			<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+				<td colspan="5">
+					Subtotal Graduação
+					: 
+				</td>
+				<td>1</td>
+				<td>
+					120 
+					
+				</td>
+				<td>
+					120 
+					
+				</td>
+				<td>
+					5 
+					
+				</td>
+			</tr>
+		
+		
+			<tr class="caixaCinzaMedio" style="text-align: right; font-weight: bold; font-size: 10px">
+				<td colspan="5">
+					Total Geral
+					: 
+				</td>
+				<td>1</td>
+				<td>
+					120 
+					
+				</td>
+				<td>
+					120 
+					
+				</td>
+				<td>
+					5 
+					
+				</td>
+			</tr>
+		
+		</tbody>
+		</table>
+		<br>
+	
+
+
+</div> 
+	<div class="clear"> </div>
+	<br>
+	<div id="relatorio-rodape">
+		<p>
+			<table width="100%">
+				<tbody><tr>
+					<td class="voltar" align="left">
+						
+						 	<a href="javascript:history.back();"> Voltar </a>
+						
+						
+					</td>
+					<td width="70%" align="center">
+					SIGAA | Diretoria de Tecnologia da Informação - (69) 2182-2176 | Copyright © 2006-2022 - UNIR - SigBoss2.unir.br.SigBoss2
+					</td>
+					<td class="naoImprimir" align="right">
+						<a onclick="javascript:window.print();" href="https://sigaa.unir.br/sigaa/portais/cpdi/relatorios/form_departamento.jsf#">Imprimir</a>
+					</td>
+					<td class="naoImprimir" align="right">
+						<a onclick="javascript:window.print();" href="https://sigaa.unir.br/sigaa/portais/cpdi/relatorios/form_departamento.jsf#">							
+							<img alt="Imprimir" title="Imprimir" src="https://fisicajp.unir.br/uploads/48059049/scripts/sigaa-turmas/print.gif">
+						</a>
+					</td>
+				</tr>
+			</tbody></table>
+		</p>
+
+	</div>
+</div>  
+
+
+
+
+
+
+
+<!-- MYFACES JAVASCRIPT -->
+
+
+
+
+</body></html>
