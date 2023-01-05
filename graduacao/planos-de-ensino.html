@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h5 {
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-weight: 400;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0
+        }
+
+        .w3-card,
+        .w3-card-2 {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+        }
+
+        .w3-card-4,
+        .w3-hover-shadow:hover {
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        .w3-container {
+            padding: 0.01em 16px
+        }
+
+        .w3-container:after,
+        .w3-container:before {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .w3-container p {
+            line-height: 1.7;
+            margin-top: -1.3em;
+        }
+		
+		.w3-container img{
+            height: 9.5px;
+        }
+
+        .w3-card-4 header {
+            background-color: rgb(192, 189, 189);
+			margin-bottom: 1.5em;
+        }
+
+        .w3-card-4 a {
+            text-decoration: none;
+        }
+
+        /*
+        CSS for the main interaction
+        */
+        .tabset>input[type="radio"] {
+            position: absolute;
+            left: -200vw;
+        }
+
+        .tabset .tab-panel {
+            display: none;
+        }
+
+        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
+            display: block;
+        }
+
+        /*
+        Styling
+        */
+        .tabset>label {
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px 25px;
+            border: 1px solid transparent;
+            border-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .tabset>label::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            width: 22px;
+            height: 4px;
+            background: #8d8d8d;
+        }
+
+        .tabset>label:hover,
+        .tabset>input:focus+label {
+            color: #06c;
+        }
+
+        .tabset>label:hover::after,
+        .tabset>input:focus+label::after,
+        .tabset>input:checked+label::after {
+            background: #06c;
+        }
+
+        .tabset>input:checked+label {
+            border-color: #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .tab-panel {
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        /*******/
+        span {
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        span:after {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            white-space: normal;
+        }
+
+        span:focus {
+            outline: none;
+        }
+
+        .wrap {
+            background: #ECF0F1;
+            color: #607D8B;
+            height: 100%;
+            overflow: auto;
+            padding: 1em 2.5em;
+            text-align: center;
+            width: 100%;
+        }
+
+        pre {
+            background: #fff;
+            display: inline-block;
+            font-size: .55em;
+            margin-top: 2em;
+            padding: 1em;
+        }
+
+        @media (min-width: 360px) {
+            pre {
+                font-size: .7em;
+            }
+        }
+
+        @media (min-width: 500px) {
+            pre {
+                font-size: 1em;
+            }
+        }
+
+
+        /*== start of code for tooltips ==*/
+        .tool {
+            cursor: help;
+            position: relative;
+        }
+
+
+        /*== common styles for both parts of tool tip ==*/
+        .tool::before,
+        .tool::after {
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            z-index: -100;
+        }
+
+        .tool:hover::before,
+        .tool:focus::before,
+        .tool:hover::after,
+        .tool:focus::after {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            z-index: 100;
+        }
+
+
+        /*== pointer tip ==*/
+        .tool::before {
+            border-style: solid;
+            border-width: 1em 0.75em 0 0.75em;
+            border-color: #3E474F transparent transparent transparent;
+            bottom: 100%;
+            content: "";
+            margin-left: -0.5em;
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
+            transform: scale(.6) translateY(-90%);
+        }
+
+        .tool:hover::before,
+        .tool:focus::before {
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+        }
+
+
+        /*== speech bubble ==*/
+        .tool::after {
+            background: #3E474F;
+            border-radius: .25em;
+            bottom: 180%;
+            color: #EDEFF0;
+            content: attr(data-issn);
+            margin-left: -8.75em;
+            padding: 1em;
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+            transform: scale(.6) translateY(50%);
+            width: 18em;
+        }
+
+        .tool:hover::after,
+        .tool:focus::after {
+            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
+        }
+
+        @media (max-width: 760px) {
+            .tool::after {
+                font-size: .75em;
+                margin-left: -5em;
+                width: 10em;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Semestres</h2>
+
+    <div class="tabset">
+        <input type="radio" name="tabset" id="tab2022.2" aria-controls="2022.2">
+        <label for="tab2022.2">2022.2</label>
+
+        <input type="radio" name="tabset" id="tab2022.1" aria-controls="2022.1">
+        <label for="tab2022.1">2022.1</label>
+
+        <input type="radio" name="tabset" id="tab2021.2" aria-controls="2021.2">
+        <label for="tab2021.2">2021.2</label>
+
+        <input type="radio" name="tabset" id="tab2021.1" aria-controls="2021.1">
+        <label for="tab2021.1">2021.1</label>
+
+        <input type="radio" name="tabset" id="tab2020.2" aria-controls="2020.2">
+        <label for="tab2020.2">2020.2</label>
+
+        <input type="radio" name="tabset" id="tab2020.1" aria-controls="2020.1">
+        <label for="tab2020.1">2020.1</label>
+
+        <input type="radio" name="tabset" id="tab2019.2" aria-controls="2019.2">
+        <label for="tab2019.2">2019.2</label>
+
+        <input type="radio" name="tabset" id="tab2019.1" aria-controls="2019.1">
+        <label for="tab2019.1">2019.1</label>
+
+        <input type="radio" name="tabset" id="tab2018.2" aria-controls="2018.2">
+        <label for="tab2018.2">2018.2</label>
+
+        <input type="radio" name="tabset" id="tab2018.1" aria-controls="2018.1">
+        <label for="tab2018.1">2018.1</label>
+
+
+
+        <div class="tab-panels">
+
+            <section id="2022.2" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_de_Fluidos___prof_Carlos.pdf">
+                                Fluidos
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso___relatividade_restrita___prof_Carlos.pdf">
+                                Relatividade Restrita
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/PLANO_ENSINO_MECANICA_II.pdf">
+                                Mecânica C
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/PLANO_ENSINO_OPTICA.pdf">
+                                Instrumentação para o Ensino de Ciências e Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/PLANO_ENSINO_TCC.pdf">
+                                TCC (Licenciatura)
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_PRATICA_NO_ENSINO_DE_FISICA_A_DCE00251_2022.2_01_.pdf">
+                                Prática no ensino de Física A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_LEITURA__ESCRITA__COMUNICACAO_DCE00253_2022.2_01_.pdf">
+                                Leitura, escrita, comunicação, tecnologia e sociedade
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/plano_curso_calculo_diferencial_integral.pdf">
+                                Cálculo Diferencial e Integral
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/plano_curso_tcc.pdf">
+                                TCC (Bacharelado)
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00396_2022.2_01_estagio_supervisionado_1.pdf">
+                                Estágio Supervisionado I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00252_2022.2_01_Met_pesq_cientifica.pdf">
+                                Metodologia da Pesquisa Científica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00233_2022.2_01_Exp_Vibracoes_OM_Fluidos.pdf">
+                                Experimental Vibrações, Oscilações Mecânicas e Fluidos
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00244_2022.2_01_.pdf">
+                                Didática e Metodologia no Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00223_2022.2_01__.pdf">
+                                Mecânica B
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00242_2022.2_01_.pdf">
+                                Experimental Magnetismo
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00224_2022.2_01.pdf">
+                                Experimental Mecânica A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00243_2022.2_01_.pdf">
+                                Experimental Óptica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00231_2022.2_01_.pdf">
+                                Vibrações e Ondas Mecânicas
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00099_2022.2_01_.pdf">
+                                Oscilações, Ondas e Fluidos
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00098_2022.2_01_.pdf">
+                                Termodinâmica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00240_2022.2_01_.pdf">
+                                Magnetismo
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00250_2022.2_01_.pdf">
+                                Introdução à Física Moderna B
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00254_2022.2_01_.pdf">
+                                Estágio Supervisionado B
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00115_Eletromagnetismo.I.2022.2.pdf">
+                                Eletromagnetismo I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00399_Estagio.Supervisionado.II.2022.2.pdf">
+                                Estágio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-2/Plano_de_Curso_DCE00234_2022.2_01___1_.pdf">
+                                Psicologia da Educação
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+            
+            </section>
+
+
+
+
+
+            <section id="2022.1" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/ASPECTOS_HISTORICOS__FILOSOFICOS_E_Plano_de_Curso_DCE00229_2022.1_01_.pdf">
+                                ASPECTOS HISTÓRICOS, FILOSÓFICOS E SOCIOLÓGICOS DA EDUCAÇÃO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/TERMODINAMICA_A_Plano_de_Curso_DCE00236_2022.1_01_.pdf">
+                                TERMODINÂMICA A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/INTRO_FIS_MODERNA_A_Plano_de_Curso_DCE00245_2022.1_01_.pdf">
+                                INTRODUÇÃO À FÍSICA MODERNA A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_Ensino_Mecanica_C.pdf">
+                                Mecânica II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_Ensino_Instrumentacao_para_Ensino_de_Ciencias.pdf">
+                                INSTRUMENTAÇÃO PARA O ENSINO DE CIÊNCIAS E
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_Ensino_TCC_2022_2.pdf">
+                                Trabalho de Conclusão de Curso
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/tec_aplicadas.pdf">
+                                TECNOLOGIAS APLICADAS AO ENSINO DE FÍSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/laboratorio.pdf">
+                                LABORATORIO DE FISICA MODERNA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/programacao.pdf">
+                                FUNDAMENTOS DE PROGRAMAÇÃO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00103_2022.1_01_ELETRICIDADE_E_MAGNETISMO.pdf">
+                                ELETRICIDADE E MAGNETISMO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00237_2022.1_01_ELETRICIDADE.pdf">
+                                ELETRICIDADE
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00248_2022.1_01_ESTAGIO.pdf">
+                                ESTÁGIO SUPERVISIONADO A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxx">
+                                INTRODUÇÃO AO PROCESSAMENTO DE DADOS
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00399_2022.1_01_Estagio_supervisionado_II.pdf">
+                                Estagio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00238_2022.1_01_Experimental_ETRI_e_TERMO_A.pdf">
+                                EXPERIMENTAL ELETRICIDADE e TERMODINÂMICA A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00100_2022.1_01_Fisica_experimental_1.pdf">
+                                FÍSICA EXPERIMENTAL I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxx">
+                                Legislação Educacional
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00221_2022.1_01___1_.pdf">
+                                CONCEITOS MATEMÁTICOS APLICADOS À FÍSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00235_2022.1_01.Quimica.A.pdf">
+                                QUÍMICA A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00396_2022.1.Estagio.supervisionado.I.pdf">
+                                ESTÁGIO SUPERVISIONADO I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_Exp_Mecanica__B_e_C.pdf">
+                                EXPERIMENTAL MECÂNICA B e C
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_equacoes_diferenciais_aplicadas_na_fisica.pdf">
+                                EQUAÇÕES DIFERENCIADAS APLICADAS NA FÍSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_optica.pdf">
+                                ÓPTICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00219_2022.1_01_.pdf">
+                                Mecânica A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00221_2022.1_01___1_.pdf">
+                                Geometria Analítica e Vetorial
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_Matematica_Basica.pdf">
+                                MATEMÁTICA BÁSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/planos-de-ensino/2022-1/Plano_de_Curso_DCE00120_2022.1.pdf">
+                                CÁLCULO NUMÉRICO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+            </section>
+
+
+
+            <section id="2021.2" class="tab-panel">
+
+
+            </section>
+
+
+
+
+            <section id="2021.1" class="tab-panel">
+
+                <a href="https://fisicajp.unir.br/uploads/48059049/arquivos/PLANOS_DE_ENSINO_2021_1_DEPATAMENTO_DE_FISICA_1262423411.pdf" target="_blank">Planos de Ensino</a>
+
+            </section>
+
+
+
+            <section id="2020.2" class="tab-panel">
+
+                <a href="https://fisicajp.unir.br/uploads/48059049/arquivos/PLANOS_DE_ENSINO_2020_2_DEFIJI_149545402.pdf" target="blank">Planos de Ensino</a>
+
+            </section>
+
+
+
+            <section id="2020.1" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/aspectos%20historicos.PDF">
+                                ASPECTOS HISTÓRICOS, FILOSÓFICOS E SOCIOLÓGICOS DA EDUCAÇÃO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Calculo%20INtegral%20e%20Diferencial.pdf">
+                                CÁLCULO DIFERENCIAL E INTEGRAL
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/calc.num._2020_2_13_20_5_20_2583.pdf">
+                                CÁLCULO NUMÉRICO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/didatica%20ens%20fisica.PDF">
+                                DIDATICA NO ENSINO DA FISICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/eletromagn_2020_2_13_20_19_33_27391.pdf">
+                                ELETROMAGNETISMO II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/estad_2020_2_20_17_2_57_58725.pdf">
+                                ESTADO SÓLIDO I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Est%C3%83%C2%A1gio%20em%20pesquisa%20II.pdf">
+                                ESTÁGIO EM PESQUISA II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Estagio%20Super%20I.PDF">
+                                ESTAGIO SUPERVISIONADO I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/estagio_2020_2_13_20_12_9_51948.pdf">
+                                ESTÁGIO SUPERVISIONADO II 
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/estatistica%20e%20probabilidade.PDF">
+                                ESTATISTICA E PROBABILIDADE I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/experimental%20mec%20B%20e%20C.PDF">
+                                EXPERIMENTAL MECÂNICA B E C
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Geometria%20Analitica%20e%20Vetorial.pdf">
+                                GEOMETRIA ANALÍTICA VETORIAL
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/instrument_2020_2_13_19_47_51_81596.pdf">
+                                INSTRUMENTAÇÃO PARA O ENSINO DE CIÊNCIAS
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Lab%20Fisica%20Moderna.pdf">
+                                LABORATÓRIO DE FÍSICA MODERNA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Portug._2020_2_13_20_1_31_21596.pdf">
+                                LÍNGUA PORTUGUESA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/legis_2020_2_20_17_2_19_44425.pdf">
+                                LEGISLAÇÃO EDUCACIONAL
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxxxxx">
+                                MATEMÁTICA BÁSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Plano%20de%20Ensino%20-%202020-1%20-%20Mecanica%20A.pdf">
+                                MECÂNICA A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Plano%20de%20Ensino%20-%202020-1%20-%20Mecanica%20B.pdf">
+                                MECÂNICA B
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/mecanica%20C_2020_2_13_20_9_3_32223.pdf">
+                                MECÂNICA C
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/mecanica1_2020_2_13_19_44_3_35743.pdf">
+                                MECÂNICA I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/mec.q.2_2020_2_13_20_6_26_22119.pdf">
+                                MECÂNICA QUÂNTICA II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/psico_2020_2_20_17_3_33_1625.pdf">
+                                PSICOLOGIA DA EDUCAÇÃO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/Relativida_2020_2_13_20_14_5_38924.pdf">
+                                RELATIVIDADE RESTRITA 
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/sem.fil._2020_2_13_20_41_9_25471.pdf">
+                                SEMINARIOS EM FILOSOFIA DAS CIENCIAS
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/sem.hist.f_2020_2_13_20_7_55_69870.pdf">
+                                SEMINÁRIOS EM HISTÓRIA DA FISICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/tecno_2020_2_20_17_3_58_83246.pdf">
+                                TECNOLOGIAS APLICADAS AO ENSINO DE FÍSICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20201/TCC%20-%20Bacharelado.pdf">
+                                TRABALHO DE CONCLUSAO DE CURSO - BACHARELADO
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="xxxxxxxxxxxxxxx">
+                                TRABALHO DE CONCLUSAO DE CURSO - LICENCIATURA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+            </section>
+
+
+
+            <section id="2019.2" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Mecanica%20A.pdf">
+                                Mecânica A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/calculo%20diferencial%20e%20integral.PDF">
+                                Cálculo Diferencial e Integral
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/educacao%20das%20relacoes%20etnico%20raciais.PDF">
+                                Educação das Relações Étnico Raciais
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/instrumentacao%20para%20o%20ensino%20da%20fisica.PDF">
+                                Instrumentação para o ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/introducao%20a%20teoria%20da%20relatividade.PDF">
+                                Introdução a Teoria da Relatividade
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/mecanica%20II.PDF">
+                                Mecânica II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/quimica%20I.PDF">
+                                Química I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/termodinamica%20I.PDF">
+                                Termodinâmica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Matematica%20basica.PDF">
+                                Matemática Básica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Mecanica%20B.pdf">
+                                Mecânica B
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/calculo%20de%20funcoes%20de%20varias%20variaveis.PDF">
+                                Cálculo de Funções de Várias Variáveis
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/eletromagnetismo%20I.PDF">
+                                Eletromagnetismo I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/estagio%20supervisionado%20II.PDF">
+                                Estágio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/introducao%20a%20fisica%20quantica.PDF">
+                                Introdução a Física Quântica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/lingua%20portuguesa.pdf">
+                                Língua Portuguesa
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/oscilacoes%20ondas%20e%20fluidos.PDF">
+                                Oscilações, ondas e fluidos
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/seminarios%20em%20filosofia%20das%20ciencias.PDF">
+                                Seminários em Filosofia das Ciências
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Mecanica%20Quantica%20I.pdf">
+                                Mecânica Quântica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Mecanica%20Classica.pdf">
+                                Mecânica Clássica II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20192/Geometria%20Analitica.pdf">
+                                Geometria Analítica e Vetorial
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+            </section>
+        
+        
+        
+            <section id="2019.1" class="tab-panel">
+        
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Estagio%20Supervisionado%20I%20-%20Patr%C3%83%C2%ADcia.PDF">
+                                Estágio Supervisionado I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Estatistica%20e%20Probabilidade.pdf">
+                                Estatística e Probabilidade
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Fisica%20Experimental%20I%20Francisco.pdf">
+                                Física Experimental I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Geometria%20Anal%20e%20Vetorial.pdf">
+                                Geometria Analítica e Vetorial
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Lingua%20Portuguesa.pdf">
+                                Língua Portuguesa
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Mecanica%20Classica%20I.pdf">
+                                Mecânica Clássica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Optica.pdf">
+                                Óptica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Tecnologias%20Aplicadas%20no%20Ensino%20de%20Fisica.pdf">
+                                Tecnologias Aplicadas ao Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Eletricidade%20e%20Magnetismo.pdf">
+                                Eletricidade e Magnetismo
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Estagio%20Supervisionado%20II.pdf">
+                                Estágio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Estudos%20Ambientais%20-%20Queila.PDF">
+                                Estudos Ambientais
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Fundamentos%20de%20Programacao.pdf">
+                                Fundamentos de Programação
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Instrumentacao%20para%20o%20Ensino%20de%20Ci%C3%83%C2%AAncias.pdf">
+                                Instrumentação para o ensino de Ciências
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Matematica%20Basica.pdf">
+                                Matemática Básica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Mecanica%20I%20-%20Queila.PDF">
+                                Mecânica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Seminarios%20em%20Filosofia%20das%20Ciencias.pdf">
+                                Seminários em Filosofia das Ciências
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Termodinamica%20II.pdf">
+                                Termodinâmica II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Matematica%20Basica%20Bacharelado.pdf">
+                                Matemática Básica Bacharelado
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Mecanica%20Quantica%20Bacharelado.pdf">
+                                Mecânica Quântica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Didatica%20Ens%20Fisica%202019.1.pdf">
+                                Didática Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Mecanica%20I%202019.1.pdf">
+                                Mecânica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/Planos%20de%20Ensino/20191/Mecanica%20A%2020191.pdf">
+                                Mecânica A
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+        
+            </section>
+
+
+
+            <section id="2018.2" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30088_2018_2_372124199.pdf">
+                                Mecânica II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30096_2018_2_1727234810.pdf">
+                                Física Experimental II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30126_2018_2_96600814.pdf">
+                                Estágio Supervisionado I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30128_2018_2_1122329250.pdf">
+                                Laboratório de Física Moderna
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30230_2018_2_1144157818.pdf">
+                                Estado Sólido II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30131_2018_2_471420656.pdf">
+                                Estágio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30150_2018_2_244450059.pdf">
+                                Introdução à Física Quântica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30152_2018_2_1925703952.pdf">
+                                Instrumentação para o Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30255_2018_2_1331013291.pdf">
+                                Relatividade Restrita
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30256_2018_2_1800338642.pdf">
+                                Eletrônica Básica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30307_2018_2_124743867.pdf">
+                                LIBRAS
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30382_2018_2_222067237.pdf">
+                                Introdução à Teoria da Relatividade
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30383_2018_2_1574031281.pdf">
+                                Introdução à Física Quântica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30402_2018_2_1344743494.pdf">
+                                Tópicos de Física Contemporânea
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30987_2018_2_1479425043.pdf">
+                                Química I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30095_2018_2_2023312517.pdf">
+                                Química I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30098_2018_2_10222166.pdf">
+                                Introdução à Física Quântica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/DEJ30209_2018_2_1793825145.pdf">
+                                Mecânica Estatística I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+                
+            </section>
+
+
+
+            <section id="2018.1" class="tab-panel">
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNSVhzcTVVWUxUdHFsbHR6dU9lOGpnLVctbGNz/view?resourcekey=0-7B3F0Nxg2vVHjFAqEzQvnA">
+                                Estágio Supervisionado II
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNSEViOXJIWDZPUEZ5bXN1MU5tRjVqZGtDbjA0/view?resourcekey=0-Sr4KYqhlRl7bnLl6NCu6nQ">
+                                Física Experimental I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNR21WWVhWS2laZjNuLUpQTHNzeUhjaGJRVVZZ/view?resourcekey=0-mNv0Znx1INsJKxZPWt47Ug">
+                                Eletrônica Básica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNX1lNY2dDQV9YR19TM01PTFBJdmROUEFVZkZZ/view?resourcekey=0-L21CkANcm4atEYMphLgWxQ">
+                                Seminários em Filosofia das Ciências
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNQUF5cGtLV2dGZlF4RVlmMnZTQ3YtalFLUXlR/view?resourcekey=0-VW4NOc6ZhXRNQ3C0aO_SVA">
+                                Tecnologias Aplicadas no Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNZUYyR0JlTUNMSTBGQ3BJUVlKTUh3OWFMY05R/view?resourcekey=0-B12J4ki6EKLvuXqGrUqqCA">
+                                Cálculo Integral
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNeUM2SV94enkzRHdOYVhUd1AzdkF0U0RiSGpJ/view?resourcekey=0-GlHybQbyzAMdr-SWZXRsHw">
+                                Introdução à Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNeEFOb0hyTk8zSHVnYjh0eFJtUjhRbEJWN3hR/view?resourcekey=0-0oJb7bhi3cwtoFK3o0UbYg">
+                                Metodologia Científica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNbDJlVXVPTGdBX2dpOTFWTWxNRjZFM1FiQnZZ/view?resourcekey=0-54a88Npx6PjTo6xTEoytvQ">
+                                Didática no Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNaHo2MG04emk4eHJyOXNuVG1USkZtbHhOVXlj/view?resourcekey=0-0B0uIweblMnRksgve7phuA">
+                                Eletricidade e Magnetismo
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNYjFjYko3aGFtckt2SUhGMklqajRMaGZVLTY4/view?resourcekey=0-gxy8pgjmbgX09RZl5oYVkQ">
+                                Óptica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNWmJMRk9yZUhuX3pWNlZhRkhCM3ppUG9MMm1F/view?resourcekey=0-7roBN_UMlMgnlyq-HTMHbw">
+                                ÓPTICA
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNUUZMaG9UQWk1LUhYRXR0MmFNYVdBMkJQVHR3/view?resourcekey=0-ydvBnJ4TqbcUWT_wlcQxHQ">
+                                Introdução à Geometria Analítica e Vetorial
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNTmhsV3hZWXhycnVyUDE2aHJobTFfMkcweV9Z/view?resourcekey=0-0GzXY7sG4MCd9hEGQJrO1Q">
+                                Introdução ao Processamento de Dados
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNQVJhZG1GVHBiMnhWSzlGXzdaNGpWN1hKWXVJ/view?resourcekey=0-PBrPyfViBh1COTLySq0gNg">
+                                Matemática Básica
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNQVBtZWRHbFo0TjRleGFLbzJjSVNOR01EazEw/view?resourcekey=0-623K1F6xKq52il0BF1fR0g">
+                                Seminários em História da Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNOFdjRklEZURPYnNkQ0FzLXhkOEItbWRHMTdn/view?resourcekey=0-vPQI_FI2swlAsH8c5NGrJA">
+                                Instrumentação para o Ensino de Física
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNTGNxd1hjZ0lSb2lta2dwMktiTTVka056NFRv/view?resourcekey=0-7UpK79qDwc0x1ydTCN58fQ">
+                                Cálculo Integral
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNSnc2RmFVMXBFRVg4V29zX2JFQkJqQmh0MEhB/view?resourcekey=0-me76FaZ-lw6s67OXjCNNEQ">
+                                Estado Sólido I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNMTZOd3daMUYtU083c09pbWg3Zl95c0VLSHJB/view?resourcekey=0-yh5QXkfWB0vUgSeaQIZi0A">
+                                Mecânica I
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+                <div class="w3-card-4" style="width:100%;">
+                    <header class="w3-container">
+                        <h5>
+                            <a target="blank" href="https://drive.google.com/file/d/0ByXz4hKV-7fNM2ItNlAtVXJSdU9TbVFuMkFmcG9WX3czWjkw/view?resourcekey=0-dNFPr07U3EKnUMlg8pGjYg">
+                                Laboratório de Física Moderna
+                           </a>
+                        </h5>
+                    </header>
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+
+    
+
+
+
+</body>
+
+</html>
