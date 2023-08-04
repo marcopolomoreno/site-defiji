@@ -1,2371 +1,1235 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <style>
-        h5 {
-            font-family: "Segoe UI", Arial, sans-serif;
-            font-weight: 400;
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 20px 0
-        }
-
-        .w3-card,
-        .w3-card-2 {
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
-        }
-
-        .w3-card-4,
-        .w3-hover-shadow:hover {
-            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
-        }
-
-        .w3-container {
-            padding: 0.01em 16px
-        }
-
-        .w3-container:after,
-        .w3-container:before {
-            content: "";
-            display: table;
-            clear: both
-        }
-
-        .w3-container p {
-            line-height: 1.7;
-            margin-top: -1.3em;
-        }
-		
-		.w3-container img{
-            height: 9.5px;
-        }
-
-        .w3-card-4 header {
-            background-color: rgb(192, 189, 189);
-			margin-bottom: 1.5em;
-        }
-
-        .w3-card-4 a {
-            text-decoration: none;
-        }
-
-        /*
-        CSS for the main interaction
-        */
-        .tabset>input[type="radio"] {
-            position: absolute;
-            left: -200vw;
-        }
-
-        .tabset .tab-panel {
-            display: none;
-        }
-
-        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
-        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
-        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
-        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
-        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
-        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
-        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
-        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
-        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
-        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
-        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
-        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
-        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
-        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
-<<<<<<< HEAD
-        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
-=======
-        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15),
-        .tabset>input:nth-child(31):checked~.tab-panels>.tab-panel:nth-child(16),
-        .tabset>input:nth-child(33):checked~.tab-panels>.tab-panel:nth-child(17) {
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-            display: block;
-        }
-
-        /*
-        Styling
-        */
-        .tabset>label {
-            position: relative;
-            display: inline-block;
-            padding: 15px 15px 25px;
-            border: 1px solid transparent;
-            border-bottom: 0;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .tabset>label::after {
-            content: "";
-            position: absolute;
-            left: 15px;
-            bottom: 10px;
-            width: 22px;
-            height: 4px;
-            background: #8d8d8d;
-        }
-
-        .tabset>label:hover,
-        .tabset>input:focus+label {
-            color: #06c;
-        }
-
-        .tabset>label:hover::after,
-        .tabset>input:focus+label::after,
-        .tabset>input:checked+label::after {
-            background: #06c;
-        }
-
-        .tabset>input:checked+label {
-            border-color: #ccc;
-            border-bottom: 1px solid #fff;
-            margin-bottom: -1px;
-        }
-
-        .tab-panel {
-            padding: 30px 0;
-            border-top: 1px solid #ccc;
-        }
-
-        /*******/
-        span {
-            font-family: monospace;
-            white-space: nowrap;
-        }
-
-        span:after {
-            font-family: Arial, sans-serif;
-            text-align: left;
-            white-space: normal;
-        }
-
-        span:focus {
-            outline: none;
-        }
-
-        .wrap {
-            background: #ECF0F1;
-            color: #607D8B;
-            height: 100%;
-            overflow: auto;
-            padding: 1em 2.5em;
-            text-align: center;
-            width: 100%;
-        }
-
-        pre {
-            background: #fff;
-            display: inline-block;
-            font-size: .55em;
-            margin-top: 2em;
-            padding: 1em;
-        }
-
-        @media (min-width: 360px) {
-            pre {
-                font-size: .7em;
-            }
-        }
-
-        @media (min-width: 500px) {
-            pre {
-                font-size: 1em;
-            }
-        }
-
-
-        /*== start of code for tooltips ==*/
-        .tool {
-            cursor: help;
-            position: relative;
-        }
-
-
-        /*== common styles for both parts of tool tip ==*/
-        .tool::before,
-        .tool::after {
-            left: 50%;
-            opacity: 0;
-            position: absolute;
-            z-index: -100;
-        }
-
-        .tool:hover::before,
-        .tool:focus::before,
-        .tool:hover::after,
-        .tool:focus::after {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            z-index: 100;
-        }
-
-
-        /*== pointer tip ==*/
-        .tool::before {
-            border-style: solid;
-            border-width: 1em 0.75em 0 0.75em;
-            border-color: #3E474F transparent transparent transparent;
-            bottom: 100%;
-            content: "";
-            margin-left: -0.5em;
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
-            transform: scale(.6) translateY(-90%);
-        }
-
-        .tool:hover::before,
-        .tool:focus::before {
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
-        }
-
-
-        /*== speech bubble ==*/
-        .tool::after {
-            background: #3E474F;
-            border-radius: .25em;
-            bottom: 180%;
-            color: #EDEFF0;
-            content: attr(data-issn);
-            margin-left: -8.75em;
-            padding: 1em;
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
-            transform: scale(.6) translateY(50%);
-            width: 18em;
-        }
-
-        .tool:hover::after,
-        .tool:focus::after {
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
-        }
-
-        @media (max-width: 760px) {
-            .tool::after {
-                font-size: .75em;
-                margin-left: -5em;
-                width: 10em;
-            }
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <h2>Orientações de Iniciação Científica e de Iniciação Tecnológica</h2>
-
-    <div class="tabset">
-
-        <input type="radio" name="tabset" id="tab2022" aria-controls="2022">
-        <label for="tab2022">2022-2023</label>
-
-        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
-        <label for="tab2021">2021-2022</label>
-
-        <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
-        <label for="tab2020">2020-2021</label>
-
-        <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
-        <label for="tab2019">2019-2020</label>
-
-        <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
-        <label for="tab2018">2018-2019</label>
-
-        <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
-        <label for="tab2017">2017-2018</label>
-
-        <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
-        <label for="tab2016">2016-2017</label>
-
-        <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
-        <label for="tab2015">2015-2016</label>
-
-        <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
-        <label for="tab2014">2014-2015</label>
-
-        <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
-        <label for="tab2013">2013-2014</label>
-
-        <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
-<<<<<<< HEAD
-        <label for="tab2012">2012</label>
-
-        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
-        <label for="tab2011">2011</label>
-
-        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
-        <label for="tab2010">2010</label>
-
-        <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
-        <label for="tab2009">2009</label>
-
-        <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
-        <label for="tab2008">2008</label>
-
-        <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
-        <label for="tab2005">2007</label>
-=======
-        <label for="tab2012">2011-2012</label>
-
-        <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
-        <label for="tab2011">2010-2011</label>
-
-        <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
-        <label for="tab2010">2009-2010</label>
-
-        <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
-        <label for="tab2009">2008-2009</label>
-
-        <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
-        <label for="tab2008">2007-2008</label>
-
-        <input type="radio" name="tabset" id="tab2007" aria-controls="2007">
-        <label for="tab2007">2006-2007</label>
-
-        <input type="radio" name="tabset" id="tab2006" aria-controls="2006">
-        <label for="tab2006">2005-2006</label>
-
-        <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
-        <label for="tab2005">2004-2005</label>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-
+<style>
+    h5 {
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-weight: 400;
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 20px 0
+    }
+
+    .w3-card,
+    .w3-card-2 {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+    }
+
+    .w3-card-4,
+    .w3-hover-shadow:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+    }
+
+    .w3-container {
+        padding: 0.01em 16px
+    }
+
+    .w3-container:after,
+    .w3-container:before {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .w3-container p {
+        line-height: 1.7;
+        margin-top: -1.3em;
+    }
     
-
-        <div class="tab-panels">
-<<<<<<< HEAD
-            <section id="2021" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1590/1806-9126-rbef-2020-0355">
-                                Passagem adiabática por Raman estimulado: aplicação no relógio atômico de rubídio
-                            </a>
-=======
-
-            <section id="2022" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Pêndulos acoplados por uma haste - Desenvolvimento de um aplicativo de simulação computacional para a plataforma SimuFísica                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Calina Grazielli Dias Barros
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Tipo: Iniciação Tecnológica (PIBITI)</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo vibracional de espectroscopia Raman e Infravermelho aplicados a óleos naturais da Amazônia                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Asaf Ribas
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
-                        <p>Tipo: Iniciação Científica (PIBIC)</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Abordagem do método DFT no estudo vibracional de grupos carboxílicos majoritários em ácidos graxos                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Roberta Cristina S. Lima
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
-                        <p>Tipo: Iniciação Científica (PIBIC)</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise conformacional de ácidos graxos via método DFT
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Duíllio L.L. de Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
-                        <p>Tipo: Iniciação Científica (PIBIC)</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2021" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Passagem adiabática por Raman estimulado: aplicação no relógio atômico de rubídio
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Rhakny Patryky Peixoto Araujo
-                            
-                        </p>
-<<<<<<< HEAD
-                        <p>Orientador: Marco Polo Moreno de Souza</p>
-=======
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a>
-                                Modelagem da propagação da COVID-19 a partir do movimento browniano	
-                            </a>
-=======
-                            Modelagem da propagação da COVID-19 a partir do movimento browniano	
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Juciane Gonçalves Maia
-                        </p>
-<<<<<<< HEAD
-                        <p>Orientador: Marco Polo Moreno de Souza</p>
-=======
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-<<<<<<< HEAD
-=======
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Cálculos ab initio em grupos carboxílicos no processo de caracterização de óleos naturais amazônicos por Espectroscopia Raman e Infravermelho		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Asaf Ribas
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Propriedades da Matéria Nuclear Utilizando o Modelo de Walecka Não Linear com a interação entre os mesons sigma e omega à temperatura Zero e Elevadas		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: BRAZ ANTONIO TARTAGLIA PEREIRA
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-            </section>
-
-            <section id="2020" class="tab-panel">
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a>
-                                Transições atômicas em sistemas de dois níveis: solução via expansão perturbativa	
-                            </a>
-=======
-                            Transições atômicas em sistemas de dois níveis: solução via expansão perturbativa	
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Rhakny Patryky Peixoto Araujo
-                            
-                        </p>
-<<<<<<< HEAD
-                        <p>Orientador: Marco Polo Moreno de Souza</p>
-=======
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a>
-                                Circuito RLC estimulado por um trem de pulsos de corrente elétrica	
-                            </a>
-=======
-                            Circuito RLC estimulado por um trem de pulsos de corrente elétrica	
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Joel Pedro Alves Araújo	
-                            
-                        </p>
-<<<<<<< HEAD
-                        <p>Orientador: Marco Polo Moreno de Souza</p>
-=======
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a>
-                                Gás não ideal e dinâmica de propagação do Novo Coronavírus (COVID-19)		
-                            </a>
-=======
-                            Gás não ideal e dinâmica de propagação do Novo Coronavírus (COVID-19)		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Juciane Gonçalves Maia	
-                            
-                        </p>
-<<<<<<< HEAD
-                        <p>Orientador: Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-=======
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise físico-química de Fluidos magnéticos obtidos a partir da Síntese e Caracterização de Magnetita, para adsorção de óleo de avestruz a sua superfície		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Ariane Dandares de Lima
-                            
-                        </p>
-                        <p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Síntese e Caracterização de Fluidos magnéticos a Base de Ferrita de Cobalto (CoFe2O4) para estudo da adsorção de óleo de Avestruz (Struthio camelus)		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Micaelle de Sá e Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Desenvolvimento e Aplicabilidade de Algoritmos em Fenômenos Físicos		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Jefferson Antunes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Propriedades da Matéria Nuclear Utilizando o Modelo de Walecka Linear com a interação entre os mesons sigma e omega à temperatura Zero e Elevadas		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: BRAZ ANTONIO TARTAGLIA PEREIRA
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Desenvolvimento de produtos educacionais usando novas tecnologias		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: HELIO DE SOUZA DOS SANTOS
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
-                        <p>Bolsista: </p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2019" class="tab-panel">
-
-<<<<<<< HEAD
-=======
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Obtenção Numérica de Bifurcações em Alguns Sistemas Dinâmicos		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Juciane Gonçalves Maia
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Transições de dois fótons em um sistema duplo-cascata estimuladas por um trem de pulsos ultracurtos			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Rhakny Patryky Peixoto Araújo
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo da estabilidade de cavidades de lasers na presença de ruídos			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Jonatas Schweigert
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Desenvolvimento de Algoritmos aplicados a Fenômenos Físicos		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: 
-                            Jefferson Antunes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Caracterização estrutural do BaHfO_3 através do método de Rietveld		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Janaira Luiza Vieira Araujo
-                            
-                        </p>
-                        <p>Orientador: Profa. Vanessa Delfino Kegler</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Caracterização estrutural do SrTiO_3 dopado com cobalto através do método de Rietveld		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: ELISANGELA DA SILVA BARBOZA
-                            
-                        </p>
-                        <p>Orientador: Profa. Vanessa Delfino Kegler</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-
-            </section>
-
-            <section id="2018" class="tab-panel">
-<<<<<<< HEAD
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.18273/revuin.v18n2-2019020">
-                                Desarrollo analítico de las ecuaciones Ginzburg-Landau parapelículas delgadas
-                                superconductoras en presencia de corrientes
-                            </a>
-=======
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise das Propriedades Caóticas da Equação de Duffing-Van Der Pol e do Mapa de Duffing Modificados		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Revista UIS Ingenierías</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Cristian Andrés Aguirre, Quesle da Silva Martins, José José Barba-Ortega
-
-                        </p>
-=======
-                        <p>Discente: Hélio de Souza dos Santos
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-               
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Interferometria de Ramsey aplicada à transição 5S1/2 − 5P1/2 do rubídio			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Rhakny Patryky Peixoto Araújo
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (CNPq)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank" href="http://dx.doi.org/10.22161/ijaers.5.5.47">
-                                Synthesis of BaHfO3 through with reduction of KOH
-                            </a>
-=======
-                            Estudo da estabilidade de cavidades ópticas via formalismo da matriz ABCD			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>International Journal of ijaers whatsapp
-                                Advanced Engineering Research and Science</em>
-                        </p>
-                        <p>Autores: Kegler Vanessa D.,
-                            Fiscehr Susana Cristina
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2017" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1103/PhysRevA.96.023430">
-                                Sub-Doppler two-photon absorption induced by the combination of a single-mode laser and
-                                a frequency comb
-                            </a>
-=======
-                        <p>Discente: Jonatas Schweigert
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Obtenção e caracterização de feixes de luz com momento angular orbital			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Laura Maísa Souza dos Santos, Cassia Ester de França Ladeira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise físico-química de óleo da Amazônia adsorvido sobre Nanopartículas magnéticas de Ferrita de Cobalto (NPC)		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Antonia Luziane Vieira Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Modelagem ComputaCional Modelo de lsing em 2 D e 3D Utilizando o Algoritmo de Banho termico		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: INGRID RAYSSA DELGADO CAVALCANTE CRUZ
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Modelagem Computacional Modelo de Ising em 2 D e 3D Utilizando o Algoritmo de worm		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: PAMELLA NATHIELLI ALMEIDA DE OLIVEIRA
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Propriedades da Matéria Nuclear Utilizando o Modelo de Walecka Não Linear com a interação entre os mesons sigma e omega		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: RONALDO ADRIANO DO NASCIMENTO RODRIGUES
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Propriedades da Matéria Nuclear Utilizando o Modelo de Walecka Linear com a interação entre os mesons σ - ϣ		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: ZACARIAS EUCLIDES DA SILVA
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Equipamentos de aquisição de dados didáticos de mecânica básica usando um smartphone		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: PEDRO JOSÉ NOGUEIRA DA SILVA
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise da emissão fotoluminescente do BaHfO_3 com diferentes concentrações de KOH		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Susana Cristina Fischer
-                            
-                        </p>
-                        <p>Orientador: Profa. Vanessa Delfino Kegler</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-
-            </section>
-
-            <section id="2017" class="tab-panel">
-               
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Transparência eletromagneticamente induzida por lasers			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Physical Review A</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Marco P. Moreno, Giovana T. Nogueira, Daniel Felinto, and Sandra S. Vianna
-
-                        </p>
-=======
-                        <p>Discente: Laura Maisa Souza dos Santos
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank" href="http://dx.doi.org/10.1088/1361-6455/aa636d">
-                                Coherent blue emission generated by Rb two-photon excitation using diode and femtosecond
-                                lasers
-                            </a>
-=======
-                            Caracterização do perfil espacial de feixes de lasers			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Jesus P Lopez, Marco P Moreno, Marcio H G de Miranda and Sandra S Vianna
-                        </p>
-=======
-                        <p>Discente: Camila de Sousa Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (CNPq)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank" href="http://dx.doi.org/10.1016/j.matchemphys.2017.10.069">
-                                Dielectric relaxation study of the ceramic matrix BaBi4Ti4O15:Bi2O3 </a>
-=======
-                            Bombeamento óptico em sistema tipo Λ induzido por um trem de pulsos de laser ultracurtos			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Materials Chemistry and Physics
-                            </em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: P. M. V . Almeida,
-                            C. B. Gozzo,
-                            E. H. N. S. Thaines,
-                            A. J. M. Sales,
-                            R. G. Freitas,
-                            A. J. Terezo,
-                            A. S. B. Sombra,
-                            M. M. Costa
-                        </p>
-=======
-                        <p>Discente: Juciane Gonçalves Maia
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank"
-                                href="https://scientia-amazonia.org/wp-content/uploads/2017/06/v6-n3-69-74-2017.pdf">
-                                Estudo vibracional em matéria oleica originária da Amazônia legal por
-                                espectroscopia Raman
-                            </a>
-=======
-                            Excitação de átomos de sódio por um trem de pulsos de laser ultracurtos			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Scientia Amazonia
-                            </em>
-                        <p>Autores: Willian Felipe Medeiros Alves,
-                            Marcelino Pereira da Silva,
-                            Jorge Luiz Brito de Faria3,
-                            Quesle da Silva Martins
-                        </p>
-                    </div>
-
-                </div>
-=======
-                        <p>Discente: Cassia Ester de França Ladeira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (FAPERO)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Dinâmica de populações em átomos de três níveis tipo lambda excitados por um trem de pulsos ultracurtos			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Romildo Garcia Batista
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (FAPERO)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Modelagem Computacional do Modelo de Ising em 2D e 3D utilizando o Algoritmo de Metropolis		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Guilherme Aparecido da Silva Felicio
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Modelagem Computacional do Modelo de Ising em 2D e 3D Utilizando o Algoritmo de Worn (minhoca)		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Eliton Trindade Gomes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Desenvolvimento de um modelo de célula reacional		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gladimir Kohnlein
-                            
-                        </p>
-                        <p>Orientador: Profa. Vanessa Delfino Kegler</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo da influência dos hidróxidos na formação de compostos sintetizados pelo MAH		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Susana Cristina Fischer
-                            
-                        </p>
-                        <p>Orientador: Profa. Vanessa Delfino Kegler</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-            </section>
-
-            <section id="2016" class="tab-panel">
-
-<<<<<<< HEAD
-            </section>
-
-            <section id="2015" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1088/0953-4075/48/24/245001">
-                                Observing the optical frequency comb in the blue fluorescence of rubidium vapor
-                            </a>
-=======
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Excitação de átomos de césio por um trem de pulsos de laser ultracurtos			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Camila de Sousa Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Trem de eco de fótons no rubídio			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gabriel Nascimento Nogueira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Computação de alta performance aplicada ao cálculo da matriz densidade de sistemas com alargamento Doppler			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Teo Victor Resende da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Análise vibracional por espectroscopia Raman em óleos originários da Amazônia		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Laura Maísa
-                            
-                        </p>
-                        <p>Orientador: Prof. Quesle da Silva Martins</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Espectroscopia Raman em óleos originários da Amazônia: caracterização e cálculos ab-initio		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Willian Felipe Medeiros Alves
-                            
-                        </p>
-                        <p>Orientador: Prof. Quesle da Silva Martins</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo e Desenvolvimento de Agoritmos Aplicados à Fenômenos Físicos		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Marline de Souza Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Simulação Computacional do Modelo de Ising em Duas Dimensões Utilizando o Algoritmo Alternativo		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gustavo Manoel Alves de Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            O TELESCÓPIO E O ENSINO/APRENDIZAGEM DA ÓPTICA		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: José Willian Ribeiro da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2015" class="tab-panel">
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Esfera de Bloch: interação entre trens de pulsos e sistemas atômicos			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Journal of Physics B: Atomic, Molecular and Optical Physics</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Filipe A Lira, Marco P Moreno and Sandra S Vianna
-
-                        </p>
-=======
-                        <p>Discente: Ronaldo Adriano do Nascimento Rodrigues
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank" href="http://dx.doi.org/10.1016/j.jqsrt.2014.10.006">
-                                Measurements of N2-broadening and pressure-shift coefficients in the ν3-band of 12CH4
-                                using a cw-OPO
-                            </a>
-=======
-                            Eco de fótons com pulsos de femtossegundos em vapor de rubídio			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Journal of Quantitative Spectroscopy and Radiative Transfer</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Mohammad Jahjah, Linh Nguyen, Marco P. Moreno, Malo Cadoret, Jean-Jacques Zondy
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2014" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1007/s00340-014-5883-1">
-                                Line intensity measurements of methane’s 𝜈3-band using a cw-OPO </a>
-=======
-                        <p>Discente: Gabriel Nascimento Nogueira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Solução das equações de Bloch para um sistema de dois níveis via GPUs		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Teo Victor Resende da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Metropolis		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Monique Eves Souza dos Santos
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            O Uso do Código Computacional QRPA para Descrever Modelos Nucleares Usando as Aproximações BCS e PBCS		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Marline de Souza Oliveira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-              
-            </section>
-
-            <section id="2014" class="tab-panel">
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Dinâmica de populações em átomos de três níveis em cascata excitados por um trem de pulsos ultracurtos			
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Applied Physics B</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Marco P. Moreno, Malo Cadoret, Mohammad Jahjah, Linh Nguyen, Flavio C. Cruz &
-                            Jean-Jacques Zondy </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2013" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1016/j.saa.2012.02.081">
-                                Synthesis, characterization and magnetic properties of polymer–Fe3O4 nanocomposite
-                            </a>
-=======
-                        <p>Discentes: Clauane de Sousa Brito, Teo Victor Resende da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Dinâmica de populações em átomos de dois níveis excitados por um trem de pulsos ultracurtos com chirp			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Sabrina Marques de Freitas, Gabriel Nascimento Nogueira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Propagação de um trem de pulsos de luz ultracurtos: teoria clássica da interação entre radiação e matéria			
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Kevyn Alberto Pereira
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Marco Polo Moreno de Souza</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo e Desenvolvimento de Algoritmos aplicados a Fenômenos Físicos		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: 
-                            Alane Stephanye Andrade Batista
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Simulação Computacional da Teoria de Campo Escalar na Rede em Duas Dimensões Utilizando o Algoritmo de Metropolis		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Artur Falqueto Sonsin
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            O Uso do Código Computacional QRPA para Descrever Modelos Nucleares Usando as Aproximações BCS e PBCS		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Janileide Vieira Gomes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Simulação Computacional do Modelo de Ising em Três Dimensões Utilizando o Algoritmo de Banho Térmico		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Daniele Rodrigues Nunes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Simulação Computacional do Modelo de Ising em Três Dimensões Utilizando o Algoritmo de Metropolis		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Artur Falqueto Sonsin
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2013" class="tab-panel">
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Metropolis		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: A.F.R.Rodriguez,
-                            J.A.H.Coaquira,
-                            M.A.Morales,
-                            F.S.E.D.V.Faria,
-                            R.M.Cunha,
-                            J.G.Santo,
-                            L.B.Silveira,
-                            D.R.S.Candela,
-                            E.M.Baggio-Saitovitch,
-                            D.Rabelo,
-                            R.B.Azevedo,
-                            P.C.Moraisb</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1016/j.saa.2012.02.080">
-                                Comparative study of iron oxide nanoparticles as-prepared and dispersed in Copaiba oil
-                                using Mössbauer spectroscopy with low and high velocity resolution
-                            </a>
-=======
-                        <p>Discente: Mariane Rodrigues Cortes
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
-                    </div>
-
-                </div>
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Banho Térmico		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: M.I.Oshtrakh,
-                            V.Šepelák,
-                            A.F.R.Rodriguez,
-                            V.A.Semionkina,
-                            M.V.Ushakova,
-                            J.G.Santose,
-                            L.B.Silveirae,
-                            E.M.Marmolejo,
-                            M. De SouzaParise,
-                            P.C.Moraisf</p>
-=======
-                        <p>Discente: Daniele Rodrigues Nunes.
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
-                        <p>Bolsista: Sim (UNIR)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2012" class="tab-panel">
-<<<<<<< HEAD
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="https://rbpg.capes.gov.br/index.php/rbpg/article/view/287">
-                                Formação de professores de Física: experiência do Pibid-Física da Universidade Federal
-                                de Rondônia
-                            </a>
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Periódico: Revista Brasileira de Pós-graduação
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Laffert Gomes Ferreira da Silva,
-                            Roberta Lavor Serbim Uchoa Lopes,
-                            Marcelo Ferreira da Silva,
-                            Walter Trennepohl Júnior </p>
-                    </div>
-
-                </div>
-=======
-                
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-            </section>
-
-            <section id="2011" class="tab-panel">
-
-            </section>
-
-            <section id="2010" class="tab-panel">
-<<<<<<< HEAD
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="https://www.scielo.br/j/qn/a/cpqSG3436RY4mChzQRMc7RN/?lang=en">
-                                Groundwater quality comparison between rural farms and riparian wells in the western
-                                Amazon, Brazil
-                            </a>
-=======
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Obtenção dos comportamentos caóticos do mapa logístico com acoplamentos cúbico e quártico		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: Química Nova
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Nei K Leite,
-                            Alex V Krusche,
-                            Giovana M Cabianchi,
-                            Maria Victoria R Ballester,
-                            Reynaldo L Victoria,
-                            Margarida Marchetto,
-                            Judes G. dos Santos</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2009" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-009-9911-1">
-                                Mössbauer spectroscopy study of iron oxide nanoparticles obtained by spray pyrolysis
-                            </a>
-=======
-                        <p>Discente: Paulo do Nascimentos Santos
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Algumas extensões do sistema dinâmico de Lorenz		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gustavo da Costa Leal
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            BUSCA DOS COMPORTAMENTOS DINÂMICOS DO SISTEMA DE VAN DER POL-DUFFING FORÇADO E DAS BIFURCAÇÕES QUE SURGEM NESTE SISTEMA		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Cristiano Borges da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Pulverização reativa de descargas magnetron		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gislaine Izidoro da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="2009" class="tab-panel">
-               
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Algumas extensões do sistema dinâmico de Lorenz		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Hyperfine Interactions</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: R. F. C. Marques, A. F. R. Rodriguez, J. A. H. Coaquira, J. G. Santos, V. K. Garg,
-                            M. Jafelicci Jr., S. J. L. Ribeiro, M. Verelst, J. Dexpert-Ghys & P. C. Morais </p>
-=======
-                        <p>Discente: Gustavo da Costa Leal
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-009-9957-0">
-                                Characterization of magnetite nanoparticles supported in sulfonated
-                                styrene-divinylbenzene mesoporous copolymer
-                            </a>
-=======
-                            Obtenção dos comportamentos caóticos do mapa logístico com acpoplamentos cúbico e quártico		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Hyperfine Interactions</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: A. F. R. Rodriguez, J. A. H. Coaquira, J. G. Santos, L. B. Silveira, E. M.
-                            Marmolejo, W. Trennepohl, D. Rabelo, A. C. Oliveira, V. K. Garg & P. C. Morais </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2008" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00504-7">
-                                Photoacoustic spectroscopy of Baru – Dipteryx alata Vog
-                            </a>
-=======
-                        <p>Discente: Paulo do Nascimento dos Santos
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Pulverização reativa de descargas magnetron		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Gislaine Izidoro da Silva
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
-
-                </div>
-               
-            </section>
-
-            <section id="2008" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Obtenção dos comportamentos caóticos do sistema dinâmico de Lorenz		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>The European Physical Journal Special Topics</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: A. F. R. Rodriguez, J. G. Santos, L. B. Silveira, A. C. Oliveira, P. C. Morais & O.
-                            A. C. Nunes </p>
-=======
-                        <p>Discente: Gustavo da Costa Leal
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Não </p>
-                    </div>
-
-                </div>
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Em busca do conceito de inércia dentro da Relatividade Geral		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Hugo Rafael de Souza
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Sim (CNPq)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-<<<<<<< HEAD
-                            <a target="blank"
-                                href="https://www.scopus.com/record/display.uri?eid=2-s2.0-61549101756&origin=inward&txGid=6216290a0d1f03054ab613f2bdfbf8f0">
-                                Initial dynamic susceptibility of biocompatible magnetic fluids
-                            </a>
-=======
-                            Determinação de invariantes racionais de movimento contendo polinômios de grau 4 em p.		
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Reviews on Advanced Materials Science</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: Morais, P. C., Silveira, L. B., Oliveira, A. C., Santos, J. G.</p>
-=======
-                        <p>Discente: Letícia Farange Carvalho
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
-                        <p>Bolsista: Sim (CNPq)</p>
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                    </div>
-
-                </div>
-
-<<<<<<< HEAD
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00499-y">
-                                Photoacoustic investigation of copaiba oil
-                            </a>
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Periódico: <em>The European Physical Journal Special Topics</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: J. G. Santos, L. B. Silveira, L. Olenka, A. C. Oliveira, A. F. R. Rodriguez, V.
-                            Garg, A. C. Bento, R. G. Oliveira & P. C. Morais </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00461-1">
-                                Photoacoustic investigation of maghemite-based BSA nanocomposite
-                            </a>
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Periódico: <em>The European Physical Journal Special Topics volume</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: L. B. Silveira, J. G. Santos, A. C. Oliveira, B. M. Lacava, A. C. Tedesco & P. C.
-                            Morais </p>
-                    </div>
-
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1140/epjst/e2008-00390-y">
-                                Hidrogeochemical study in South Amazon region using Photoacoustic Spectroscopy
-                            </a>
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Periódico: <em>The European Physical Journal Special Topics volume </em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: N. K. Leite, J. G. Santos, R. F. Souza, G. M. Cabianchi, F. O. Xavier, B. M. Gomes,
-                            L. B. Silveira, A. C. Oliveira, A. F.R. Rodriguez & P. C. Morais </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="2007" class="tab-panel">
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="http://dx.doi.org/10.1007/s10751-008-9590-3">
-                                Mössbauer investigation of maghemite-based glycolic acid nanocomposite
-                            </a>
-=======
-            </section>
-
-            <section id="2007" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Determinação de invariantes racionais de movimento contendo polinômios cúbicos em p
-                            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-<<<<<<< HEAD
-                        <p>Periódico: <em>Hyperfine Interactions volume</em>
-                            <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg"
-                                class="tool" data-issn="18069126"
-                                original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099">
-                        </p>
-                        <p>Autores: J. G. Santos, L. B. Silveira, A. C. Oliveira, V. K. Garg, B. M. Lacava, A. C.
-                            Tedesco & P. C. Morais </p>
-                    </div>
-
-                </div>
-            </section>
-            <!--
-            <div class="w3-card-4" style="width:100%;">
-                <header class="w3-container">
-                    <h5>
-                        <a target="blank"
-                            href="xxxxxxxxxxx">
-                            xxxxxxxxxx
-                        </a>
+    .w3-container img{
+        height: 9.5px;
+    }
+
+    .w3-card-4 header {
+        background-color: rgb(192, 189, 189);
+        margin-bottom: 1.5em;
+    }
+
+    .w3-card-4 a {
+        text-decoration: none;
+    }
+
+    /*
+    CSS for the main interaction
+    */
+    .tabset>input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+    .tabset .tab-panel {
+        display: none;
+    }
+
+    .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+    .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+    .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+    .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+    .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+    .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+    .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+    .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+    .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+    .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+    .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+    .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+    .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+    .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+    .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15),
+    .tabset>input:nth-child(31):checked~.tab-panels>.tab-panel:nth-child(16),
+    .tabset>input:nth-child(33):checked~.tab-panels>.tab-panel:nth-child(17),
+    .tabset>input:nth-child(35):checked~.tab-panels>.tab-panel:nth-child(18),
+    .tabset>input:nth-child(37):checked~.tab-panels>.tab-panel:nth-child(19),
+    .tabset>input:nth-child(39):checked~.tab-panels>.tab-panel:nth-child(20),
+    .tabset>input:nth-child(41):checked~.tab-panels>.tab-panel:nth-child(21),
+    .tabset>input:nth-child(43):checked~.tab-panels>.tab-panel:nth-child(22),
+    .tabset>input:nth-child(45):checked~.tab-panels>.tab-panel:nth-child(23),
+    .tabset>input:nth-child(47):checked~.tab-panels>.tab-panel:nth-child(24)
+    {
+        display: block;
+    }
+
+    /*
+    Styling
+    */
+    .tabset>label {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .tabset>label::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        bottom: 10px;
+        width: 22px;
+        height: 4px;
+        background: #8d8d8d;
+    }
+
+    .tabset>label:hover,
+    .tabset>input:focus+label {
+        color: #06c;
+    }
+
+    .tabset>label:hover::after,
+    .tabset>input:focus+label::after,
+    .tabset>input:checked+label::after {
+        background: #06c;
+    }
+
+    .tabset>input:checked+label {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+    }
+
+    .tab-panel {
+        padding: 30px 0;
+        border-top: 1px solid #ccc;
+    }
+
+    /*******/
+    span {
+        font-family: monospace;
+        white-space: nowrap;
+    }
+
+    span:after {
+        font-family: Arial, sans-serif;
+        text-align: left;
+        white-space: normal;
+    }
+
+    span:focus {
+        outline: none;
+    }
+
+    .wrap {
+        background: #ECF0F1;
+        color: #607D8B;
+        height: 100%;
+        overflow: auto;
+        padding: 1em 2.5em;
+        text-align: center;
+        width: 100%;
+    }
+
+    pre {
+        background: #fff;
+        display: inline-block;
+        font-size: .55em;
+        margin-top: 2em;
+        padding: 1em;
+    }
+
+    @media (min-width: 360px) {
+        pre {
+            font-size: .7em;
+        }
+    }
+
+    @media (min-width: 500px) {
+        pre {
+            font-size: 1em;
+        }
+    }
+
+
+    /*== start of code for tooltips ==*/
+    .tool {
+        cursor: help;
+        position: relative;
+    }
+
+
+    /*== common styles for both parts of tool tip ==*/
+    .tool::before,
+    .tool::after {
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        z-index: -100;
+    }
+
+    .tool:hover::before,
+    .tool:focus::before,
+    .tool:hover::after,
+    .tool:focus::after {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        z-index: 100;
+    }
+
+
+    /*== pointer tip ==*/
+    .tool::before {
+        border-style: solid;
+        border-width: 1em 0.75em 0 0.75em;
+        border-color: #3E474F transparent transparent transparent;
+        bottom: 100%;
+        content: "";
+        margin-left: -0.5em;
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
+        transform: scale(.6) translateY(-90%);
+    }
+
+    .tool:hover::before,
+    .tool:focus::before {
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+    }
+
+
+    /*== speech bubble ==*/
+    .tool::after {
+        background: #3E474F;
+        border-radius: .25em;
+        bottom: 180%;
+        color: #EDEFF0;
+        content: attr(data-issn);
+        margin-left: -8.75em;
+        padding: 1em;
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+        transform: scale(.6) translateY(50%);
+        width: 18em;
+    }
+
+    .tool:hover::after,
+    .tool:focus::after {
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
+    }
+
+    @media (max-width: 760px) {
+        .tool::after {
+            font-size: .75em;
+            margin-left: -5em;
+            width: 10em;
+        }
+    }
+</style>
+
+
+
+<div class="tabset">
+
+	<input id="tab2023" name="tabset" type="radio" /> 
+    <label for="tab2023">2023-2024</label> 
+    
+    <input id="tab2022" name="tabset" type="radio" />
+    <label for="tab2022">2022-2023</label> 
+    
+    <input id="tab2021" name="tabset" type="radio" />
+    <label for="tab2021">2021-2022</label> 
+    
+    <input id="tab2020" name="tabset" type="radio" />
+    <label for="tab2020">2020-2021</label> 
+    
+    <input id="tab2019" name="tabset" type="radio" />
+    <label for="tab2019">2019-2020</label> 
+    
+    <input id="tab2018" name="tabset" type="radio" />
+    <label for="tab2018">2018-2019</label> 
+    
+    <input id="tab2017" name="tabset" type="radio" />
+    <label for="tab2017">2017-2018</label> 
+    
+    <input id="tab2016" name="tabset" type="radio" />
+    <label for="tab2016">2016-2017</label> 
+    
+    <input id="tab2015" name="tabset" type="radio" />
+    <label for="tab2015">2015-2016</label> 
+    
+    <input id="tab2014" name="tabset" type="radio" />
+    <label for="tab2014">2014-2015</label> 
+    
+    <input id="tab2013" name="tabset" type="radio" />
+    <label for="tab2013">2013-2014</label> 
+    
+    <input id="tab2012" name="tabset" type="radio" />
+    <label for="tab2012">2011-2012</label> 
+    
+    <input id="tab2011" name="tabset" type="radio" />
+    <label for="tab2011">2010-2011</label> 
+    
+    <input id="tab2010" name="tabset" type="radio" />
+    <label for="tab2010">2009-2010</label> 
+    
+    <input id="tab2009" name="tabset" type="radio" />
+    <label for="tab2009">2008-2009</label> 
+    
+    <input id="tab2008" name="tabset" type="radio" />
+    <label for="tab2008">2007-2008</label> 
+    
+    <input id="tab2007" name="tabset" type="radio" />
+    <label for="tab2007">2006-2007</label> 
+    
+    <input id="tab2006" name="tabset" type="radio" />
+    <label for="tab2006">2005-2006</label> 
+    
+    <input id="tab2005" name="tabset" type="radio" />
+    <label for="tab2005">2004-2005</label>
+    
+    <div class="tab-panels">
+
+
+        <section id="2023" class="tab-panel">
+
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        Estruturas Fractais no Confinamento Magnético de Plasma em Tokamak com Limitador Magnético Ergódico via Sistemas Hamiltonianos Caóticos
                     </h5>
-                </header>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Eric Nascimento Estevam</p>
+					<p>Orientador: Prof. Dra. Janileide Vieira Gomes</p>
+					<p>Tipo: Iniciação Científica (PIBIC)</p>
+					<p>Bolsista: Não</p>
+				</div>
+			</div>
 
-                <div class="w3-container">
-                    <p>Periódico: <em>xxxxxxxxxx</em>
-                        <img id="18069126_1" src="https://fisicajp2.unir.br/uploads/48059049/scripts/jcr.jpg" class="tool" data-issn="18069126" original-title="REV BRAS ENSINO FIS (1806-1117)<br />Fator de impacto (JCR 2012): 0.099"></p>
-                    <p>Autores: xxxxxxxxxxx</p>
-                </div>
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        Padrões de Escape das Linhas de Campo Magnético em Tokamak com Limitador Magnético Ergódico
+                    </h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Bruno Oliveira Rufatto</p>
+					<p>Orientador: Prof. Dra. Janileide Vieira Gomes</p>
+					<p>Tipo: Iniciação Científica (PIBIC)</p>
+					<p>Bolsista: Não</p>
+				</div>
+			</div>
 
-            </div>
-        -->
-=======
-                        <p>Discente: Peterson Endo
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
-                        <p>Bolsista: Não</p>
-                    </div>
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        xxxxxxxxxxxxxxxxxxx
+                    </h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: xxxxxxxxxx</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Tipo: Iniciação Científica (PIBIC)</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
 
-                </div>
-               
-            </section>
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        xxxxxxxxxxxxxxxxxxx
+                    </h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: xxxxxxxxxx</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Tipo: Iniciação Científica (PIBIC)</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
 
-            <section id="2006" class="tab-panel">
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        xxxxxxxxxxxxxxxxxxx
+                    </h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: xxxxxxxxxx</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Tipo: Iniciação Tecnológica (PIBITI)</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
 
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Efeitos da Não-linearidade na Física Clássica		
-                            
-                        </h5>
-                    </header>
+            <div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>
+                        xxxxxxxxxxxxxxxxxxx
+                    </h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: xxxxxxxxxx</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Tipo: Iniciação Tecnológica (PIBITI)</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
 
-                    <div class="w3-container">
-                        <p>Discente: Moacy José Stoffes Júnior
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Sim (CNPq)</p>
-                    </div>
-
-                </div>
-               
-            </section>
-
-            <section id="2005" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            Estudo da variabilidade hídrica em áreas de pastagem e floresta em Rondônia		
-                            
-                        </h5>
-                    </header>
-
-                    <div class="w3-container">
-                        <p>Discente: Kécio Gonçalves Leite
-                            
-                        </p>
-                        <p>Orientador: Prof. Dr.  Carlos Mergulhão Júnior</p>
-                        <p>Bolsista: Sim (LBA)</p>
-                    </div>
-
-                </div>
-               
-            </section>
-            
->>>>>>> 41229fd04955d98856479ae565e92ccb6899bd60
-
-        </div>
-
-    </div>
+        </section>
 
 
 
 
 
-</body>
+		<section id="2022" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>P&ecirc;ndulos acoplados por uma haste - Desenvolvimento de um aplicativo de simula&ccedil;&atilde;o computacional para a plataforma SimuF&iacute;sica</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Calina Grazielli Dias Barros</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Tipo: Inicia&ccedil;&atilde;o Tecnol&oacute;gica (PIBITI)</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo vibracional de espectroscopia Raman e Infravermelho aplicados a &oacute;leos naturais da Amaz&ocirc;nia</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Asaf Ribas</p>
+					<p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
+					<p>Tipo: Inicia&ccedil;&atilde;o Cient&iacute;fica (PIBIC)</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Abordagem do m&eacute;todo DFT no estudo vibracional de grupos carbox&iacute;licos majorit&aacute;rios em &aacute;cidos graxos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Roberta Cristina S. Lima</p>
+					<p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
+					<p>Tipo: Inicia&ccedil;&atilde;o Cient&iacute;fica (PIBIC)</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise conformacional de &aacute;cidos graxos via m&eacute;todo DFT</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Du&iacute;llio L.L. de Oliveira</p>
+					<p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
+					<p>Tipo: Inicia&ccedil;&atilde;o Cient&iacute;fica (PIBIC)</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
 
-</html>
+		<section id="2021" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Passagem adiab&aacute;tica por Raman estimulado: aplica&ccedil;&atilde;o no rel&oacute;gio at&ocirc;mico de rub&iacute;dio</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Rhakny Patryky Peixoto Araujo</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Modelagem da propaga&ccedil;&atilde;o da COVID-19 a partir do movimento browniano</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Juciane Gon&ccedil;alves Maia</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>C&aacute;lculos ab initio em grupos carbox&iacute;licos no processo de caracteriza&ccedil;&atilde;o de &oacute;leos naturais amaz&ocirc;nicos por Espectroscopia Raman e Infravermelho</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Asaf Ribas</p>
+					<p>Orientador: Prof. Dr. Quesle da Silva Martins</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Propriedades da Mat&eacute;ria Nuclear Utilizando o Modelo de Walecka N&atilde;o Linear com a intera&ccedil;&atilde;o entre os mesons sigma e omega &agrave; temperatura Zero e Elevadas</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: BRAZ ANTONIO TARTAGLIA PEREIRA</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+		</section>
+		<section id="2020" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Transi&ccedil;&otilde;es at&ocirc;micas em sistemas de dois n&iacute;veis: solu&ccedil;&atilde;o via expans&atilde;o perturbativa</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Rhakny Patryky Peixoto Araujo</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Circuito RLC estimulado por um trem de pulsos de corrente el&eacute;trica</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Joel Pedro Alves Ara&uacute;jo</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>G&aacute;s n&atilde;o ideal e din&acirc;mica de propaga&ccedil;&atilde;o do Novo Coronav&iacute;rus (COVID-19)</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Juciane Gon&ccedil;alves Maia</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise f&iacute;sico-qu&iacute;mica de Fluidos magn&eacute;ticos obtidos a partir da S&iacute;ntese e Caracteriza&ccedil;&atilde;o de Magnetita, para adsor&ccedil;&atilde;o de &oacute;leo de avestruz a sua superf&iacute;cie</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Ariane Dandares de Lima</p>
+					<p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>S&iacute;ntese e Caracteriza&ccedil;&atilde;o de Fluidos magn&eacute;ticos a Base de Ferrita de Cobalto (CoFe2O4) para estudo da adsor&ccedil;&atilde;o de &oacute;leo de Avestruz (Struthio camelus)</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Micaelle de S&aacute; e Silva</p>
+					<p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Desenvolvimento e Aplicabilidade de Algoritmos em Fen&ocirc;menos F&iacute;sicos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Jefferson Antunes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Propriedades da Mat&eacute;ria Nuclear Utilizando o Modelo de Walecka Linear com a intera&ccedil;&atilde;o entre os mesons sigma e omega &agrave; temperatura Zero e Elevadas</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: BRAZ ANTONIO TARTAGLIA PEREIRA</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Desenvolvimento de produtos educacionais usando novas tecnologias</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: HELIO DE SOUZA DOS SANTOS</p>
+					<p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+		</section>
+		<section id="2019" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Obten&ccedil;&atilde;o Num&eacute;rica de Bifurca&ccedil;&otilde;es em Alguns Sistemas Din&acirc;micos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Juciane Gon&ccedil;alves Maia</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Transi&ccedil;&otilde;es de dois f&oacute;tons em um sistema duplo-cascata estimuladas por um trem de pulsos ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Rhakny Patryky Peixoto Ara&uacute;jo</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo da estabilidade de cavidades de lasers na presen&ccedil;a de ru&iacute;dos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Jonatas Schweigert</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Desenvolvimento de Algoritmos aplicados a Fen&ocirc;menos F&iacute;sicos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Jefferson Antunes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Caracteriza&ccedil;&atilde;o estrutural do BaHfO_3 atrav&eacute;s do m&eacute;todo de Rietveld</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Janaira Luiza Vieira Araujo</p>
+					<p>Orientador: Profa. Vanessa Delfino Kegler</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Caracteriza&ccedil;&atilde;o estrutural do SrTiO_3 dopado com cobalto atrav&eacute;s do m&eacute;todo de Rietveld</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: ELISANGELA DA SILVA BARBOZA</p>
+					<p>Orientador: Profa. Vanessa Delfino Kegler</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2018" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise das Propriedades Ca&oacute;ticas da Equa&ccedil;&atilde;o de Duffing-Van Der Pol e do Mapa de Duffing Modificados</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: H&eacute;lio de Souza dos Santos</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Interferometria de Ramsey aplicada &agrave; transi&ccedil;&atilde;o 5S1/2 &minus; 5P1/2 do rub&iacute;dio</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Rhakny Patryky Peixoto Ara&uacute;jo</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo da estabilidade de cavidades &oacute;pticas via formalismo da matriz ABCD</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Jonatas Schweigert</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Obten&ccedil;&atilde;o e caracteriza&ccedil;&atilde;o de feixes de luz com momento angular orbital</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Laura Ma&iacute;sa Souza dos Santos, Cassia Ester de Fran&ccedil;a Ladeira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise f&iacute;sico-qu&iacute;mica de &oacute;leo da Amaz&ocirc;nia adsorvido sobre Nanopart&iacute;culas magn&eacute;ticas de Ferrita de Cobalto (NPC)</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Antonia Luziane Vieira Oliveira</p>
+					<p>Orientador: Prof. Dra. Queila da Silva Ferreira</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Modelagem ComputaCional Modelo de lsing em 2 D e 3D Utilizando o Algoritmo de Banho termico</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: INGRID RAYSSA DELGADO CAVALCANTE CRUZ</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Modelagem Computacional Modelo de Ising em 2 D e 3D Utilizando o Algoritmo de worm</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: PAMELLA NATHIELLI ALMEIDA DE OLIVEIRA</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Propriedades da Mat&eacute;ria Nuclear Utilizando o Modelo de Walecka N&atilde;o Linear com a intera&ccedil;&atilde;o entre os mesons sigma e omega</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: RONALDO ADRIANO DO NASCIMENTO RODRIGUES</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Propriedades da Mat&eacute;ria Nuclear Utilizando o Modelo de Walecka Linear com a intera&ccedil;&atilde;o entre os mesons &sigma; - ϣ</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: ZACARIAS EUCLIDES DA SILVA</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Equipamentos de aquisi&ccedil;&atilde;o de dados did&aacute;ticos de mec&acirc;nica b&aacute;sica usando um smartphone</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: PEDRO JOS&Eacute; NOGUEIRA DA SILVA</p>
+					<p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise da emiss&atilde;o fotoluminescente do BaHfO_3 com diferentes concentra&ccedil;&otilde;es de KOH</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Susana Cristina Fischer</p>
+					<p>Orientador: Profa. Vanessa Delfino Kegler</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2017" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Transpar&ecirc;ncia eletromagneticamente induzida por lasers</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Laura Maisa Souza dos Santos</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Caracteriza&ccedil;&atilde;o do perfil espacial de feixes de lasers</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Camila de Sousa Oliveira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Bombeamento &oacute;ptico em sistema tipo &Lambda; induzido por um trem de pulsos de laser ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Juciane Gon&ccedil;alves Maia</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Excita&ccedil;&atilde;o de &aacute;tomos de s&oacute;dio por um trem de pulsos de laser ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Cassia Ester de Fran&ccedil;a Ladeira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (FAPERO)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Din&acirc;mica de popula&ccedil;&otilde;es em &aacute;tomos de tr&ecirc;s n&iacute;veis tipo lambda excitados por um trem de pulsos ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Romildo Garcia Batista</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (FAPERO)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Modelagem Computacional do Modelo de Ising em 2D e 3D utilizando o Algoritmo de Metropolis</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Guilherme Aparecido da Silva Felicio</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Modelagem Computacional do Modelo de Ising em 2D e 3D Utilizando o Algoritmo de Worn (minhoca)</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Eliton Trindade Gomes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Desenvolvimento de um modelo de c&eacute;lula reacional</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gladimir Kohnlein</p>
+					<p>Orientador: Profa. Vanessa Delfino Kegler</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo da influ&ecirc;ncia dos hidr&oacute;xidos na forma&ccedil;&atilde;o de compostos sintetizados pelo MAH</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Susana Cristina Fischer</p>
+					<p>Orientador: Profa. Vanessa Delfino Kegler</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2016" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Excita&ccedil;&atilde;o de &aacute;tomos de c&eacute;sio por um trem de pulsos de laser ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Camila de Sousa Oliveira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Trem de eco de f&oacute;tons no rub&iacute;dio</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gabriel Nascimento Nogueira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Computa&ccedil;&atilde;o de alta performance aplicada ao c&aacute;lculo da matriz densidade de sistemas com alargamento Doppler</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Teo Victor Resende da Silva</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>An&aacute;lise vibracional por espectroscopia Raman em &oacute;leos origin&aacute;rios da Amaz&ocirc;nia</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Laura Ma&iacute;sa</p>
+					<p>Orientador: Prof. Quesle da Silva Martins</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Espectroscopia Raman em &oacute;leos origin&aacute;rios da Amaz&ocirc;nia: caracteriza&ccedil;&atilde;o e c&aacute;lculos ab-initio</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Willian Felipe Medeiros Alves</p>
+					<p>Orientador: Prof. Quesle da Silva Martins</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo e Desenvolvimento de Agoritmos Aplicados &agrave; Fen&ocirc;menos F&iacute;sicos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Marline de Souza Oliveira</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Simula&ccedil;&atilde;o Computacional do Modelo de Ising em Duas Dimens&otilde;es Utilizando o Algoritmo Alternativo</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gustavo Manoel Alves de Oliveira</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>O TELESC&Oacute;PIO E O ENSINO/APRENDIZAGEM DA &Oacute;PTICA</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Jos&eacute; Willian Ribeiro da Silva</p>
+					<p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+		</section>
+		<section id="2015" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Esfera de Bloch: intera&ccedil;&atilde;o entre trens de pulsos e sistemas at&ocirc;micos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Ronaldo Adriano do Nascimento Rodrigues</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Eco de f&oacute;tons com pulsos de femtossegundos em vapor de rub&iacute;dio</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gabriel Nascimento Nogueira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Solu&ccedil;&atilde;o das equa&ccedil;&otilde;es de Bloch para um sistema de dois n&iacute;veis via GPUs</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Teo Victor Resende da Silva</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Metropolis</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Monique Eves Souza dos Santos</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>O Uso do C&oacute;digo Computacional QRPA para Descrever Modelos Nucleares Usando as Aproxima&ccedil;&otilde;es BCS e PBCS</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Marline de Souza Oliveira</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+		</section>
+		<section id="2014" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Din&acirc;mica de popula&ccedil;&otilde;es em &aacute;tomos de tr&ecirc;s n&iacute;veis em cascata excitados por um trem de pulsos ultracurtos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discentes: Clauane de Sousa Brito, Teo Victor Resende da Silva</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Din&acirc;mica de popula&ccedil;&otilde;es em &aacute;tomos de dois n&iacute;veis excitados por um trem de pulsos ultracurtos com chirp</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Sabrina Marques de Freitas, Gabriel Nascimento Nogueira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Propaga&ccedil;&atilde;o de um trem de pulsos de luz ultracurtos: teoria cl&aacute;ssica da intera&ccedil;&atilde;o entre radia&ccedil;&atilde;o e mat&eacute;ria</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Kevyn Alberto Pereira</p>
+					<p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo e Desenvolvimento de Algoritmos aplicados a Fen&ocirc;menos F&iacute;sicos</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Alane Stephanye Andrade Batista</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Simula&ccedil;&atilde;o Computacional da Teoria de Campo Escalar na Rede em Duas Dimens&otilde;es Utilizando o Algoritmo de Metropolis</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Artur Falqueto Sonsin</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>O Uso do C&oacute;digo Computacional QRPA para Descrever Modelos Nucleares Usando as Aproxima&ccedil;&otilde;es BCS e PBCS</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Janileide Vieira Gomes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista:</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Simula&ccedil;&atilde;o Computacional do Modelo de Ising em Tr&ecirc;s Dimens&otilde;es Utilizando o Algoritmo de Banho T&eacute;rmico</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Daniele Rodrigues Nunes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Simula&ccedil;&atilde;o Computacional do Modelo de Ising em Tr&ecirc;s Dimens&otilde;es Utilizando o Algoritmo de Metropolis</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Artur Falqueto Sonsin</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+		</section>
+		<section id="2013" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Metropolis</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Mariane Rodrigues Cortes</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Um estudo Computacional do Modelo de Ising Utilizando o Algoritmo de Banho T&eacute;rmico</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Daniele Rodrigues Nunes.</p>
+					<p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+					<p>Bolsista: Sim (UNIR)</p>
+				</div>
+			</div>
+		</section>
+		<section id="2012" class="tab-panel"></section>
+		<section id="2011" class="tab-panel"></section>
+		<section id="2010" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Obten&ccedil;&atilde;o dos comportamentos ca&oacute;ticos do mapa log&iacute;stico com acoplamentos c&uacute;bico e qu&aacute;rtico</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Paulo do Nascimentos Santos</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Algumas extens&otilde;es do sistema din&acirc;mico de Lorenz</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gustavo da Costa Leal</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>BUSCA DOS COMPORTAMENTOS DIN&Acirc;MICOS DO SISTEMA DE VAN DER POL-DUFFING FOR&Ccedil;ADO E DAS BIFURCA&Ccedil;&Otilde;ES QUE SURGEM NESTE SISTEMA</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Cristiano Borges da Silva</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Pulveriza&ccedil;&atilde;o reativa de descargas magnetron</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gislaine Izidoro da Silva</p>
+					<p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2009" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Algumas extens&otilde;es do sistema din&acirc;mico de Lorenz</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gustavo da Costa Leal</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Obten&ccedil;&atilde;o dos comportamentos ca&oacute;ticos do mapa log&iacute;stico com acpoplamentos c&uacute;bico e qu&aacute;rtico</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Paulo do Nascimento dos Santos</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Pulveriza&ccedil;&atilde;o reativa de descargas magnetron</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gislaine Izidoro da Silva</p>
+					<p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2008" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Obten&ccedil;&atilde;o dos comportamentos ca&oacute;ticos do sistema din&acirc;mico de Lorenz</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Gustavo da Costa Leal</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Em busca do conceito de in&eacute;rcia dentro da Relatividade Geral</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Hugo Rafael de Souza</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Determina&ccedil;&atilde;o de invariantes racionais de movimento contendo polin&ocirc;mios de grau 4 em p.</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Let&iacute;cia Farange Carvalho</p>
+					<p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+		</section>
+		<section id="2007" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Determina&ccedil;&atilde;o de invariantes racionais de movimento contendo polin&ocirc;mios c&uacute;bicos em p</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Peterson Endo</p>
+					<p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+					<p>Bolsista: N&atilde;o</p>
+				</div>
+			</div>
+		</section>
+		<section id="2006" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Efeitos da N&atilde;o-linearidade na F&iacute;sica Cl&aacute;ssica</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: Moacy Jos&eacute; Stoffes J&uacute;nior</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: Sim (CNPq)</p>
+				</div>
+			</div>
+		</section>
+		<section id="2005" class="tab-panel">
+			<div class="w3-card-4" style="width: 100%;">
+				<header class="w3-container">
+					<h5>Estudo da variabilidade h&iacute;drica em &aacute;reas de pastagem e floresta em Rond&ocirc;nia</h5>
+				</header>
+				<div class="w3-container">
+					<p>Discente: K&eacute;cio Gon&ccedil;alves Leite</p>
+					<p>Orientador: Prof. Dr. Carlos Mergulh&atilde;o J&uacute;nior</p>
+					<p>Bolsista: Sim (LBA)</p>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
