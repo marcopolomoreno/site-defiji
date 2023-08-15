@@ -1,0 +1,2735 @@
+<style>
+    h5 {
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-weight: 400;
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 20px 0
+    }
+
+    .w3-card,
+    .w3-card-2 {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+    }
+
+    .w3-card-4,
+    .w3-hover-shadow:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+    }
+
+    .w3-container {
+        padding: 0.01em 16px
+    }
+
+    .w3-container:after,
+    .w3-container:before {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .w3-container p {
+        line-height: 2.1;
+        margin-top: -1.3em;
+        font-size: 17px;
+    }
+    
+    .w3-card-4 header {
+        background-color: rgb(192, 189, 189);
+        margin-bottom: 1.5em;
+    }
+
+    .w3-card-4 a {
+        text-decoration: none;
+    }
+
+    /*
+    CSS for the main interaction
+    */
+    .tabset>input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
+
+    .tabset .tab-panel {
+        display: none;
+    }
+
+    .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+    .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+    .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+    .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+    .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+    .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+    .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+    .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+    .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+    .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+    .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+    .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+    .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+    .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+    .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
+        display: block;
+    }
+
+    /*
+    Styling
+    */
+    .tabset>label {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .tabset>label::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        bottom: 10px;
+        width: 22px;
+        height: 4px;
+        background: #8d8d8d;
+    }
+
+    .tabset>label:hover,
+    .tabset>input:focus+label {
+        color: #06c;
+    }
+
+    .tabset>label:hover::after,
+    .tabset>input:focus+label::after,
+    .tabset>input:checked+label::after {
+        background: #06c;
+    }
+
+    .tabset>input:checked+label {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+    }
+
+    .tab-panel {
+        padding: 30px 0;
+        border-top: 1px solid #ccc;
+    }
+
+    /*
+    Demo purposes only
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 30px;
+    }
+
+    .tabset {
+        max-width: 65em;
+    }*/
+</style>
+
+
+<h2>Bacharelado em Física</h2>
+
+<div class="tabset">
+    <!-- Tab 1 -->
+    <input type="radio" name="tabset" id="tab2022-B" aria-controls="marzen">
+    <label for="tab2022-B">2022</label>
+
+    <input type="radio" name="tabset" id="tab2021-B" aria-controls="marzen">
+    <label for="tab2021-B">2021</label>
+
+    <input type="radio" name="tabset" id="tab2019-B" aria-controls="tab2019-B">
+    <label for="tab2019-B">2019</label>
+    <!-- Tab 2 -->
+    <input type="radio" name="tabset" id="tab2017-B" aria-controls="rauchbier">
+    <label for="tab2017-B">2017</label>
+    <!-- Tab 3 -->
+    <input type="radio" name="tabset" id="tab2014-B" aria-controls="dunkles">
+    <label for="tab2014-B">2014</label>
+
+    <div class="tab-panels">
+        <section id="marzen" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://www.ri.unir.br/jspui/handle/123456789/3968">
+                            Rhakny Patryky Peixoto Araujo
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientadores: Prof. Dr. Marco Polo Moreno de Souza (IC e TCC)
+                    </p>
+                    <p>
+                        Titulação: Bacharel em Física (UNIR/2022)
+                    </p>
+                    <p>
+                        Vínculo atual: 
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="marzen" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://www.ri.unir.br/jspui/handle/123456789/3431">
+                            Propagação de pulsos de luz ultracurtos em um ensemble de átomos de rubídio-87
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Eliton Trindade Gomes</p>
+                    <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tab2019-B" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp.unir.br/uploads/48059049/TCCs/tcc%20Guilherme%20com%20autoriza%C3%A7%C3%A3o.pdf">
+                            ANALISE ESTRUTURAL ATRAVÉS DO MÉTODO DE RIETVELD DO BaHfO3
+                            SINTETIZADO ATRAVÉS DO MAH COM DUAS CONCENTRAÇÕES DE KOH.
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: GUILHERME APARECIDO DA SILVA FELICIO</p>
+                    <p>Orientador: Profa. Ms. Vanessa Delfino Kegler</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="rauchbier" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://lattes.cnpq.br/0084094648894505">
+                            Teo Victor Resende da Silva
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientador: Prof. Dr. Marco Polo Moreno de Souza (IC e TCC)
+                    </p>
+                    <p>
+                        Titulação: Mestrado em Física (UFRGS/2017)
+                    </p>
+                    <p>
+                        Vínculo atual: Polícia Federal
+                    </p>
+                </div>
+
+            </div>
+        </section>
+        <section id="dunkles" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/MARIANE_RODRIGUES_CORTES_2014_1855634873.pdf">
+                            CARACTERIZAÇÃO E ANÁLISE DA VARIAÇÃO SAZONAL DOS
+                            COMPONENTES DO MICROCLIMA EM UMA ÁREA DE PASTAGEM E
+                            FLORESTA NO SUDOESTE DA AMAZÔNIA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARIANE RODRIGUES CORTES</p>
+                    <p>Orientador: Prof. Dr. Ricardo de
+                        Sousa Costa</p>
+                </div>
+
+            </div>
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/YARA_GOMES_DE_SOUSA_DINIZ_2014_844445236.pdf">
+                            CONFINAMENTO DO ÁTOMO DE LÍTIO EM UM GÁS DE FERMI DIRAC:
+                            SOLUÇÕES PARA O POTENCIAL TIPO YUKAWA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: YARA GOMES DE SOUSA DINIZ</p>
+                    <p>Orientador: Prof. Dr. Walter Trennephol
+                        Júnior</p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+
+
+<h2>Licenciatura em Física</h2>
+
+<div class="tabset">
+
+    <input type="radio" name="tabset" id="tab2022" aria-controls="2022">
+    <label for="tab2022">2022</label>
+
+    <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+    <label for="tab2021">2021</label>
+
+    <input type="radio" name="tabset" id="tab2020" aria-controls="2020">
+    <label for="tab2020">2020</label>
+
+    <input type="radio" name="tabset" id="tab2019" aria-controls="2019">
+    <label for="tab2019">2019</label>
+
+    <input type="radio" name="tabset" id="tab2018" aria-controls="2018">
+    <label for="tab2018">2018</label>
+
+    <input type="radio" name="tabset" id="tab2017" aria-controls="2017">
+    <label for="tab2017">2017</label>
+
+    <input type="radio" name="tabset" id="tab2016" aria-controls="2016">
+    <label for="tab2016">2016</label>
+
+    <input type="radio" name="tabset" id="tab2015" aria-controls="2015">
+    <label for="tab2015">2015</label>
+
+    <input type="radio" name="tabset" id="tab2014" aria-controls="2014">
+    <label for="tab2014">2014</label>
+
+    <input type="radio" name="tabset" id="tab2013" aria-controls="2013">
+    <label for="tab2013">2013</label>
+
+    <input type="radio" name="tabset" id="tab2012" aria-controls="2012">
+    <label for="tab2012">2012</label>
+
+    <input type="radio" name="tabset" id="tab2011" aria-controls="2011">
+    <label for="tab2011">2011</label>
+
+    <input type="radio" name="tabset" id="tab2010" aria-controls="2010">
+    <label for="tab2010">2010</label>
+
+    <input type="radio" name="tabset" id="tab2009" aria-controls="2009">
+    <label for="tab2009">2009</label>
+
+    <input type="radio" name="tabset" id="tab2008" aria-controls="2008">
+    <label for="tab2008">2008</label>
+
+    <input type="radio" name="tabset" id="tab2005" aria-controls="2005">
+    <label for="tab2005">2005</label>
+
+    <div class="tab-panels">
+        <section id="2022" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4135">
+                            Tecnologia no ensino de física: um estudo sobre concepções e perspectiva durante e pós-pandemia
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Aline Patrícia de Sena Oliveira</p>
+                    <p>Orientador: Prof. Dr. João Batista Diniz.</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4130">
+                            Atividades experimentais de eletricidade e magnetismo como método alternativo no ensino de física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Gilmar Milani Mendes</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4125">
+                            O uso de jogos lúdicos como recurso para o ensino de física: conteúdo de termologia
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Gedeão Batista Pinheiro</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4110">
+                            Ensino, aprendizagem e avaliação nas aulas de física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Hélio de Souza dos Santos</p>
+                    <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4143">
+                            Ensino de termodinâmica através de animações e simulações
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Susana Cristina Fischer</p>
+                    <p>Orientador: Profa. Vanessa Delfino Kegler</p>
+                </div>
+
+            </div>
+            
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4141">
+                            Utilização de jogos didáticos para o ensino de cinemática: jogos do MU e MUV
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Geneci da Costa Gomes</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Souza Costa</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://ri.unir.br/jspui/handle/123456789/4111">
+                            Ensino Remoto para alunos do Ensino Médio em escola pública em tempos de pandemia
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Elaina Barboza</p>
+                    <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="/uploads/48059049/TCCs/frezarim-santana-pessoa.pdf">
+                            Recursos tecnológicos aplicado no Ensino de Física de forma remota no programa Residência Pedagógica
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Frezarim Santana Pessoa</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="/uploads/48059049/TCCs/gilmar-milani-mendes.pdf">
+                            Atividades experimentais de eletricidade e magnetismo como método alternativo no Ensino de Física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Gilmar Milani Mendes</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="2021" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://www.ri.unir.br/jspui/handle/123456789/3616">
+                            Introdução de conceitos de física no ensino fundamental através de simulações
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Mateus Batista Paião</p>
+                    <p>Orientador: Profa. Vanessa Delfino Kegler</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://www.marcopolo.unir.br/images/downloads/tcc/ingrid-rayssa-delgado-cavalcante-cruz.pdf">
+                            Estudo de oscilações lineares e não-lineares
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Ingrid Rayssa Delgado Cavalcante Cruz</p>
+                    <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp.unir.br/uploads/48059049/TCCs/J%C3%89SSICA%20GARCIA%20PEREIRA%20TCC..pdf">
+                            FÍSICA NO ENSINO – APLICAÇÃO DA ELETRICIDADE E DO
+                            MAGNETISMO PARA O ENSINO MÉDIO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JÉSSICA GARCIA PEREIRA</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Júnior</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="2020" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://lattes.cnpq.br/4602268821521535">
+                            Jonatas Schweigert
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientadores: Prof. Dr. Marco Polo Moreno de Souza (TCC)
+                    </p>
+                    <p>
+                        Titulação: Licenciado em Física (UFS/2021)
+                    </p>
+                    <p>
+                        Vínculo atual: Mestrado em andamento FURG 
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="2019" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp.unir.br/uploads/48059049/TCCs/tcc%20elisangela%20com%20autoriza%C3%A7%C3%A3o%20de%20divulga%C3%A7%C3%A3o.pdf">
+                            ESTUDO DA DIFRAÇÃO DE RAIO-X E SUA APLICAÇÃO PARA
+                            CARACTERIZAÇÃO DA ESTRUTURA SrTiO3
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ELISANGELA DA SILVA BARBOZA</p>
+                    <p>Orientador: Prof. Ma. Vanessa Delfino Kegler</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://lattes.cnpq.br/8241765608076123">
+                            Cassia Ester de França Ladeira
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientador: Prof. Dr. Marco Polo Moreno de Souza (IC e TCC);
+                    </p>
+                    <p>
+                        Titulação: Licenciada em Física (UNIR/2019)
+                    </p>
+                    <p>
+                        Vínculo atual: 
+                    </p>
+                </div>
+
+            </div>
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Alex%20Bonfim%20Siqueira.pdf">
+                            ALGUNS EFEITOS PEDAGÓGICOS DO USO DE OFICINAS NAS AULAS DE
+                            FÍSICA NO ENSINO MÉDIO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ALEX BONFIM SIQUEIRA</p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                </div>
+
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Marline%20de%20Souza%20Oliveira.pdf">
+                            CIENCIA-ARTE
+                            ABORDAGEM CONTEMPORANEA DO ESTUDO DE ONDAS UTILIZANDO
+                            ARTES POPULARES
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARLINE DE SOUZA OLIVEIRA</p>
+                    <p>Orientadora: Prof. Me. Vanessa
+                        Delfino Kegler</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/MONIQUE%20EVES%20SOUZA%20DOS%20SANTOS.pdf">
+                            AS DIFICULDADES NO ENSINO DE FÍSICA PARA O ENSINO MÉDIO: ESTUDO
+                            DE CASO DE UMA ESCOLA DA REDE PÚBLICA ESTADUAL
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MONIQUE EVES SOUZA DOS SANTOS</p>
+                    <p>Orientador: Prof. Dr.
+                        Walter Trennepohl Júnior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/TCCs/Eliene%20Goncalves.pdf">
+                            A IMPLEMENTAÇÃO DA BASE NACIONAL COMUM CURRICULAR (BNCC) NAS
+                            ESCOLAS DE EDUCAÇÃO BÁSICA EM JI PARANÁ, RONDÔNIA COM ÊNFASE NO
+                            ENSINO DA FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ELIENE GONÇALVES LEMOS</p>
+                    <p>Orientadora: Prof. Me. Patricia
+                        Matos Viana de Almeida.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/ZACARIAS%20EUCLIDES%20DA%20SILVA.pdf">
+                            ANÁLISE DAS APLICAÇÕES DAS ATIVIDADES EXPERIMENTAIS NO
+                            ENSINO DE FÍSICA NAS ESCOLAS ESTADUAIS DE ENSINO FUNDAMENTAL E
+                            MÉDIO DO MUNICÍPIO DE PRESIDENTE MÉDICI
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ZACARIAS EUCLIDES DA SILVA</p>
+                    <p>Orientadora: Profa. Ma. Patrícia Matos
+                        Viana de Almeida</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/Egressos/TCCs/Enivaldo%20Tavares%20de%20Freitas.pdf">
+                            A Física Moderna no Cotidiano
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ENIVALDO TAVARES DE FREITAS</p>
+                    <p>Orientador: Prof. Dr Walter Trennepohl
+                        Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2018" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="http://lattes.cnpq.br/0870929368518204">
+                            Kevyn Alberto Pereira
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientador: Prof. Dr. Marco Polo Moreno de Souza (IC e TCC);
+                    </p>
+                    <p>
+                        Titulação: Licenciado em Física (UNIR/2018)
+                    </p>
+                    <p>
+                        Vínculo atual: Faculdades Integradas Aparício Carvalho (FIMCA); Comunidade Kolping de Jaru
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="http://lattes.cnpq.br/0313820357105064">
+                            Ronaldo Adriano do Nascimento Rodrigues
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientador: Prof. Dr. Marco Polo Moreno de Souza (IC); Prof. Dr. Robinson Viana Figueroa Cadillo (TCC)
+                    </p>
+                    <p>
+                        Titulação: Licenciado em Física (UNIR/2018)
+                    </p>
+                    <p>
+                        Vínculo atual: 
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="http://lattes.cnpq.br/2231278306258384">
+                            Camila de Sousa Oliveira
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientador: Prof. Dr. Marco Polo Moreno de Souza (IC); Prof. Dr. Walter Trennepohl Júnior (TCC)
+                    </p>
+                    <p>
+                        Titulação: Mestrado em Física (UFAL/2020)
+                    </p>
+                    <p>
+                        Vínculo atual: SEDUC/RO
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="http://lattes.cnpq.br/1934077163024827">
+                            Laura Maísa Souza dos Santos
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientadores: Prof. Dr. Marco Polo Moreno de Souza (IC); Prof. Dr. Quesle da Silva Martins (TCC)
+                    </p>
+                    <p>
+                        Titulação: Mestrado em Física da Matéria Condensada (UFAL/2021)
+                    </p>
+                    <p>
+                        Vínculo atual: Doutorado em andamento na UFAL
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Leticia%202018.pdf">
+                            PERFIL DOS TCCS DOS CURSOS DE FÍSICA DA UNIVERSIDADE
+                            FEDERAL DE RONDÔNIA, CAMPUS DE JI-PARANÁ
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LETÍCIA FARAGE CARVALHO</p>
+                    <p>Orientadora: Prof. Ma Patrícia Mattos
+                        Viana de Almeida.</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Luana%202018.pdf">
+                            A UTILIZAÇÃO DE EXPERIMENTOS DE BAIXO CUSTO NO
+                            ENSINO EJA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LUANA GUARTIERI DE OLIVEIRA </p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Lichaime%202018.pdf">
+                            A INCLUSÃO DOS SURDOS NO ENSINO DE FÍSICA NA CIDADE DE JI-PARANÁ
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LICHAIME SCHULHAM </p>
+                    <p>Orientador: Professor Dr. Ricardo Costa</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Marcelo%202018.pdf">
+                            O ENSINO DE FÍSICA COM O USO DE TECNOLOGIA DA
+                            INFORMAÇÃO E COMUNICAÇÃO: UMA EXPERIÊNCIA NA
+                            ESCOLA MARCOS BISPO DA SILVA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARCELO SOARES </p>
+                    <p>Orientador: Professor Doutor Walter
+                        Trennepohl Júnior.</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/Marcelo%20Acacio%202018.pdf">
+                            OS BENEFÍCIOS DA UTILIZAÇÃO DO ENSINO À DISTÂNCIA, APLICADO À
+                            DISCIPLINA DE FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARCELO ACÁCIO SIQUEIRA</p>
+                    <p>Orientador: Professor Dr.
+                        Walter Trennepohl Júnior – UNIR</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Raiara%202018.pdf">
+                            Influência dos Sintomas Ansiosos no Desempenho Acadêmico de Calouros e
+                            Formandos do Curso de Física. Campus Ji-Paraná
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RAIARA FEGUEREDO LOPES</p>
+                    <p>Orientadora: Prof. Ms. Patrícia
+                        Matos Viana de Almeida</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Rhuadren%202018.pdf">
+                            AS INOVAÇÕES TECNOLÓGICAS DO ENSINO DA FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RHUADREN DOS SANTOS SENA</p>
+                    <p>Orientador: Prof. Doutor Ricardo de Sousa costa</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Rodrigo%202018.pdf">
+                            UMA PROPOSTA DO USO DE SOFTWARE COMO INSTRUMENTO
+                            PEDAGÓGICO PARA ENSINO DE FISÍCA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RODRIGO FERNANDES DE SOUSA</p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/TCCs/TCC_Ronaldo.pdf">
+                            ESTUDO DE CIRCUITOS ELÉTRICOS USANDO O OSCILLOSCOPE
+                            SOUNDCARD
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RONALDO ADRIANDO DO NASCIMENTO RODRIGUES</p>
+                    <p>Orientador: Prof.
+                        Dr. Robinson Viana Figueroa
+                        Cadillo</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2017" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/BRUNA_SENA_LOPES_2017_399993531.pdf">
+                            ATIVIDADES EXPERIMENTAIS DE FÍSICA USANDO UM SMARTPHONE
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: BRUNA SENA LOPES</p>
+                    <p>Orientador: Prof.
+                        Dr. Robinson Viana Figueroa
+                        Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/DAVI_DIEGO_DE_ALMEIDA_2017_1578192046.pdf">
+                            PERFIL DOS PROFISSIONAIS DE FÍSICA NA CIDADE DE JI-PARANÁ, RO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DAVI DIEGO DE ALMEIDA</p>
+                    <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/RODRIGO_DE_OLIVEIRA_ROSA_2017_1196806591.pdf">
+                            AS EQUAÇÕES DE MAXWELL VISTA ATRAVÉS DE EXPERIMENTOS
+                            PARA ALUNOS DE NÍVEL MÉDIO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RODRIGO DE OLIVEIRA ROSA</p>
+                    <p>Orientador: Prof. Dr. Walter
+                        Trennepohl Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2016" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp.unir.br/uploads/48059049/arquivos/FRANCIELI_DOS_REIS_SILVA_2016_316222581.pdf">
+                            AS DIFICULDADES QUE O PROFESSOR ENCONTRA
+                            AO MINISTRAR AULAS
+                            DE FÍSICA NAS ESCOLAS DE JI-PARANÁ
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: FRANCIELI DOS REIS SILVA</p>
+                    <p>Orientador: Prof. Dr. Marco Polo Moreno de Souza</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_VANUZA_OLIVEIRA_LOUBACK_GONSAGA_2016_944340630.pdf">
+                            SALA DE AULA INVERTIDA
+                            UM MÉTODO INOVADOR E EFICAZ NO ENSINO DE FÍSICA NA ESCOLA
+                            MODERNA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: VANUZA OLIVEIRA LOUBACK GONSAGA</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2015" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/MISLAINE_MESSIAS_DE_MELLO_2015_1930327395.pdf">
+                            PROFISSIONAL DOCENTE: EXPECTATIVAS VERSUS REALIDADE
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MISLAINE MESSIAS DE MELLO
+                    </p>
+                    <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/REGINALDO_RICARDO_DA_SILVA_2015_24737367.pdf">
+                            A IMPORTÂNCIA DA AVALIAÇÃO EM FÍSICA NO ENSINO FUNDAMENTAL NA
+                            ÁREA URBANA DO MUNICÍPIO DE ALVORADA DO OESTE
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: REGINALDO RICARDO DA SILVA</p>
+                    <p>Orientador: Prof. Dr. Marco Polo
+                        Moreno de Souza</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/JAQUELINE_JER_NIMO_SOUZA_CABRAL_2015_764007822.pdf">
+                            INTRODUÇÃO A HISTÓRIA DAS CIÊNCIAS E DA FÍSICA COMO
+                            INSTRUMENTO DE MOTIVAÇÃO PARA O APRENDIZADO DE FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JAQUELINE JERÔNIMO SOUZA CABRAL</p>
+                    <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/J_SSICA_MACHADO_LUIZ_VASCONCELOS_2015_515684168.pdf">
+                            O ENSINO DE CIÊNCIAS DA NATUREZA NAS ESCOLAS
+                            DO MUNICÍPIO DE JI-PARANÁ
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JÉSSICA MACHADO LUIZ VASCONCELOS</p>
+                    <p>Orientador: Prof. Dr. Robinson Viana
+                        Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="https://fisicajp2.unir.br/uploads/48059049/Camila%202016.pdf">
+                            APLICAÇÃO DE MAPAS CONCEITUAIS EM MINICURSO DE FÍSICA
+                            NUCLEAR NA BUSCA DE APRENDIZAGEM SIGNIFICATIVA NO ENSINO
+                            MÉDIO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: CAMILA DE SOUSA OLIVEIRA
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter
+                        Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_FRANKLIS_JOS__PEDRO_2015_970035957.pdf">
+                            APLICAÇÃO DA DOCÊNCIA COMPARTILHADA DO PIBID NO 9º ANO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: FRANKLIS JOSÉ PEDRO</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MIRIA_SANTOS_DE_OLIVEIRA_2015_1069351120.pdf">
+                            IMPORTÂNCIA DA FÍSICA NO 9º ANO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MIRIA SANTOS DE OLIVEIRA </p>
+                    <p>Orientador: Prof. Walter Trennepohl
+                        Júnior.</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_VALDEIDE_DA_SILVA_DE_OLIVEIRA_2015_469254960.pdf">
+                            ENSINO DE FÍSICA NA EDUCAÇÃO DE JOVENS E ADULTOS NO MUNICÍPIO
+                            DE PRESIDENTE MÉDICI
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: VALDEIDE DA SILVA DE OLIVEIRA </p>
+                    <p>Orientador: Professor Dr. Walter
+                        Trennepohl Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2014" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://lattes.cnpq.br/8250453087881076">
+                            Sabrina Marques de Freitas
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">                    
+                    <p>
+                        Orientadores: Prof. Dr. Marco Polo Moreno de Souza (IC); Prof. Dr. João Batista Diniz (TCC)
+                    </p>
+                    <p>
+                        Titulação: Doutorado em Física (UFS/2021)
+                    </p>
+                    <p>
+                        Vínculo atual: Professora Substituta na UNIR; Professora no Colégio União (Ji-Paraná)
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="http://lattes.cnpq.br/6563295633804057">
+                            Clauane de Sousa Brito
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>
+                        Orientadores: Prof. Dr. Marco Polo Moreno de Souza (IC); Prof. Dr. Walter Trennepohl Júnior (TCC)
+                    </p>
+                    <p>
+                        Titulação: Mestrado em Física (UFPel/2017)
+                    </p>
+                    <p>
+                        Vínculo atual: 
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/JANILEIDE_VIEIRA_GOMES_2014_1004291477.pdf">
+                            COZINHANDO COM FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JANILEIDE VIEIRA GOMES
+                    </p>
+                    <p>Orientador: Professor Dr. Walter
+                        Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/CRISTIANO_B_CAMARGO_DA_SILVA_2014_163602255.pdf">
+                            O DESENVOLVIMENTO DAS LEIS DE KEPLER
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: CRISTIANO BORGES DE CAMARGO DA SILVA
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/SABRINA_MARQUES_DE_FREITAS_2014_86280419.pdf">
+                            AS GRANDES DAMAS DA FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: SABRINA MARQUES DE FREITAS
+                    </p>
+                    <p>Orientador: Prof. Doutor João Batista Diniz</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TATIANA_DEL_PIERO_SPEROTO_2014_1308674847.pdf">
+                            DESAFIOS PRESENTES EM ENSINO DE FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: TATIANA DEL PIERO SPEROTO
+                    </p>
+                    <p>Orientador: Prof. Dr. Robinson Viana Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/M_RCIO_LUIZ_MARQUES_DE_SOUZA_2014_418565578.pdf">
+                            AQUECEDOR SOLAR COMO MEIO DIDÁTICO INTERDISCIPLINAR
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MÁRCIO LUIZ MARQUES DE SOUZA
+                    </p>
+                    <p>Orientador: Prof. Dr. Robinson Viana
+                        Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/J_NATAS_CALDEIRA_DE_OLIVEIRA_2014_33191071.pdf">
+                            EM BUSCA DE UMA FUNDAMENTAÇÃO CONCEITUAL DA TEORIA DA
+                            RELATIVIDADE
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JÔNATAS CALDEIRA DE OLIVEIRA
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão
+                        Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_B_RBARA_APARECIDA_FERNANDES_PRASERES_2014_522084056.pdf">
+                            Influência do PIBID na Formação Acadêmica do Curso de Física
+                            Licenciatura na Cidade de Ji-Paraná
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Bárbara Aparecida Fernandes Prazeres</p>
+                    <p>Orientador: Prof. Walter Trennepohl
+                        Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_CINARA_LITTIG_VILELA_2014_1592219834.pdf">
+                            O uso das Histórias em Quadrinhos como Recurso Didático
+                            no Ensino de Física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Cinara Littig Vilela</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_JHAISON_COSTA_DE_FARIA_2014_1507397035.pdf">
+                            A EVOLUÇÃO HISTÓRICA DO CONCEITO DE GRAVITAÇÃO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JHAISON COSTA DE FARIA
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos
+                        Mergulhão Júnior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_VANESSA_DELFINO_KEGLER_1014_337829535.pdf">
+                            Análise da Cinemática Rotacional da TMVVIF
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Vanessa Delfino Kegler</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2013" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/VINICIUS_TAVARES_NOVAES_2013_375854159.pdf">
+                            ENSINO APRENDIZAGEM EM FÍSICA ATRAVÉS DE VIDEOAULA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: VINICIUS TAVARES NOVAES
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Júnior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/MICHELE_VAL_RIA_CORREIA_MOTTA_2013_1602812685.pdf">
+                            DIFICULDADE NO ESTUDO DA FÍSICA EM ESCOLAS PÚBLICAS DE MÉDICI
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MICHELE VALÉRIA CORREIA MOTTA
+                    </p>
+                    <p>Orientador: Profº. Doutor Robinson V.
+                        Figueroa Cadillo.</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ALINE_MARIANA_STIZ_2013_208066585.pdf">
+                            Tópicos de Astrofísica Aplicados ao Ensino de Física
+                            com ênfase em Astrobiologia na rede pública de ensino médio
+                            na cidade de Ji-Paraná
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Aline Mariana Stiz</p>
+                    <p>Orientador: Prof. Dr. Ricardo de Sousa Costa</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_LEILIANE_NERY_VIEIRA_2013_580323458.pdf">
+                            Carência de professores licenciados em física:
+                            um estudo de caso na coordenadoria regional de educação do
+                            município de Jaru/Rondônia
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Leiliane Nery Vieira</p>
+                    <p>Orientador: Prof. Dr. Walter Trenepohl Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_LENILZA_DE_OLIVEIRA_REIS_2013_1933495904.pdf">
+                            Astronomia: explorando suas origens e investigando
+                            suas correlações com o ensino de física
+                            no ensino médio
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Lenilza de Oliveira Reis</p>
+                    <p>Orientador: Prof. Dr. Ricardo Sousa Costa</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARIA_APARECIDA_DE_ARRUDA_2013_1289502075.pdf">
+                            UMA PROPOSTA DE APLICAÇÃO DE CONCEITOS FÍSICOS NAS SÉRIES INICIAIS
+                            DO ENSINO FUNDAMENTAL
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARIA APARECIDA DE ARRUDA
+                    </p>
+                    <p>Orientador: Professor
+                        Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MICHELE_VAL_RIA_CORREIA_MOTTA_2013_1005110986.pdf">
+                            DIFICULDADE NO ESTUDO DA FÍSICA EM ESCOLAS PÚBLICAS DE MÉDICI
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MICHELE VALÉRIA CORREIA MOTTA
+                    </p>
+                    <p>Orientador: Profº. Doutor Robinson V.
+                        Figueroa Cadillo.</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_RUBENS_DE_JESUS_SANTOS_2013_361106212.pdf">
+                            Tópicos de Eletromagnetismo
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Rubens de Jesus Santos</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_THAIS_BARBOSA_TAVARES_2013_2030423477.pdf">
+                            DIFICULDADES DOS ALUNOS DO ENSINO MÉDIO
+                            PARA APRENDER FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: THAIS BARBOSA TAVARES
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2012" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/ELIAS_TAVARES_DE_FREITAS_2012_334022850.pdf">
+                            SIMULAÇÕES VIRTUAIS NO ENSINO DE FÍSICA:
+                            COMO CHEGAMOS LÁ
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ELIAS TAVARES DE FREITAS
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl
+                        Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/D_BORA_DA_CONCEI__O_LIMA_2012_1030031725.pdf">
+                            EVOLUÇÃO HISTÓRICA DO CONCEITO FÍSICO DA LUZ
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DÉBORA DA CONCEIÇÃO LIMA
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos
+                        Mergulhão Júnior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_DELMA_PEREIRA_DE_ANDRADE_2012_2037585046.pdf">
+                            UMA BREVE INTRODUÇÃO SOBRE A ESTRUTURA DA MATÉRIA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DELMA PEREIRA DE ANDRADE
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter
+                        Trennepohl Júnior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2011" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_DAVI_DO_NASCIMENTO_SANTOS_2011_1982119691.pdf">
+                            CALORIMETRIA NO ENSINO DE FÍSICA COM MATERIAIS DE BAIXO CUSTO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DAVI DO NASCIMENTO SANTOS
+                    </p>
+                    <p>Orientador: Dr. Robinson Viana
+                        Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ELEXLHANE_GUIMAR_ES_DAMASCENO_2011_1232452533.pdf">
+                            METODOLOGIAS E O ENSINO DE FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ELEXLHANE GUIMARÃES DAMASCENO
+                    </p>
+                    <p>Orientador: Prof. Doutor João Batista
+                        Diniz.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_KEMUEL_COSTA_DE_OLIVEIRA_2011_59463613.pdf">
+                            A utilidade do ensino de física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Kemuel Costa de Oliveira</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Junior</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2010" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_EDUARDO_IGLESIAS_DINATO_2010_739052765.pdf">
+                            SENSOR ELETRÔNICO DE TEMPO CONTROLADO POR
+                            SOFTWARE
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Eduardo Iglesias Dinato
+                    </p>
+                    <p>Orientador: Dr. Walter Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_GILMAR_VIEIRA_GOMES_2010_425501836.pdf">
+                            IMPACTOS AMBIENTAIS E A AÇÃO DO HOMEM
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: GILMAR VIEIRA GOMES</p>
+                    <p>Orientador: PROF. FRANCISCO DE ASSIS PINTO CÂNDIDO</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_HUGO_RAFAEL_DE_SOUZA_2010_429363476.pdf">
+                            O PRINCÍPIO DE EQUIVALÊNCIA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Prof. Dr. Carlos Mergulhão Júnior </p>
+                    <p>Orientador: Hugo Rafael de Souza
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_BRUNO_GAEDE_DE_ALMEIDA_2010_1105460705.pdf">
+                            MÉTODOS COMPUTACIONAIS EMPREGADOS NO ENSINO DE FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: BRUNO GAEDE DE ALMEIDA
+                    </p>
+                    <p>Orientador: Prof. Esp. Francisco de
+                        Assis Pinto Cândido.</p>
+                </div>
+            </div>
+
+
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ANT_NIA_LEDA_FROTA_RUFINO_2010_1842724961.pdf">
+                            ENSINO DA FÍSICA E O COTIDIANO NAS ESCOLAS PÚBLICAS
+                            DE JI-PARANÁ
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ANTÔNIA LEDA FROTA RUFINO
+                    </p>
+                    <p>Orientador: xxxxxxxxxxxxxxxx</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_BEATRIZ_MANTHAY_2010_1660653148.pdf">
+                            TÉCNICAS DE COMO SER UM BOM PROFESSOR DE FÍSICA NO ENSINO MÉDIO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: BEATRIZ MANTHAY
+                    </p>
+                    <p>Orientador: Prof. Francisco de Assis Pinto Cândido</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_F_BIO_MONTEIRO_DA_SILVA_2010_1574046943.pdf">
+                            FONTES DE ENERGIA MAIS EMPREGADAS NA GERAÇÃO DE ENERGIA
+                            ELÉTRICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: FÁBIO MONTEIRO DA SILVA
+                    </p>
+                    <p>Orientador: Prof. Dr.
+                        Walter Trennepohl Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_FAGNER_ZAN_BARBOSA_2010_1254312045.pdf">
+                            A UTILIZAÇÃO DOS RAIOS SOLARES COMO FONTE
+                            ENERGÉTICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Fagner Zan Barbosa
+                    </p>
+                    <p>Orientador: Prof. Francisco de Assis Pinto Cândido</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_GILCIANO_SOARES_DE_OLIVEIRA_2010_1165052571.pdf">
+                            LEVANTAMENTO DA APRENDIZAGEM SIGNIFICATIVA BASEADA NA
+                            ANALISE COGNITIVA EM FISICA NO ENSINO MEDIO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: GILCIANO SOARES DE OLIVEIRA
+                    </p>
+                    <p>Orientador: PROFESSOR DR. JUDES GONÇALVES DOS SANTOS</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_GLEIDSON_MARCELO_DA_SILVA_2010_373380566.pdf">
+                            O AQUECIMENTO GLOBAL
+                            APLICADO AO ENSINO DA FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: GLEIDSON MARCELO DA SILVA</p>
+                    <p>Orientador: Professor Doutor Robinson
+                        Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_JULIANA_BESSA_DE_ALMEIDA_2010_1934135845.pdf">
+                            CARACTERIZAÇÃO DE FLUIDO MAGNÉTICO À BASE DE ÓLEOS
+                            VEGETAIS DE BABAÇU, COPAÍBA E MAMONA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JULIANA BESSA DE ALMEIDA
+                    </p>
+                    <p>Orientador: PROFª. Drª. LUCIENE BATISTA DA SILVEIRA</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_JUNIO_NUNES_FOLGADO_2010_1687142316.pdf">
+                            Aristóteles, Copérnico e Galileu e as suas Contribuições para a Física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Junio Nunes Folgado</p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_LEONDAS_FERNANDES_FERREIRA_246377962.pdf">
+                            ACÚSTICA DE AMBIENTES E SALAS DE AULA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LEONDAS FERNANDES FERREIRA
+                    </p>
+                    <p>Orientador: Professor Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_LUCIANO_POLEGARIO_CUNHA_2010_851703284.pdf">
+                            A UTILIZAÇÃO DA ECOLOCALIZAÇÃO POR MORCEGOS
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LUCIANO POLEGARIO CUNHA
+                    </p>
+                    <p>Orientador: Professor Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARLI_DANCIGUER_2010_1659925577.pdf">
+                            Educação Ambiental e Ensino de Física
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Marli Danciguer</p>
+                    <p>Orientador: Prof. Dr. Marcos Lázaro de Souza Albuquerque</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARTA_REGINA_DA_SILVA_2010_543040594.pdf">
+                            ENERGIA SOLAR E O MEIO AMBIENTE
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARTA REGINA DA SILVA
+                    </p>
+                    <p>Orientador: professor Robinson Viana
+                        Figueroa Cadillo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_NEUZA_DE_SOUZA_OLIVEIRA_2010_222124832.pdf">
+                            DETERMINAÇÃO DO ÍNDICE DE REFRAÇÃO DO VIDRO UTILIZANDO
+                            MATERIAIS DE BAIXO CUSTO.
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: NEUZA DE SOUZA OLIVEIRA
+                    </p>
+                    <p>Orientador: Professor Dr. Edgar
+                        Martinez Marmolejo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_PATR_CIA_MATOS_VIANA_2010_1709927559.pdf">
+                            Atividades práticas no ensino de Física: um relato de experiência
+                            didática
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Patrícia Matos Viana
+                    </p>
+                    <p>Orientador: : Profª. Dr.ª Beatriz Machado Gomes </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_PAULO_DO_NASCIMENTO_SANTOS_2010_791002808.pdf">
+                            HISTÓRIA DA TERMODINÂMICA E SUA EVOLUÇÃO TECNOLÓGICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: PAULO DO NASCIMENTO SANTOS
+                    </p>
+                    <p>Orientador: profº Dr. João Batista Diniz</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_RAFAELA_LIMA_TEIXEIRA_2010_1812120102.pdf">
+                            A FÍSICA NAS ESCOLAS: DO ENSINO TRADICIONAL AO
+                            ENSINO MODERNO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Rafaela Lima Teixeira
+                    </p>
+                    <p>Orientador: Prof. Esp. Francisco de Assis Pinto Cândido</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ROSIMEIRE_FERNANDES_FERREIRA_2010_559758490.pdf">
+                            MECÂNICA DE FLUIDOS E ALGUMAS APLICAÇÕES
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ROSIMEIRE FERNANDES FERREIRA
+                    </p>
+                    <p>Orientador: Prof. Dr. WALTER TRENNEPOHL JUNIOR
+                    </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_WEDERSON_DE_SOUZA_FERREIRA_2010_375488904.pdf">
+                            ESTUDO DA ESTABILIDADE FÍSICA DE FLUIDO MAGNÉTICO À BASE DE
+                            ÓLEO DE COPAÍBA COM MEDIDAS ÓPTO-MAGNÉTICAS
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Wederson de Souza Ferreira
+                    </p>
+                    <p>Orientador: Prof. Dr. Judes Gonçalves dos Santos</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_GUTEMBERG_SILVA_DOS_SANTOS_2010_1686645480.pdf">
+                            A eletricidade básica no ensino médio:
+                            interações cotidianas para potencializar o aprendizado
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Gutemberg Silva dos Santos</p>
+                    <p>Orientador: Prof. Dr. João Batista Diniz</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2009" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MAUR_CIO_DOS_SANTOS_2010_677829675.pdf">
+                            PRINCÍPIO DA RELATIVIDADE RESTRITA: UM PARALELO DE
+                            GALILEU A EINSTEIN
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MAURÍCIO DOS SANTOS
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_WANDERLEY_HONORIO_DE_MEDEIROS_2010_842556855.pdf">
+                            PRIMÓRDIOS DA FÍSICA QUÂNTICA:
+                            RADIAÇÃO DE CORPO NEGRO
+                            E EFEITO FOTOELÉTRICO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: WANDERLEY HONORIO DE MEDEIROS
+                    </p>
+                    <p>Orientador: Professora Irmgard Margarida Theobald</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARINEIDE_ALVES_DA_SILVA_2010_1199984898.pdf">
+                            UMA NOVA VISÃO PARA A DIDÁTICA NO ENSINO DE FÍSICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARINEIDE ALVES DA SILVA
+                    </p>
+                    <p>Orientador: Dr. João Batista Dini</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ADELSON_PEREIRA_RODRIGUES_2009_595466872.pdf">
+                            EXPLICAÇÕES FÍSICAS SOBRE COLETES BALÍSTICOS
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ADELSON PEREIRA RODRIGUES
+                    </p>
+                    <p>Orientador: Prof. Dr. Judes Gonçalves dos Santos</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ADEMIR_XAVIER_GOMES_2009_1358085589.pdf">
+                            ESTUDANDO A VELOCIDADE DOS VEÍCULOS
+                            PARA EDUCAR TRÂNSITO
+                            NO MUNICÍPIO DE PRESIDENTE MÉDICI
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ADEMIR XAVIER GOMES
+                    </p>
+                    <p>Orientador: Profº. Dr. Edgar Martinez
+                        Marmolejo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ANTONIO_LIMA_PEREIRA_2009_1883379504.pdf">
+                            QUESTIONAMENTOS E PROPOSTAS NO ENSINO DE FÍSICA DO ENSINO
+                            MÉDIO EM OURO PRETO DO OESTE
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ANTONIO LIMA PEREIRA
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_CL_VER_REIS_STEIN_2009_756063580.pdf">
+                            CARACTERIZAÇÃO FÍSICA DE EXTRATO BARU-SUCUPIRA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: CLÉVER REIS STEIN
+                    </p>
+                    <p>Orientador: Dr. Judes Gonçalves dos Santos</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_DAIANE_GOMES_DE_ALMEIDA_2009_126417743.pdf">
+                            Nova metodologia para o ensino de termodinâmica
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Daiane Gomes de Almeida</p>
+                    <p>Orientador: Profa. Dra. Luciene Batista da Silveira</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_DIOGO_FRANCISCO_DA_SILVA_2009_1466392111.pdf">
+                            A UTILIZAÇÃO DE PRINCÍPIOS FÍSICOS NA
+                            FABRICAÇÃO DE ARMAS DE FOGO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DIOGO FRANCISCO DA SILVA
+                    </p>
+                    <p>Orientador: Professor Dr. Walter Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_DOERTE_CHAGAS_C_RTES_2009_3131938.pdf">
+                            ANÁLISE DO USO DE NOVAS TECNOLOGIAS NO ENSINO DE
+                            FÍSICA EM ESCOLAS ESTADUAIS NO MUNICIPIO DE JI-PARANÁ
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DOERTE CHAGAS CÔRTES
+                    </p>
+                    <p>Orientador: Prof. Dr. JUDES GONÇALVES DOS SANTOS</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_FERNANDA_ANTUNES_FABIAN_2009_2049006875.pdf">
+                            SÍNTESE E CARACTERIZAÇÃO DE NANOPARTÍCULAS DE
+                            MAGUEMITA SUSPENSAS EM NaOH à 10% e HCl
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: FERNANDA ANTUNES FABIAN
+                    </p>
+                    <p>Orientador: PROF. Dr. JUDES GONÇALVES DOS SANTOS</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_JAMIS_VIANA_FONSECA_2009_1877069708.pdf">
+                            UTENSÍLIOS DOMÉSTICOS E A FÍSICA NO ENSINO MÉDIO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JAMIS VIANA FONSECA
+                    </p>
+                    <p>Orientador: Prof. Francisco de Assis Pinto Cândido</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_JANDERSON_DE_SALES_2009_1388215827.pdf">
+                            O COMPUTADOR COMO FERRAMENTA PARA FACILITAR O PROCESSO DE
+                            ENSINO-APRENDIZAGEM NA DISCIPLINA DE FÍSICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: JANDERSON DE SALES
+                    </p>
+                    <p>Orientador: Professora Dra. Luciene Batista da Silveira</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_LAFFERT_GOMES_FERREIRA_2009_1403928873.pdf">
+                            O EFEITO ESTUFA E O AQUECIMENTO GLOBAL
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: LAFFERT GOMES FERREIRA DA SILVA
+                    </p>
+                    <p>Orientador: Dra. Beatriz Machado Gomes </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARCONI_HENRIQUE_XAVIER_DA_COSTA_2009_1593157242.pdf">
+                            AS LEIS DA TERMODINÂMICA E OS MOTOS PERPÉTUOS
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Marconi Henrique Xavier da Costa
+                    </p>
+                    <p>Orientador: Prof. Dr. Carlos Mergulhão Júnior </p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARCOS_GILBERTO_DE_VASCONCELOS_2009_1315988569.pdf">
+                            UMA RETROSPECTIVA HISTÓRICA E CONCEITUAL DA
+                            ESTRUTURA ATÔMICA
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARCOS GILBERTO DE VASCONCELOS.
+                    </p>
+                    <p>Orientador: Profº. Doutor Carlos Mergulhão Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_MARLUCE_PEREIRA_OLIVEIRA_2009_1034170145.pdf">
+                            CARACTERIZAÇÃO ÓPTICA DE ARGILA E CERÂMICA INDUSTRIAL DA
+                            REGIÃO DA CIDADE DE JI-PARANÁ-RO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: MARLUCE PEREIRA OLIVEIRA
+                    </p>
+                    <p>Orientador: PROF. Dr. JUDES GONÇALVES DOS SANTOS</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_RAFAEL_MARTINELLI_2009_1655060630.pdf">
+                            FÍSICA: APLICAÇÕES NO COTIDIANO E VERIFICAÇÃO DO
+                            DESEMPENHO DE TURMAS DO ENSINO MÉDIO EM TRÊS
+                            ESCOLAS DE JI-PARANÁ-RO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RAFAEL MARTINELLI
+                    </p>
+                    <p>Orientador: Professor Doutor Ricardo José Souza da
+                        Silva</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_RONALDO_M_LLER_SOARES_2009_1270115591.pdf">
+                            UMA ANÁLISE SOBRE A CONSTRUÇÃO DAS
+                            HIDROELÉTRICAS NO RIO MADEIRA E SUA UTILIZAÇÃO
+                            COMO FACILITADOR DIDÁTICO PARA DISCIPLINAS DO
+                            ENSINO MÉDIO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Ronaldo Müller Soares</p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ROS_NGELA_RODRIGEUS_DE_OLIVEIRA_2009_1789606723.pdf">
+                            A FÍSICA APLICADA NA MEDICINA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Rosângela Rodrigues de Oliveira</p>
+                    <p>Orientador: Profª. Drª. Luciene Batista da Silveira</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ROZANGELA_SOUZA_SONNI_2009_153816996.pdf">
+                            ENSINO DE FÍSICA À DISTÂNCIA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ROZANGELA SOUZA SONNI
+                    </p>
+                    <p>Orientador: Prof ª. Drª. Luciene Batista da Silveira</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_RUBENS_MOREIRA_VIANA_2009_1372038649.pdf">
+                            PERÍCIA FISÍCA DE ACIDENTE DE TRÂNSITO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: RUBENS MOREIRA VIANA
+                    </p>
+                    <p>Orientador: Prof.º Dr. Judes Gonçalves dos Santos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2008" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC__Peterson_Mizuhira_Endo_2008_525032648.pdf">
+                            ANÁLISE DE FILMES DE PET TINGIDOS EM CO2 SC
+                            UTILIZANDO A FASE DO SINAL FOTOACÚSTICO
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Peterson Mizuhira Endo
+                    </p>
+                    <p>Orientador: Dra. Laudileni Olenka</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC__Daniela_R_209725765.pdf">
+                            DIFERENTES MÉTODOS DE APRENDIZAGEM PARA O
+                            ESTUDO DE ELETROSTÁTICA
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: DANIELA RODRIGUES BORBA VALADÃO
+                    </p>
+                    <p>Orientador: Profª Drª. Laudileni Olenka</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_Adilson_Louren_o_Gomes_2008_2016660020.pdf">
+                            A FÍSICA DOS ACIDENTES DE TRÂNSITO
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Adilson Lourenço Gomes
+                    </p>
+                    <p>Orientador: Prof. Drª. Laudileni Olenka</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_C_ssio_Contarato_Salvador_2008_1605706054.pdf">
+                            A BIOACUSTICA APLICADA À COMUNICAÇÃO HUMANA –
+                            REVISÃO DA LITERATURA E TENDENCIAS
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Cássio Contarato Salvador
+                    </p>
+                    <p>Orientador: Prof. Dr. Walter Trennepohl Júnior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_ERICA_CRISTINA_SARTORI_2008_1064392991.pdf">
+                            CURSO DE LICENCIATURA PLENA EM FÍSICA
+                            DA UNIR NO CAMPUS DE JI-PARANÁ
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: ERICA CRISTINA SARTORI
+                    </p>
+                    <p>Orientador: Dr. Edgar Martinez Marmolejo</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_Geovana_Dresch_webler_2008_1149372058.pdf">
+                            Caracterização de fluidos magnéticos à base de óleo
+                            de mamona (Ricinus Communis, L.)
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Geovana Dresch Webler</p>
+                    <p>Orientadora: Profa. Dra. Luciene Batista da Silveira</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_Moacy_Jos__Stoffes_Junior_2008_738910383.pdf">
+                            QUEDA DE CORPOS NA PRESENÇA DE FORÇAS RESISTIVAS
+
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Moacy José Stoffes Junior
+                    </p>
+                    <p>Orientador: Dr. Carlos Mergulhão Junior</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_Queila_da_Silva_Ferreira_2008_838086510.pdf">
+                            ESTUDO DA ESTABILIDADE FÍSICA DE FLUIDOS MAGNÉTICOS À
+                            BASE DE ÓLEO DE COPAÍBA (Copaifera langisdorffii)
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Queila da Silva Ferreira
+                    </p>
+                    <p>Orientador: Prof. Dr. Judes Gonçalves dos Santos </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="2005" class="tab-panel">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank"
+                            href="https://fisicajp2.unir.br/uploads/48059049/arquivos/TCC_Eduardo_Herrmann_Gesualdo_1522708465.pdf">
+                            Estudo de ondas no ensino médio utilizando
+                            mapas conceituais
+                        </a>
+                    </h5>
+                </header>
+
+                <div class="w3-container">
+                    <p>Egresso: Eduardo Herrmann Gesualdo</p>
+                    <p>Orientador: Prof. Dr. Jorge Luis Nepomucenno de Lima</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
