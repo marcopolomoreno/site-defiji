@@ -1,671 +1,707 @@
-<!DOCTYPE html>
-<html>
+<style>
+    h5 {
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-weight: 400;
+        margin: 10px 0;
+        font-size: 18px;
+    }
 
-<head>
-    <style>
-        h5 {
-            font-family: "Segoe UI", Arial, sans-serif;
-            font-weight: 400;
-            margin: 10px 0;
-            font-size: 18px;
-        }
+    hr {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 20px 0
+    }
 
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 20px 0
-        }
+    .w3-card,
+    .w3-card-2 {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+    }
 
-        .w3-card,
-        .w3-card-2 {
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
-        }
+    .w3-card-4,
+    .w3-hover-shadow:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+    }
 
-        .w3-card-4,
-        .w3-hover-shadow:hover {
-            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
-        }
+    .w3-container {
+        padding: 0.01em 16px
+    }
 
-        .w3-container {
-            padding: 0.01em 16px
-        }
+    .w3-container:after,
+    .w3-container:before {
+        content: "";
+        display: table;
+        clear: both
+    }
 
-        .w3-container:after,
-        .w3-container:before {
-            content: "";
-            display: table;
-            clear: both
-        }
+    .w3-container p {
+        line-height: 1.7;
+        margin-top: -1.3em;
+    }
+    
+    .w3-container img{
+        height: 9.5px;
+    }
 
-        .w3-container p {
-            line-height: 1.7;
-            margin-top: -1.3em;
-        }
-		
-		.w3-container img{
-            height: 9.5px;
-        }
+    .w3-card-4 header {
+        background-color: rgb(192, 189, 189);
+        margin-bottom: 1.5em;
+    }
 
-        .w3-card-4 header {
-            background-color: rgb(192, 189, 189);
-			margin-bottom: 1.5em;
-        }
+    .w3-card-4 a {
+        text-decoration: none;
+    }
 
-        .w3-card-4 a {
-            text-decoration: none;
-        }
+    /*
+    CSS for the main interaction
+    */
+    .tabset>input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+    }
 
-        /*
-        CSS for the main interaction
-        */
-        .tabset>input[type="radio"] {
-            position: absolute;
-            left: -200vw;
-        }
+    .tabset .tab-panel {
+        display: none;
+    }
 
-        .tabset .tab-panel {
-            display: none;
-        }
+    .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+    .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+    .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+    .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+    .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+    .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+    .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+    .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+    .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+    .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+    .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+    .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
+    .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
+    .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
+    .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
+        display: block;
+    }
 
-        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
-        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
-        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
-        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
-        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
-        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
-        .tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
-        .tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
-        .tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
-        .tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
-        .tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
-        .tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12),
-        .tabset>input:nth-child(25):checked~.tab-panels>.tab-panel:nth-child(13),
-        .tabset>input:nth-child(27):checked~.tab-panels>.tab-panel:nth-child(14),
-        .tabset>input:nth-child(29):checked~.tab-panels>.tab-panel:nth-child(15) {
-            display: block;
-        }
+    /*
+    Styling
+    */
+    .tabset>label {
+        position: relative;
+        display: inline-block;
+        padding: 15px 15px 25px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 18px;
+    }
 
-        /*
-        Styling
-        */
-        .tabset>label {
-            position: relative;
-            display: inline-block;
-            padding: 15px 15px 25px;
-            border: 1px solid transparent;
-            border-bottom: 0;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 18px;
-        }
+    .tabset>label::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        bottom: 10px;
+        width: 22px;
+        height: 4px;
+        background: #8d8d8d;
+    }
 
-        .tabset>label::after {
-            content: "";
-            position: absolute;
-            left: 15px;
-            bottom: 10px;
-            width: 22px;
-            height: 4px;
-            background: #8d8d8d;
-        }
+    .tabset>label:hover,
+    .tabset>input:focus+label {
+        color: #06c;
+    }
 
-        .tabset>label:hover,
-        .tabset>input:focus+label {
-            color: #06c;
-        }
+    .tabset>label:hover::after,
+    .tabset>input:focus+label::after,
+    .tabset>input:checked+label::after {
+        background: #06c;
+    }
 
-        .tabset>label:hover::after,
-        .tabset>input:focus+label::after,
-        .tabset>input:checked+label::after {
-            background: #06c;
-        }
+    .tabset>input:checked+label {
+        border-color: #ccc;
+        border-bottom: 1px solid #fff;
+        margin-bottom: -1px;
+    }
 
-        .tabset>input:checked+label {
-            border-color: #ccc;
-            border-bottom: 1px solid #fff;
-            margin-bottom: -1px;
-        }
+    .tab-panel {
+        padding: 30px 0;
+        border-top: 1px solid #ccc;
+    }
 
-        .tab-panel {
-            padding: 30px 0;
-            border-top: 1px solid #ccc;
-        }
+    /*******/
+    span {
+        font-family: monospace;
+        white-space: nowrap;
+    }
 
-        /*******/
-        span {
-            font-family: monospace;
-            white-space: nowrap;
-        }
+    span:after {
+        font-family: Arial, sans-serif;
+        text-align: left;
+        white-space: normal;
+    }
 
-        span:after {
-            font-family: Arial, sans-serif;
-            text-align: left;
-            white-space: normal;
-        }
+    span:focus {
+        outline: none;
+    }
 
-        span:focus {
-            outline: none;
-        }
+    .wrap {
+        background: #ECF0F1;
+        color: #607D8B;
+        height: 100%;
+        overflow: auto;
+        padding: 1em 2.5em;
+        text-align: center;
+        width: 100%;
+    }
 
-        .wrap {
-            background: #ECF0F1;
-            color: #607D8B;
-            height: 100%;
-            overflow: auto;
-            padding: 1em 2.5em;
-            text-align: center;
-            width: 100%;
-        }
+    pre {
+        background: #fff;
+        display: inline-block;
+        font-size: .55em;
+        margin-top: 2em;
+        padding: 1em;
+    }
 
+    @media (min-width: 360px) {
         pre {
-            background: #fff;
-            display: inline-block;
-            font-size: .55em;
-            margin-top: 2em;
-            padding: 1em;
+            font-size: .7em;
         }
+    }
 
-        @media (min-width: 360px) {
-            pre {
-                font-size: .7em;
-            }
+    @media (min-width: 500px) {
+        pre {
+            font-size: 1em;
         }
-
-        @media (min-width: 500px) {
-            pre {
-                font-size: 1em;
-            }
-        }
+    }
 
 
-        /*== start of code for tooltips ==*/
-        .tool {
-            cursor: help;
-            position: relative;
-        }
+    /*== start of code for tooltips ==*/
+    .tool {
+        cursor: help;
+        position: relative;
+    }
 
 
-        /*== common styles for both parts of tool tip ==*/
-        .tool::before,
+    /*== common styles for both parts of tool tip ==*/
+    .tool::before,
+    .tool::after {
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        z-index: -100;
+    }
+
+    .tool:hover::before,
+    .tool:focus::before,
+    .tool:hover::after,
+    .tool:focus::after {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        z-index: 100;
+    }
+
+
+    /*== pointer tip ==*/
+    .tool::before {
+        border-style: solid;
+        border-width: 1em 0.75em 0 0.75em;
+        border-color: #3E474F transparent transparent transparent;
+        bottom: 100%;
+        content: "";
+        margin-left: -0.5em;
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
+        transform: scale(.6) translateY(-90%);
+    }
+
+    .tool:hover::before,
+    .tool:focus::before {
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+    }
+
+
+    /*== speech bubble ==*/
+    .tool::after {
+        background: #3E474F;
+        border-radius: .25em;
+        bottom: 180%;
+        color: #EDEFF0;
+        content: attr(data-issn);
+        margin-left: -8.75em;
+        padding: 1em;
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+        transform: scale(.6) translateY(50%);
+        width: 18em;
+    }
+
+    .tool:hover::after,
+    .tool:focus::after {
+        transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
+    }
+
+    @media (max-width: 760px) {
         .tool::after {
-            left: 50%;
-            opacity: 0;
-            position: absolute;
-            z-index: -100;
+            font-size: .75em;
+            margin-left: -5em;
+            width: 10em;
         }
+    }
+</style>
+
+
+
+<h2>Atas das reuniões do Conselho do Departamento de Física</h2>
+
+<div class="tabset">
+    <input type="radio" name="tabset" id="tab2023" aria-controls="2023">
+    <label for="tab2023">2023</label>
+
+    <input type="radio" name="tabset" id="tab2022" aria-controls="2022">
+    <label for="tab2022">2022</label>
+
+    <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
+    <label for="tab2021">2021</label>
+
+
+
+    <div class="tab-panels">
+
+        <section id="2023" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/10-10-2023.pdf">
+                            10 de outubro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/26-09-2023.pdf">
+                            26 de setembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/12-09-2023.pdf">
+                            12 de setembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/05-09-2023.pdf">
+                            05 de setembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/01-08-2023.pdf">
+                            01 de agosto
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/11-07-2023.pdf">
+                            11 de julho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/27-06-2023.pdf">
+                            27 de junho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/20-06-2023.pdf">
+                            20 de junho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/30-05-2023.pdf">
+                            30 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/23-05-2023.pdf">
+                            23 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/17-05-2023.pdf">
+                            17 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>                           
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/09-05-2023.pdf">
+                            09 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/18-04-2023.pdf">
+                            18 de abril
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/22-03-2023.pdf">
+                            22 de março
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/07-03-2023.pdf">
+                            07 de março
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/07-02-2023.pdf">
+                            07 de fevereiro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+        </section>
+
+
+
+
+
+
+        <section id="2022" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/27-12-2022.pdf">
+                            27 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/13-12-2022.pdf">
+                            13 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/01-11-2022.pdf">
+                            01 de novembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/28-10-2022.pdf">
+                            28 de outubro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/27-10-2022.pdf">
+                            27 de outubro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/18-10-2022.pdf">
+                            18 de outubro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/04-10-2022.pdf">
+                            04 de outubro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/13-09-2022.pdf">
+                            13 de setembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/06-09-2022.pdf">
+                            06 de setembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/09-08-2022.pdf">
+                            09 de agosto
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/21-07-2022.pdf">
+                            21 de julho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/30-06-2022.pdf">
+                            30 de junho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/08-06-2022.pdf">
+                            08 de junho
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/23-05-2022.pdf">
+                            23 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/10-05-2022.pdf">
+                            10 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/03-05-2022.pdf">
+                            03 de maio
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/22-04-2022.pdf">
+                            22 de abril
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/14-04-2022.pdf">
+                            14 de abril
+                        </a>
+                    </h5>
+                </header>
+            </div>
+            
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/05-04-2022.pdf">
+                            05 de abril
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/15-03-2022.pdf">
+                            15 de março
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/28-02-2022.pdf">
+                            28 de fevereiro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/08-02-2022.pdf">
+                            08 de fevereiro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+        </section>
+
+        <section id="2021" class="tab-panel">
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/28-12-2021.pdf">
+                            28 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/23-12-2021.pdf">
+                            23 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/14-12-2021.pdf">
+                            14 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container">
+                    <h5>
+                        <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/07-12-2021.pdf">
+                            07 de dezembro
+                        </a>
+                    </h5>
+                </header>
+            </div>
+
+        </section>
 
-        .tool:hover::before,
-        .tool:focus::before,
-        .tool:hover::after,
-        .tool:focus::after {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            z-index: 100;
-        }
-
-
-        /*== pointer tip ==*/
-        .tool::before {
-            border-style: solid;
-            border-width: 1em 0.75em 0 0.75em;
-            border-color: #3E474F transparent transparent transparent;
-            bottom: 100%;
-            content: "";
-            margin-left: -0.5em;
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26), opacity .65s .5s;
-            transform: scale(.6) translateY(-90%);
-        }
-
-        .tool:hover::before,
-        .tool:focus::before {
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
-        }
-
-
-        /*== speech bubble ==*/
-        .tool::after {
-            background: #3E474F;
-            border-radius: .25em;
-            bottom: 180%;
-            color: #EDEFF0;
-            content: attr(data-issn);
-            margin-left: -8.75em;
-            padding: 1em;
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
-            transform: scale(.6) translateY(50%);
-            width: 18em;
-        }
-
-        .tool:hover::after,
-        .tool:focus::after {
-            transition: all .65s cubic-bezier(.84, -0.18, .31, 1.26);
-        }
-
-        @media (max-width: 760px) {
-            .tool::after {
-                font-size: .75em;
-                margin-left: -5em;
-                width: 10em;
-            }
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <h2>Atas das reuniões do Conselho do Departamento de Física</h2>
-
-    <div class="tabset">
-        <input type="radio" name="tabset" id="tab2023" aria-controls="2023">
-        <label for="tab2023">2023</label>
-
-        <input type="radio" name="tabset" id="tab2022" aria-controls="2022">
-        <label for="tab2022">2022</label>
-
-        <input type="radio" name="tabset" id="tab2021" aria-controls="2021">
-        <label for="tab2021">2021</label>
-
-
-
-        <div class="tab-panels">
-
-            <section id="2023" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/11-07-2023.pdf">
-                              11 de julho
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/27-06-2023.pdf">
-                              27 de junho
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/20-06-2023.pdf">
-                              20 de junho
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/30-05-2023.pdf">
-                              30 de maio
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/23-05-2023.pdf">
-                              23 de maio
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/17-05-2023.pdf">
-                              17 de maio
-                           </a>
-                        </h5>
-                    </header>
-                </div>                           
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/09-05-2023.pdf">
-                              09 de maio
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/18-04-2023.pdf">
-                              18 de abril
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/22-03-2023.pdf">
-                              22 de março
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/07-03-2023.pdf">
-                              07 de março
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2023/07-02-2023.pdf">
-                              07 de fevereiro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-            </section>
-
-
-
-
-
-
-            <section id="2022" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/27-12-2022.pdf">
-                              27 de dezembro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/13-12-2022.pdf">
-                              13 de dezembro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/01-11-2022.pdf">
-                              01 de novembro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/28-10-2022.pdf">
-                              28 de outubro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/27-10-2022.pdf">
-                              27 de outubro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/18-10-2022.pdf">
-                              18 de outubro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/04-10-2022.pdf">
-                              04 de outubro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/13-09-2022.pdf">
-                              13 de setembro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/06-09-2022.pdf">
-                              06 de setembro
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/09-08-2022.pdf">
-                              09 de agosto
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/21-07-2022.pdf">
-                              21 de julho
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/30-06-2022.pdf">
-                              30 de junho
-                           </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/08-06-2022.pdf">
-                                08 de junho
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/23-05-2022.pdf">
-                                23 de maio
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/10-05-2022.pdf">
-                                10 de maio
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/03-05-2022.pdf">
-                                03 de maio
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/22-04-2022.pdf">
-                                22 de abril
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/14-04-2022.pdf">
-                                14 de abril
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-                
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/05-04-2022.pdf">
-                                05 de abril
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/15-03-2022.pdf">
-                                15 de março
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/28-02-2022.pdf">
-                                28 de fevereiro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2022/08-02-2022.pdf">
-                                08 de fevereiro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-            </section>
-
-            <section id="2021" class="tab-panel">
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/28-12-2021.pdf">
-                                28 de dezembro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/23-12-2021.pdf">
-                                23 de dezembro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/14-12-2021.pdf">
-                                14 de dezembro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-                <div class="w3-card-4" style="width:100%;">
-                    <header class="w3-container">
-                        <h5>
-                            <a target="blank" href="/uploads/48059049/arquivos/Atas/2021/07-12-2021.pdf">
-                                07 de dezembro
-                            </a>
-                        </h5>
-                    </header>
-                </div>
-
-            </section>
-
-
-        </div>
 
     </div>
 
-
-
-
-
-</body>
-
-</html>
+</div>
